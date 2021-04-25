@@ -85,12 +85,12 @@
   </header>
 
   <div class="container-xxl my-md-4 mt-4">
-    <div class="row">
+    <div class="row" itemscope itemtype="http://schema.org/Person">
       <aside class="flex-shrink-0 col-md-3">
         <div class="clearfix d-flex d-md-block flex-items-center mb-4 mb-md-0 ">
           <div class="position-relative d-inline-block col-2 col-md-12 mr-3 mr-md-0 flex-shrink-0">
             <img style="height:auto;border-radius:50%!important;" alt="" width="260" height="260"
-              class="avatar avatar-user width-full border color-bg-primary"
+              class="avatar avatar-user width-full border color-bg-primary" itemprop="image"
               src="//avatars.githubusercontent.com/u/371268?v=4">
           </div>
         </div>
@@ -98,25 +98,30 @@
           style="position: sticky;">
           <h1 class="vcard-names ">
             <span class="p-name vcard-fullname d-block overflow-hidden" itemprop="name">
-              William A. Ingram
+              <span itemprop="givenName">William</span> A. <span itemprop="familyName">Ingram</span>
             </span>
             <!-- <span class="p-nickname vcard-username d-block" itemprop="additionalName">
             waingram
           </span> -->
           </h1>
           <p class="border-bottom border-top color-border-secondary pt-3 pb-3 m-0">
-            <span>Assistant Professor</span><br>
-            <span>Assistant Dean and Director of IT</span><br>
-            <span>University Libraries, Virginia Tech</span><br>
-            <span>Newman Library, 2320A Torgersen Hall</span><br>
-            <span>560 Drillfield Drive</span><br>
-            <span>Blacksburg, VA  24061</span>
+            <span itemprop="jobTitle">Assistant Professor</span><br>
+            <span itemprop="jobTitle">Assistant Dean and Director of IT</span><br>
+            <span itemprop="affiliation">University Libraries, Virginia Tech</span><br>
+            <span itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+              <span itemprop="streetAddress">Newman Library, 2320A Torgersen Hall<br>
+                560 Drillfield Drive</span><br>
+              <span itemprop="addressLocality">Blacksburg</span>, <span itemprop="addressRegion">VA</span>
+              <span itemprop="postalCode">24061</span>
+            </span><br>
+            <a href="mailto:waingram@vt.edu" itemprop="email">
+              waingram@vt.edu</a>
           </p>
         </div>
 
         <ul class="nav nav-pills flex-column mb-auto social-icons">
           <li>
-            <a href="#" class="nav-link link-dark">
+            <a href="#" class="nav-link link-dark" itemprop="sameAs">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-fill"
                 viewBox="0 0 16 16">
                 <path fill-rule="evenodd"
@@ -126,31 +131,32 @@
             </a>
           </li>
           <li>
-            <a href="//orcid.org/0000-0002-8307-8844" class="nav-link link-dark">
+            <a href="//orcid.org/0000-0002-8307-8844" class="nav-link link-dark" itemprop="sameAs">
               <i class="ai ai-orcid"></i>
               <span class="label">ORCID</span>
             </a>
           </li>
           <li>
-            <a href="//scholar.google.com/citations?user=L-R5NXwAAAAJ" class="nav-link link-dark">
+            <a href="//scholar.google.com/citations?user=L-R5NXwAAAAJ" class="nav-link link-dark" itemprop="sameAs">
               <i class="ai ai-google-scholar"></i>
               <span class="label">Google Scholar</span>
             </a>
           </li>
           <li>
-            <a href="//dblp.uni-trier.de/pid/271/4720.html" class="nav-link link-dark">
+            <a href="//dblp.uni-trier.de/pid/271/4720.html" class="nav-link link-dark" itemprop="sameAs">
               <i class="ai ai-dblp"></i>
               <span class="label">DBLP</span>
             </a>
           </li>
           <li>
-            <a href="//www.scopus.com/authid/detail.uri?authorId=57219743375" class="nav-link link-dark">
+            <a href="//www.scopus.com/authid/detail.uri?authorId=57219743375" class="nav-link link-dark"
+              itemprop="sameAs">
               <i class="ai ai-scopus"></i>
               <span class="label">Scopus</span>
             </a>
           </li>
           <li>
-            <a href="//www.linkedin.com/in/waingram/" class="nav-link link-dark">
+            <a href="//www.linkedin.com/in/waingram/" class="nav-link link-dark" itemprop="sameAs">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-linkedin"
                 viewBox="0 0 16 16">
                 <path
@@ -160,7 +166,7 @@
             </a>
           </li>
           <li>
-            <a href="//github.com/waingram" class="nav-link link-dark">
+            <a href="//github.com/waingram" class="nav-link link-dark" itemprop="sameAs">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github"
                 viewBox="0 0 16 16">
                 <path
@@ -173,8 +179,8 @@
       </aside>
       <div class="col-md-9">
         <div class="py-sm-5 p-5">
-          <p class="lead">William A. Ingram, Assistant Professor for
-            <a href="//lib.vt.edu/">University Libraries</a> at
+          <p class="lead" itemprop="description"><span itemprop="name">William A. Ingram,</span>
+            Assistant Professor for <a href="//lib.vt.edu/">University Libraries</a> at
             <a href="//vt.edu/">Virginia Tech</a>, is an internationally
             recognized digital libraries scholar specializing in computational
             use of library collections. He is Assistant Dean and Director of
@@ -189,22 +195,27 @@
             summarization to uncover the knowledge and data buried in this rich
             corpus of graduate research to facilitate its discovery, use, and
             reuse.</p>
-          <p>Ingram received an M.S. in <a href="//lis.illinois.edu/">Library
+          <p>Ingram received a B.A. in <span itemprop="knowsAbout">cognitive science</span> from the
+            <a href="//virginia.edu/">University Of Virginia</a> and
+            an M.S. in <a href="//lis.illinois.edu/" itemprop="knowsAbout">Library
               and Information Science</a>
-            from the <a href="//illinois.edu/">University of Illinois at
+            from the <a href="//illinois.edu/" itemprop="alumniOf">University of Illinois at
               Urbana-Champaign</a> in 2008. Since then, he has been involved in
-            projects and services related to scholarly communication, digital
-            preservation, repositories and digital libraries. He is currently
+            projects and services related to <span itemprop="knowsAbout">scholarly communication</span>,
+            <span itemprop="knowsAbout">digital preservation</span>, repositories and
+            <span itemprop="knowsAbout">digital libraries</span>. He is currently
             pursuing a Ph.D. in <a href="//cs.vt.edu/">Computer Science</a> at
             Virginia Tech, under the supervision of Professor <a href="//fox.cs.vt.edu">Edward A. Fox</a>, with a
             dissertation
-            focused on the application of NLP and machine/deep learning to
-            large-scale scholarly data. In 2019, he was awarded a 3-year
-            National Digital Infrastructures research grant from the Institute
-            of Museum and Library Services (<a
-              href="//www.imls.gov/grants/awarded/lg-37-19-0078-19-0">LG-37-19-0078-19-0</a>)
+            focused on the application of
+            <span itemprop="knowsAbout">NLP and machine/deep learning to large-scale scholarly data </span>.
+            In 2019, he was awarded a 3-year
+            National Digital Infrastructures research grant from the
+            <span itemprop="sponsor">Institute of Museum and Library Services</span>
+            (<a href="//www.imls.gov/grants/awarded/lg-37-19-0078-19-0">LG-37-19-0078-19-0</a>)
             to study the application of computational methods and resources to
-            large corpora of electronic theses and dissertations. </p>
+            large corpora of <span itemprop="knowsAbout">electronic theses and dissertations</span>.
+          </p>
         </div>
       </div>
 
@@ -243,24 +254,6 @@
             </li>
           </ul>
         </div>
-        <!-- <div class="col-6 col-md">
-          <h5>Resources</h5>
-          <ul class="list-unstyled text-small">
-            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Resource</a></li>
-            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Resource name</a></li>
-            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Another resource</a></li>
-            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Final resource</a></li>
-          </ul>
-        </div>
-        <div class="col-6 col-md">
-          <h5>About</h5>
-          <ul class="list-unstyled text-small">
-            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Team</a></li>
-            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Locations</a></li>
-            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Privacy</a></li>
-            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Terms</a></li>
-          </ul>
-        </div> -->
       </div>
     </footer>
 
