@@ -265,11 +265,14 @@
   <script src="../js/vendor/bootstrap.bundle.min.js"></script>
   <script src="../js/main.js"></script>
 
+
   <script>
-    window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
-    ga('create', 'UA-10899813-1', 'auto'); ga('set', 'anonymizeIp', true); ga('set', 'transport', 'beacon'); ga('send', 'pageview')
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'UA-10899813-1');
   </script>
-  <script src="//www.google-analytics.com/analytics.js" async></script>
 </body>
 
 </html>
