@@ -1,0 +1,83 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+    <meta charset="utf-8">
+    <title>{{ page.title | default: site.title }}</title>
+    <meta name="description" content="{{ page.description | default: site.description }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta property="og:title" content="{{ page.title | default: site.title }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+    <meta property="og:image" content="{{ page.og_image | default: site.og_image }}">
+    <meta property="og:description" content="{{ page.description | default: site.description }}">
+
+    <link rel="manifest" href="{{ '/site.webmanifest' | relative_url }}">
+    <link rel="apple-touch-icon" href="{{ '/apple-touch-icon.png' | relative_url }}">
+    <!-- Place favicon.ico in the root directory -->
+
+    <link rel="stylesheet" href="{{ '/css/normalize.css' | relative_url }}">
+    <!-- Bootstrap core CSS -->
+    <link href="{{ '/css/bootstrap.min.css' | relative_url }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ '/css/academicons.min.css' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/css/cc-icons.min.css' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/css/main.css' | relative_url }}">
+
+    <meta name="theme-color" content="#fafafa">
+
+    {% if site.google_analytics_tag %}
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics_tag }}"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', '{{ site.google_analytics_tag }}');
+    </script>
+    {% endif %}
+
+</head>
+
+<body itemtype="https://schema.org/ProfilePage" itemscope>
+    <div class="skippy visually-hidden-focusable overflow-hidden">
+        <div class="container-xl">
+            <a class="d-inline-flex p-2 m-1" href="#content">Skip to main content</a>
+            <a class="d-none d-md-inline-flex p-2 m-1" href="#bd-docs-nav">Skip to docs navigation</a>
+        </div>
+    </div>
+    {% include header.html %}
+    <div class="container-xxl my-md-4 mt-4">
+        <div class="row h-card" itemscope itemtype="http://schema.org/Person" itemprop="mainEntity">
+            <meta itemprop="dateCreated" content="2024-12-23T12:34:00-05:00" />
+            <meta itemprop="dateModified" content="{{ site.time | date_to_xmlschema }}" />
+            {% include sidebar.html %}
+            <div class="col-md-9">
+                <div class="py-sm-1 p-1"> 
+                {% if paginator %}
+                    {% include blog.html %}
+                {% elsif page.collection == "posts" %}
+                    {% include post.html %}
+                {% elsif page.url == "/" %}
+                    {% include home.html %}
+                {% elsif page.url == "/publications/" %}
+                    {% include publications.html %}
+                {% elsif page.url == "/experience/" %}
+                    {% include experience.html %}
+                {% elsif page.url == "/research/" %}
+                    {% include research.html %}
+                {% else %}
+                    {{ content }}
+                {% endif %}
+                </div>
+            </div>
+        </div>
+        {% include footer.html %}
+    </div>
+    <script src="{{ '/js/vendor/modernizr-3.11.2.min.js' | relative_url }}"></script>
+    <script src="{{ '/js/plugins.js' | relative_url }}"></script>
+    <script src="{{ '/js/vendor/bootstrap.bundle.min.js' | relative_url }}"></script>
+    <script src="{{ '/js/main.js' | relative_url }}"></script>
+</body>
+
+</html>

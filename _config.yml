@@ -1,0 +1,54 @@
+# Site settings
+title: "William A. Ingram"
+email: "waingram@vt.edu"
+description: >-
+  William A. Ingram is an academic leader and researcher who uses AI to structure and interpret scholarly data, advancing discovery, synthesis, accessibility, reproducibility, and transparency in open science.
+baseurl: "" # Leave blank for GitHub Pages root site
+url: "//waingram.github.io" # Your GitHub Pages URL
+# twitter_username: waingram
+github_username: waingram
+
+# Google Analytics
+google_analytics_tag: "G-N607LTCE7L"
+
+# Build settings
+plugins:
+  - jekyll-paginate # Pagination for blog posts
+  - jekyll-feed     # RSS feed for the blog
+  - jekyll-sitemap  # Sitemap for search engines
+  - jekyll-seo-tag  # SEO metadata
+
+theme: null # No theme
+# Markdown and syntax highlighting
+markdown: kramdown
+highlighter: rouge # Syntax highlighting for code snippets
+
+# Include and exclude settings
+exclude:
+  - README.md
+  - LICENSE
+  - Gemfile
+  - Gemfile.lock
+
+# Permalinks
+permalink: pretty # Cleaner URLs (e.g., /about/ instead of /about.html)
+
+# Pagination settings for the blog
+paginate: 5 # Posts per page
+paginate_path: "/blog/page:num"
+
+# Defaults for front matter
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: default
+
+# Collections
+collections:
+  pages:
+    output: true
+  posts:
+    output: true
+    permalink: /blog/:title/
