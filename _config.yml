@@ -56,7 +56,7 @@ collections:
 
 # Jekyll Scholar settings
 scholar:
-  style: acm-sig-proceedings-long-author-list # Citation style
+  style: acm-sig-proceedings # Citation style
   locale: en
   source: _data/publications  # Directory where your BibTeX files are stored
   sort_by: year
