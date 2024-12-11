@@ -17,6 +17,7 @@ plugins:
   - jekyll-feed     # RSS feed for the blog
   - jekyll-sitemap  # Sitemap for search engines
   - jekyll-seo-tag  # SEO metadata
+  - jekyll-scholar # Scholarly publications
 
 theme: null # No theme
 # Markdown and syntax highlighting
@@ -52,3 +53,11 @@ collections:
   posts:
     output: true
     permalink: /blog/:title/
+
+# Jekyll Scholar settings
+scholar:
+  style: acm-sig-proceedings-long-author-list # Citation style
+  locale: en
+  source: _data/publications  # Directory where your BibTeX files are stored
+  sort_by: year
+  order: descending
