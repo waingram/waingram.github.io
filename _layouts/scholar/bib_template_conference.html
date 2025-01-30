@@ -1,0 +1,25 @@
+<span id="{{entry.key}}" itemscope itemtype="https://schema.org/ScholarlyArticle">
+  <!-- Author(s) -->
+  {% include author_block.html entry=entry %}
+
+  <!-- Year of publication -->
+  <span class="year"><span itemprop="datePublished">{{ entry.year | default: "n.d." }}</span>.</span>
+
+  <!-- Title of the paper -->
+  &ldquo;<span class="title" itemprop="headline">{{ entry.title }}</span>.&rdquo;
+
+  <!-- Conference proceedings (booktitle) -->
+  {% include conference_block.html entry=entry %}
+
+  <!-- Note (e.g., Best Paper, Editor's Pick) -->
+  {%- if entry.note %}
+  <span class="note" itemprop="award">{{ entry.note }}</span>.
+  {%- endif %}
+
+  <!-- DOI or URL -->
+  {%- if entry.doi %}
+  <a href="https://doi.org/{{ entry.doi }}" itemprop="sameAs" target="_blank">{{ entry.doi }}</a>
+  {%- elsif entry.url %}
+  <a href="{{ entry.url }}" itemprop="url" target="_blank">{{ entry.url | replace: "https://", "" }}</a>
+  {%- endif %}
+</span>

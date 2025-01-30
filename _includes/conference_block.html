@@ -1,0 +1,36 @@
+  {%- if entry.booktitle -%}
+  In <span class="conference" itemprop="isPartOf" itemscope itemtype="https://schema.org/PublicationIssue">
+    <span itemscope itemprop="isPartOf" itemtype="https://schema.org/Periodical" itemid="#periodical-{{ entry.key }}">
+    <em itemprop="name">{{ entry.booktitle }}</em>
+  {%- if entry.series %}
+    ({{ entry.series }})
+  {%- endif -%}
+  {%- if entry.editor -%}
+    {%- include editor_block.html entry=entry -%}
+  {%- endif -%}
+  {%- if entry.location -%}
+    ,
+    <span class="location" itemprop="locationCreated" itemscope itemtype="https://schema.org/Place">
+      <span itemprop="name">{{ entry.location }}</span></span>
+  {%- endif -%}
+  {%- elsif entry.howpublished %}
+  Presented at <span class="venue" itemprop="http://purl.org/ontology/bibo/presentedAt" itemscope itemtype="https://schema.org/Event">
+    <em itemprop="name">{{ entry.howpublished }}</em>
+    {%- if entry.location -%}
+      ,
+      <span class="location" itemprop="location" itemscope itemtype="https://schema.org/Place">
+        <span itemprop="name">{{ entry.location }}</span></span>
+    {%- endif -%}
+  {%- endif -%}
+  </span>
+  {%- if entry.pages -%}
+  {%- assign page_range = entry.pages | split: "–" -%}
+  {%- if page_range.size == 2 -%}
+    ,
+    pp. <span itemprop="pageStart">{{ page_range[0] }}</span>&ndash;<span itemprop="pageEnd">{{ page_range[1] }}</span>
+  {%- else -%}
+    ,
+    pp. <span itemprop="pageStart">{{ entry.pages }}</span>
+  {%- endif -%}
+  {%- endif -%}
+  .

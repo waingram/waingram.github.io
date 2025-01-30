@@ -1,0 +1,57 @@
+<span id="{{entry.key}}" itemscope itemtype="https://schema.org/Event">
+  <!-- Title of the workshop -->
+  &ldquo;<span class="workshop-title" itemprop="name">{{ entry.title }}</span>.&rdquo;
+
+  <!-- Date of the workshop -->
+  {%- if entry.date %}
+  <span class="date">
+    <!-- Start date -->
+    <meta itemprop="startDate" content="{{ entry.date }}T00:00:00Z" />
+    {%- assign formatted_start = entry.date | date: "%B %e, %Y" %}
+
+    {%- if entry.enddate %}
+    <!-- End date -->
+    <meta itemprop="endDate" content="{{ entry.enddate }}T23:59:59Z" />
+    {%- assign formatted_end = entry.enddate | date: "%B %e, %Y" %}
+    {{ formatted_start }}&ndash;{{ formatted_end }}
+    {%- else %}
+    {{ formatted_start }}
+    {%- endif -%}
+  </span>.
+  {%- endif %}
+
+  <!-- Location of the workshop -->
+  {%- if entry.location %}
+  <span class="location" itemprop="location" itemscope itemtype="https://schema.org/Place">
+    <span itemprop="name">{{ entry.location }}</span></span>.
+  {%- endif %}
+
+  <!-- Organizers -->
+  {%- if entry.author %}
+  <span class="organizers">
+    {%- assign authors = entry.author | split: ' and ' %}
+    {%- assign total_authors = authors | size | minus: 1 %}
+    {%- for author in authors %}
+    {%- assign parts = author | split: ', ' %}
+    <span itemscope itemtype="https://schema.org/Person" itemprop="organizer">
+      <span itemprop="name">{{ parts[0] | strip }}</span>
+      {%- if parts.size > 1 -%}
+      , <span itemscope itemtype="https://schema.org/Organization" itemprop="affiliation">
+        <span itemprop="name">{{ parts[1] | strip }}</span></span>
+      {%- endif -%}
+    </span>
+    {%- unless forloop.last %}
+    {%- if forloop.index < total_authors -%} ; {%- else -%} {%- if total_authors==0 -%} {%- elsif total_authors==1 %}
+      and {%- else -%} ; and {%- endif %} {%- endif %} {%- endunless %} {%- endfor -%} . </span>
+      {%- endif %}
+
+      <!-- Note -->
+      {%- if entry.note %}
+      <span class="description" itemprop="description">{{ entry.note }}</span>
+      {%- endif %}
+
+      <!-- URL -->
+      {%- if entry.url %}
+      <a href="{{ entry.url }}" itemprop="url" target="_blank">{{ entry.url | replace: "https://", "" }}</a>.
+      {% endif %}
+  </span>

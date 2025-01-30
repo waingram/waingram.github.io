@@ -107,6 +107,26 @@ svg.bi {
   line-height: 100%;
 } 
 
+.bibliography {
+  list-style: none; /* Removes default bullets or numbers */
+  counter-reset: publication-counter; /* Resets the counter */ 
+}
+
+.bibliography li {
+  counter-increment: publication-counter; /* Increments the counter */
+  display: flex; /* Enables flexible layout */
+  align-items: flex-start; /* Aligns the text with the marker */
+  gap: 1rem; /* Space between the marker and text */
+  margin-bottom: 0.5em; /* Space between items */
+}
+
+.bibliography li::before {
+  content: "[" counter(publication-counter) "] "; /* Custom marker with brackets */
+  font-variant-numeric: tabular-nums; /* Ensures aligned numbering */
+}
+
+
+
 /* ==========================================================================
    Helper classes
    ========================================================================== */

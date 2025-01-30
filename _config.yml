@@ -56,8 +56,9 @@ collections:
 
 # Jekyll Scholar settings
 scholar:
-  style: acm-sig-proceedings # Citation style
+  style: association-for-computing-machinery  # Citation style
   locale: en
   source: _data/publications  # Directory where your BibTeX files are stored
   sort_by: year
   order: descending
+

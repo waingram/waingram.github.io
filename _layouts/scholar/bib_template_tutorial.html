@@ -1,0 +1,27 @@
+<span id="{{entry.key}}" itemscope itemtype="https://schema.org/CreativeWork">
+  <!-- Presenter(s) -->
+  {% include author_block.html entry=entry %}
+
+  <!-- Year of presentation -->
+  <span class="year"><span itemprop="datePublished">{{ entry.year | default: "n.d." }}</span>.</span>
+
+  <!-- Tutorial title -->
+  &ldquo;<span class="title" itemprop="headline">{{ entry.title }}</span>.&rdquo;
+
+  <!-- Tutorial type and details -->
+  {%- if entry.note %}
+  <span class="tutorial-type">({{ entry.note }})</span>.
+  {%- else %}
+  <span class="tutorial-type">(Tutorial)</span>.
+  {%- endif %}
+
+  <!-- Proceedings or event -->
+  {% include conference_block.html entry=entry %}
+
+  <!-- URL or additional resources -->
+  {%- if entry.doi %}
+  <a href="https://doi.org/{{ entry.doi }}" itemprop="sameAs" target="_blank">{{ entry.doi }}</a>
+  {%- elsif entry.url %}
+  <a href="{{ entry.url }}" itemprop="url" target="_blank">{{ entry.url | replace: "https://", "" }}</a>
+  {% endif %}
+</span>

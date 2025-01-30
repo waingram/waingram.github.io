@@ -1,0 +1,29 @@
+  <span class="author">
+    {%- assign authors = entry.author | split: ' and ' %}
+    {%- assign total_authors = authors | size | minus: 1 %}
+    {%- for author in authors %}
+    {%- assign parts = author | split: ', ' %}
+    <span itemscope itemtype="https://schema.org/Person" itemprop="author">
+      {%- if parts.size == 2 %}
+      <span itemprop="name">{{ parts[1] | strip }} {{ parts[0] | strip }}</span>
+      {%- elsif parts.size == 3 %}
+      <span itemprop="name">{{ parts[1] | strip }} {{ parts[2] | strip }} {{ parts[0] | strip }}</span>
+      {%- else %}
+      <span itemprop="name">{{ author | strip }}</span>
+      {% endif -%}
+    </span> 
+    {%- unless forloop.last %}
+    {%- if forloop.index < total_authors -%}
+    ,
+    {%- else -%}
+      {%- if total_authors == 0 -%}
+      {%- elsif total_authors == 1 %}
+        and
+      {%- else -%}
+        , and
+      {%- endif %}
+    {%- endif %}
+    {%- endunless %}
+    {%- endfor -%}
+    .
+  </span>

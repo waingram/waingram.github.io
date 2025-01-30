@@ -1,0 +1,52 @@
+<span id="{{entry.key}}" itemscope itemtype="https://schema.org/Chapter">
+  <!-- Author(s) -->
+  {% include author_block.html entry=entry %}
+
+  <!-- Publication year -->
+  <span class="year"><span itemprop="datePublished">{{ entry.year | default: "n.d." }}</span>.</span>
+
+  <!-- Chapter title -->
+  &ldquo;<span class="title" itemprop="headline">{{ entry.title }}</span>.&rdquo;
+
+  <!-- Book details as plain text -->
+  In <span class="book-title" itemprop="isPartOf" itemscope itemtype="https://schema.org/Book">
+    <em itemprop="name">{{ entry.booktitle }}</em>
+    {%- if entry.editor -%}
+    {%- include editor_block.html entry=entry -%}
+    {%- endif -%}
+    .
+  </span>
+
+  <!-- Publisher and location -->
+  {%- if entry.publisher %}
+  <span class="publisher" itemprop="publisher">{{ entry.publisher }}</span>,
+  {%- endif %}
+  {%- if entry.address %}
+  <span class="location" itemprop="location" itemscope itemtype="https://schema.org/Place">
+    <span itemprop="name">{{ entry.address }}</span>
+  </span>,
+  {%- endif %}
+
+  <!-- Page numbers -->
+  {%- if entry.pages %}
+  {%- assign page_range = entry.pages | split: "–" -%}
+  {%- if page_range.size == 2 -%}
+  pp. <span itemprop="pageStart">{{ page_range[0] }}</span>&ndash;<span itemprop="pageEnd">{{ page_range[1] }}</span>
+  {%- else -%}
+  pp. <span itemprop="pageStart">{{ entry.pages }}</span>
+  {%- endif -%}
+  {%- endif -%}
+  .
+
+  <!-- Note (e.g., award or invited talk) -->
+  {%- if entry.note %}
+  <span class="note" style="font-style: italic;">*{{ entry.note }}*</span>
+  {% endif %}
+
+  <!-- DOI or URL -->
+  {%- if entry.doi %}
+  <a href="https://doi.org/{{ entry.doi }}" target="_blank">{{ entry.doi }}</a>
+  {%- elsif entry.url %}
+  <a href="{{ entry.url }}" target="_blank">{{ entry.url | replace: "https://", "" }}</a>
+  {% endif %}
+</span>

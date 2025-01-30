@@ -1,0 +1,29 @@
+, edited by
+    <span class="editor">
+      {%- assign editors = entry.editor | split: ' and ' %}
+      {%- assign total_editors = editors | size | minus: 1 %}
+      {%- for editor in editors %}
+      {%- assign parts = editor | split: ', ' %}
+      <span itemscope itemtype="https://schema.org/Person" itemprop="editor">
+        {%- if parts.size == 2 %}
+        <span itemprop="name">{{ parts[1] | strip }} {{ parts[0] | strip }}</span>
+        {%- elsif parts.size == 3 %}
+        <span itemprop="name">{{ parts[1] | strip }} {{ parts[2] | strip }} {{ parts[0] | strip }}</span>
+        {%- else %}
+        <span itemprop="name">{{ author | strip }}</span>
+        {% endif -%}
+      </span> 
+      {%- unless forloop.last %}
+      {%- if forloop.index < total_editors -%}
+      ,
+      {%- else -%}
+        {%- if total_editors == 0 -%}
+        {%- elsif total_editors == 1 %}
+          and
+        {%- else -%}
+          , and
+        {%- endif %}
+      {%- endif %}
+      {%- endunless %}
+      {%- endfor -%}
+    </span>

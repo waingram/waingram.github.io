@@ -1,0 +1,51 @@
+<span id="{{entry.key}}" itemscope itemtype="https://schema.org/ScholarlyArticle">
+  <!-- Author(s) -->
+  {% include author_block.html entry=entry %}
+
+  <!-- Year of publication -->
+  <span class="year"><span itemprop="datePublished">{{ entry.year | default: "n.d." }}</span>.</span>
+
+  <!-- Article title -->
+  &ldquo;<span class="title" itemprop="headline">{{ entry.title }}</span>.&rdquo;
+
+  <!-- Journal details -->
+  <span class="journal" itemprop="isPartOf" itemscope itemtype="https://schema.org/PublicationIssue">
+    <span itemscope itemprop="isPartOf" itemtype="https://schema.org/Periodical" itemid="#periodical-{{ entry.key }}">
+      <em itemprop="name">{{ entry.journal | default: "Journal Name" }}</em></span>
+    {%- if entry.volume or entry.number -%}
+    ,
+    {%- if entry.volume %}
+    Vol. <span itemprop="isPartOf" itemscope itemtype="https://schema.org/PublicationVolume">
+      <link itemprop="isPartOf" href="#periodical-{{ entry.key }}" /><span itemprop="volumeNumber">{{ entry.volume
+        }}</span>
+    </span>
+    {%- endif -%}
+    {%- if entry.number %}
+    (<span class="issue" itemprop="issueNumber">{{ entry.number }}</span>)
+    {%- endif -%}
+  </span>
+  {%- if entry.pages -%}
+  {%- assign page_range = entry.pages | split: "–" -%}
+  {%- if page_range.size == 2 -%}
+  ,
+  pp. <span itemprop="pageStart">{{ page_range[0] }}</span>&ndash;<span itemprop="pageEnd">{{ page_range[1] }}</span>
+  {%- else -%}
+  ,
+  pp. <span itemprop="pageStart">{{ entry.pages }}</span>
+  {%- endif -%}
+  {%- endif -%}
+  {%- endif -%}
+  .
+
+  <!-- Note (e.g., Best Paper, Editor's Pick) -->
+  {%- if entry.note %}
+  <span class="note">{{ entry.note }}</span>.
+  {% endif %}
+
+  <!-- DOI or URL -->
+  {%- if entry.doi %}
+  <a href="https://doi.org/{{ entry.doi }}" itemprop="sameAs" target="_blank">{{ entry.doi }}</a>
+  {% elsif entry.url %}
+  <a href="{{ entry.url }}" itemprop="url" target="_blank">{{ entry.url | replace: "https://", "" }}</a>
+  {% endif %}
+</span>
