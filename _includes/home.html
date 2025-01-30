@@ -27,14 +27,14 @@
         <meta itemprop="sameAs" content="//cdrs.lib.vt.edu/" />
       </span></span>.
   </p>
-  <p>Ingram's research involves devising methods for computational
-    analysis and use of the large digital collections held by libraries
-    and archives. He is especially interested in <a href="//opening-etds.github.io/">electronic theses and
-      dissertations</a>. Because they are long and contain multiple
-    chapters, they more resemble books than research articles. His aim is
-    to use methods for information extraction, classification, and
-    summarization to uncover the knowledge and data buried in this rich
-    corpus of graduate research to facilitate its discovery and equitable use.</p>
+  <p><span itemprop="name">Ingram</span>'s research is centered on the integration of <span
+      itemprop="knowsAbout">AI</span> and <span itemprop="knowsAbout">machine learning</span> with big data applications
+    within academic and scholarly contexts. Specifically, he focuses on employing <span itemprop="knowsAbout">natural
+      language processing</span> to enrich <span itemprop="knowsAbout">digital library systems</span> and <span
+      itemprop="knowsAbout">scholarly data management</span>. <span itemprop="name">Ingram's</span> work aims to develop
+    scalable, ethical technical solutions that align with the strategic goals of higher education institutions and
+    digital archives, emphasizing innovation and the responsible use of <span itemprop="knowsAbout">AI</span> in <span
+      itemprop="knowsAbout">knowledge management</span>.</p>
   <p>Ingram received a
     <span itemprop="hasCredential" itemscope itemtype="https://schema.org/EducationalOccupationalCredential">
       <meta itemprop="credentialCategory" content="degree" />
@@ -89,7 +89,11 @@
   <h2>News</h2>
   <ul>
     {% for item in site.data.news %}
-    <li><strong>{{ item.date }}</strong> {{ item.content }}</li>
+    <li itemscope itemtype="https://schema.org/Event">
+      <meta itemprop="startDate" content="{{ item.date | date: '%Y-%m-%d' }}" />
+      <strong><time datetime="{{ item.date | date: '%Y-%m-%d' }}">{{ item.date }}</time></strong>
+      <span itemprop="description">{{ item.content }}</span>
+    </li>
     {% endfor %}
   </ul>
 </div>
