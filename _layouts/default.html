@@ -39,7 +39,21 @@
 
 </head>
 
+{% if paginator %}
+<body itemtype="https://schema.org/Blog" itemscope>
+{% elsif page.collection == "posts" %}
+<body itemtype="https://schema.org/BlogPosting" itemscope>
+{% elsif page.url == "/" %}
 <body itemtype="https://schema.org/ProfilePage" itemscope>
+{% elsif page.url == "/publications/" %}
+<body itemtype="https://schema.org/CollectionPage" itemscope>
+{% elsif page.url == "/experience/" %}
+<body itemtype="https://schema.org/AboutPage" itemscope>
+{% elsif page.url == "/research/" %}
+<body itemtype="https://schema.org/AboutPage" itemscope>
+{% else %}
+<body itemtype="https://schema.org/WebPage" itemscope>
+{% endif %}
     <div class="skippy visually-hidden-focusable overflow-hidden">
         <div class="container-xl">
             <a class="d-inline-flex p-2 m-1" href="#content">Skip to main content</a>
@@ -50,25 +64,25 @@
     <meta itemprop="dateModified" content="{{ site.time | date_to_xmlschema }}" />
     {% include header.html %}
     <div class="container-xxl my-md-4 mt-4">
-        <div class="row h-card" itemscope itemtype="http://schema.org/Person" itemprop="mainEntity">
+        <div class="row"> 
             {% include sidebar.html %}
             <div class="col-md-9">
-                <div class="py-sm-1 p-1"> 
-                {% if paginator %}
+                <div class="py-sm-1 p-1">
+                    {% if paginator %}
                     {% include blog.html %}
-                {% elsif page.collection == "posts" %}
+                    {% elsif page.collection == "posts" %}
                     {% include post.html %}
-                {% elsif page.url == "/" %}
+                    {% elsif page.url == "/" %}
                     {% include home.html %}
-                {% elsif page.url == "/publications/" %}
+                    {% elsif page.url == "/publications/" %}
                     {% include publications.html %}
-                {% elsif page.url == "/experience/" %}
+                    {% elsif page.url == "/experience/" %}
                     {% include experience.html %}
-                {% elsif page.url == "/research/" %}
+                    {% elsif page.url == "/research/" %}
                     {% include research.html %}
-                {% else %}
+                    {% else %}
                     {{ content }}
-                {% endif %}
+                    {% endif %}
                 </div>
             </div>
         </div>
