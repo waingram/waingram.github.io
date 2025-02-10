@@ -125,7 +125,13 @@ svg.bi {
   font-variant-numeric: tabular-nums; /* Ensures aligned numbering */
 }
 
-
+a.footnote:before {   
+  content: "[";
+ }
+ 
+ a.footnote:after {
+     content: "]";
+ }
 
 /* ==========================================================================
    Helper classes
