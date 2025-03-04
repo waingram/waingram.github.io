@@ -34,13 +34,13 @@
   pp. <span itemprop="pageStart">{{ entry.pages }}</span>
   {%- endif -%}
   {%- endif %}
-  {%- if entry.address or entry.institution -%}
+  {%- if entry.address or entry.address -%}
   .
   {%- endif -%}
 
   <!-- Sponsor acknowledgement -->
   {%- if entry.note %}
-  <span class="note">{{ entry.note }}</span>
+  <span class="note">{{ entry.note }}</span>.
   {%- endif %}
 
   <!-- DOI or URL -->
