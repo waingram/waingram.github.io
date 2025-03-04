@@ -34,7 +34,9 @@
   pp. <span itemprop="pageStart">{{ entry.pages }}</span>
   {%- endif -%}
   {%- endif %}
+  {%- if entry.address or entry.institution -%}
   .
+  {%- endif -%}
 
   <!-- Sponsor acknowledgement -->
   {%- if entry.note %}
