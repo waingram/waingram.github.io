@@ -1,66 +1,140 @@
-<h1>Research</h1>
-<p class="lead">My research explores the application of computational methods and techniques
-  to large-scale digital collections held by libraries and
-  archives. Specifically, I work within the fields of digital libraries and
-  information retrieval to mine knowledge from electronic theses and
-  dissertations.</p>
-<h2>Dissertation</h2>
-<p>Despite the huge number of Electronic Theses and Dissertations (ETDs) publicly available online, research done by
-  graduate students is insufficiently utilized. We lack the computational models, tools, and services for discovering
-  and accessing the knowledge buried in these long documents.
-  ETDs contain novel ideas and findings that make a significant contribution to the students' subject areas.
-  They often contain extensive bibliographies and literature reviews, as well as useful graphs, figures, and tables.
-  Much important knowledge and scientific data lie hidden in ETDs, but we need better tools to mine the content and
-  facilitate the identification, discovery, and reuse of these important components.
-  To address this problem, this project develops sophisticated textual analytics, natural language processing, and
-  information extraction methods to identify and extract key components of ETDs containing important knowledge that
-  would otherwise remain buried in these long documents.
-  We investigate techniques and build predictive models to automatically classify and summarize these extracted
-  components.
-  In doing so, we aim to answer the following fundamental research questions:
-  (1) How can we effectively identify and extract key parts of ETDs such as chapters, literature reviews,
-  bibliographies, graphs, tables, and figures?
-  (2) How can we develop effective classification and summarization services for ETDs at the chapter level?
-  (3) How can we use these services to enrich the user experience for digital libraries of ETDs?
-  Text analytics presents a novel way to connect text with language understanding.
-  By investigating analytical methods for extracting, classifying, and summarizing the knowledge contained in ETDs,
-  our research demonstrates how intensive computational analysis of digital collections can provide more effective
-  access to book-length documents, increase the impact of graduate research, and help libraries meet the evolving
-  needs of the communities they serve.
-</p>
-<h2>Problem Areas</h2>
-<ul>
-  <li>We don't know how to provide effective access to digital books and
-    other book-length documents in digital libraries.</li>
-  <li>Research done by graduate students is insufficiently utilized.</li>
-  <li>Research libraries aren't meeting the needs of the communities
-    they serve.</li>
-</ul>
-<p>Despite the huge number of books held in digital libraries, there is a lack
-  of computational models, tools, and services for discovering and accessing
-  the knowledge they contain. Current models are limited to basic metadata
-  and full-text search. We need better tools to mine the knowledge and
-  scientific data buried inside books and other book-length documents, like
-  theses and dissertations. Graduate students write theses and dissertations,
-  and they go into digital libraries. But their work is not read or cited as
-  much as shorter forms of research output, like journal articles and
-  conference proceedings. More generally, the needs of students, researchers,
-  and others in the academic community are quickly evolving due to rapid
-  advancements in digital technology. Libraries struggle to evolve alongside
-  the communities they serve.</p>
-<h2>Sponsored Projects</h2>
-<ul>
-  <li><strong>Ensuring Scholarly Access to Government Records and Archives</strong>
-    (<a
-      href="//mellon.org/grants/grants-database/grants/virginia-polytechnic-institute-and-state-university/1910-07229/">1910-07229</a>)
-    to support a convening of experts to address machine-learning techniques to enhance public access to government
-    records.
-    Andrew W. Mellon Foundation. 2020. $44,000. PI: William A. Ingram.</li>
-  <li><strong>Opening Books and the National Corpus of Graduate Research</strong>
-    (<a href="//www.imls.gov/grants/awarded/lg-37-19-0078-19">LG-37-19-0078-19</a>)
-    to bring computational access to book-length documents, through a research and piloting effort employing
-    Electronic Theses and Dissertations (ETDs).
-    Institute of Muesum and Library Services, National Leadership Grants&mdash;Libraries. 2019. $505,214. PI: William
-    A. Ingram co-PIs: Edward A. Fox and Jian Wu.
-  </li>
-</ul>
+<div itemprop="mainEntity" itemtype="https://schema.org/Person" itemscope itemprop="creator">
+  <link itemprop="sameAs" href="//waingram.github.io/#waingram" />
+  <h1>Research Program</h1>
+
+  <h2>Natural Language Processing and Information Retrieval for Scholarly Text Analysis</h2>
+  <p> My research focuses on the intersection of <span itemprop="knowsAbout">Natural Language
+      Processing (NLP)</span> and <span itemprop="knowsAbout">Information Retrieval (IR)</span> in the
+    context of <span itemprop="knowsAbout">Electronic Theses and Dissertations (ETDs)</span>. NLP
+    provides methods for structuring, classifying, and summarizing textual data, while IR enables
+    scalable indexing, retrieval, and ranking of relevant content. Together, these fields support
+    computational approaches for identifying research contributions, improving metadata quality, and
+    facilitating more effective access to ETD collections. </p>
+
+  <h2>Computational Methods for Document Structure and Classification</h2>
+  <p> From 2019 to 2023, an IMLS-funded project developed methods for automated document structure
+    extraction and classification in <span itemprop="knowsAbout">ETDs</span>. This work applied <span
+      itemprop="knowsAbout">NLP</span> models for: </p>
+  <ul>
+    <li>Segmenting long-form academic texts into structured components, including chapters,
+      sections, figures, and tables.</li>
+    <li>Classifying text at multiple levels to improve metadata representation and retrieval.</li>
+    <li>Generating chapter-level summaries to support efficient navigation of dissertation content.</li>
+    <li>Developing a prototype digital library system that integrates these classification and
+      summarization methods into ETD collections.</li>
+  </ul>
+  <p> These approaches addressed the challenges of working with unstructured academic texts,
+    establishing methods for large-scale processing of <span itemprop="knowsAbout">ETDs</span> while
+    maintaining their integrity as structured research objects. </p>
+
+  <h2>Retrieval-Augmented NLP for SDG Classification and Synthesis</h2>
+  <p> A subsequent IMLS-funded project (2024–2027) builds on these methods by integrating <span
+      itemprop="knowsAbout">retrieval-augmented models</span> with a curated <span itemprop="knowsAbout">ETD
+      corpus</span>. This project investigates: </p>
+  <ul>
+    <li>Retrieval-augmented generation (RAG) for incorporating external knowledge from ETDs into
+      language model outputs.</li>
+    <li>Semantic representations of research contributions through transformer-based classifiers
+      trained to recognize alignment with <span itemprop="knowsAbout">United Nations’ Sustainable
+        Development Goals (SDGs)</span>.</li>
+    <li><span itemprop="knowsAbout">Transfer learning</span> techniques for adapting classification
+      models trained on journal literature to the distinct characteristics of ETDs.</li>
+    <li>Hybrid retrieval models that integrate sparse (BM25) and dense (neural) retrieval for more
+      precise identification of <span itemprop="knowsAbout">SDG-related</span> research.</li>
+    <li>Text generation methods for synthesizing research narratives from retrieved ETD content,
+      providing structured summaries of institutional research contributions.</li>
+  </ul>
+  <p> This work applies <span itemprop="knowsAbout">IR</span> techniques to enhance <span
+      itemprop="knowsAbout">NLP-driven classification</span> and text synthesis, addressing the
+    limitations of keyword-based SDG identification by introducing <span itemprop="knowsAbout">semantic
+      retrieval</span> and contextual classification models. The integration of retrieval-based
+    ranking and language modeling supports research applications that extend beyond static metadata,
+    allowing for more nuanced representations of academic work. </p>
+
+  <h2>Artificial Intelligence for Scholarly Knowledge Systems</h2>
+  <p> The methodological contributions of this research inform the development of computational
+    models for scholarly information systems, with applications in document retrieval,
+    classification, and synthesis. By combining retrieval-based ranking, transformer-based text
+    classification, and generative summarization methods, this work develops computational
+    approaches for structuring and analyzing large-scale <span itemprop="knowsAbout">ETD</span>
+    collections. As <span itemprop="worksFor" itemscope itemtype="https://schema.org/EmployeeRole">
+      <span itemprop="roleName">Director</span> of the <span itemprop="worksFor" itemscope
+        itemtype="https://schema.org/ResearchOrganization">
+        <a href="//cdrs.lib.vt.edu/">
+          <span itemprop="name">Center for Digital Research and Scholarship (CDRS)</span>
+        </a>
+        <meta itemprop="sameAs" content="//cdrs.lib.vt.edu/" />
+      </span>
+    </span> at Virginia
+    Tech, I lead efforts to integrate <span itemprop="knowsAbout">AI</span>-driven methods into <span
+      itemprop="knowsAbout">digital scholarship</span>, supporting new models of scholarly
+    communication and research analysis. </p>
+
+  <h2>Grant Funding</h2>
+  <ul>
+    <li itemscope itemtype="https://schema.org/Grant" itemprop="funding">
+      <strong itemprop="name">
+        <a href="https://www.imls.gov/grants/awarded/lg-256638-ols-24">Harnessing ETDs: Pioneering
+          AI-Driven Innovations in Library Service</a>
+      </strong>. (<span itemprop="identifier">
+        LG-256638-OLS-24</span>) <span itemprop="description">PI for a 3-year applied research grant
+        that aims to expand the reach and impact of academic library services through integration with
+        Large Language Models (LLMs).</span>
+      <span itemprop="funder" itemscope itemtype="https://schema.org/Organization"><span itemprop="name">Institute of
+          Museum and
+          Library Services</span>, National Leadership Grants—Libraries</span>. 2024. $441,724.
+      <link itemprop="sameAs" href="https://www.imls.gov/grants/awarded/lg-256638-ols-24" />
+    </li>
+    <li itemscope itemtype="https://schema.org/Grant" itemprop="funding">
+      <strong itemprop="name">
+        <a href="https://www.imls.gov/grants/awarded/lg-256693-ols-24">Enhancing Accessibility of
+          Electronic Theses and Dissertations</a>
+      </strong> (<span itemprop="identifier">
+        LG-256693-OLS-24</span>) <span itemprop="description">Co-PI on a 1.5 year planning grant from
+        the National Leadership Grants for Libraries program to support the exploratory
+        phase of enhancing the accessibility of electronic theses and dissertations (ETDs) for blind
+        and low-vision (BLV) library users.</span>
+      <span itemprop="funder" itemscope itemtype="https://schema.org/Organization"><span itemprop="name">Institute of
+          Museum and Library Services</span>, National Leadership
+        Grants—Libraries</span>. 2024. $117,707.
+      <link itemprop="sameAs" href="https://www.imls.gov/grants/awarded/lg-256693-ols-24" />
+    </li>
+    <li itemscope itemtype="https://schema.org/Grant" itemprop="funding">
+      <strong itemprop="name">
+        <a href="https://www.imls.gov/grants/awarded/lg-256694-ols-24">Preserving Open Access Datasets and Software for
+          Sustainable Computational Reproducibility</a>
+      </strong>
+      (<span itemprop="identifier">LG-256694-OLS-24</span>) <span itemprop="description">Senior
+        Personnel on a 3-year Applied Research project for preserving endangered Open Access Datasets
+        and Software (OADS), i.e., publicly and freely available digital datasets and software
+        packages used for reproducing research results reported in scholarly works.</span>
+      <span itemprop="funder" itemscope itemtype="https://schema.org/Organization"><span itemprop="name">Institute of
+          Museum and
+          Library Services</span>, National Leadership Grants—Libraries.</span> 2024. $564,991.
+      <link itemprop="sameAs" href="https://www.imls.gov/grants/awarded/lg-256694-ols-24" />
+    </li>
+    <li itemscope itemtype="https://schema.org/Grant" itemprop="funding">
+      <strong itemprop="name">
+        <a href="https://www.mellon.org/grant-details/20446635">Ensuring Scholarly Access to
+          Government Records and Archives</a>
+      </strong> (<span itemprop="identifier">1910-07229</span>)
+      to support a convening of experts to address machine-learning techniques to enhance public
+      access to government records. <span itemprop="funder" itemscope itemtype="https://schema.org/Organization">
+        <span itemprop="name">Andrew W. Mellon Foundation.</span>
+      </span> 2020. $44,000.
+      <link itemprop="sameAs" href="https://www.mellon.org/grant-details/20446635" />
+    </li>
+    <li itemscope itemtype="https://schema.org/Grant" itemprop="funding">
+      <strong itemprop="name">
+        <a href="https://www.imls.gov/grants/awarded/lg-37-19-0078-19">Opening Books and the National
+          Corpus of Graduate Research</a>
+      </strong> (<span itemprop="identifier">LG-37-19-0078-19</span>)
+      to bring computational access to book-length documents, through a research and piloting effort
+      employing Electronic Theses and Dissertations (ETDs). <span itemprop="funder" itemscope
+        itemtype="https://schema.org/Organization"><span itemprop="name">Institute of Museum and
+          Library Services</span>, National Leadership Grants—Libraries.</span> 2019. $505,214.
+      <link itemprop="sameAs" href="https://www.imls.gov/grants/awarded/lg-37-19-0078-19" />
+    </li>
+  </ul>
+
+</div>

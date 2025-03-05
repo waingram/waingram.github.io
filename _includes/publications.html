@@ -1,37 +1,40 @@
-<div itemscope itemtype="https://schema.org/ProductCollection" itemid="#publications">
-    <h1 itemprop="name">Research, Scholarly, and Creative Achievements</h1>
-    <p>Check out <a itemprop="sameAs" target="_blank" href="//scholar.google.com/citations?user=L-R5NXwAAAAJ">my Google
-            Scholar profile</a>.</p>
-
-    <!-- Journal Articles -->
-    <h2>Journal Articles</h2>
-    {% bibliography --file journals --template scholar/bib_template_journal %}
-
-    <!-- Book Chapters -->
-    <h2>Book Chapters</h2>
-    {% bibliography --file chapters --template scholar/bib_template_book_chapter %}
-
-    <!-- Conference Papers -->
-    <h2>Conference Papers</h2>
-    {% bibliography --file conferences --template scholar/bib_template_conference %}
-
-    <!-- Workshop Papers -->
-    <h2>Workshop Papers</h2>
-    {% bibliography --file workshops --template scholar/bib_template_workshop %}
-
-    <!-- Extended Abstracts -->
-    <h2>Extended Abstracts</h2>
-    {% bibliography --file extended_abstracts --template scholar/bib_template_extended_abstract %}
-
-    <!-- Tutorials -->
-    <h2>Tutorials</h2>
-    {% bibliography --file tutorials --template scholar/bib_template_tutorial %}
-
-    <!-- Workshops (Hosting/Organizing) -->
-    <h2>Workshops (Hosting/Organizing)</h2>
-    {% bibliography --file hosted_workshops --template scholar/bib_template_hosted_workshop %}
-
-    <!-- Reports and White Papers -->
-    <h2>Other Reports and White Papers</h2>
-    {% bibliography --file reports --template scholar/bib_template_report %}
+<div itemprop="mainEntity" itemtype="https://schema.org/Person" itemscope itemprop="creator">
+    <link itemprop="sameAs" href="//waingram.github.io/#waingram">
+    <div itemscope itemtype="https://schema.org/ProductCollection" itemid="#publications" itemprop="owns">
+        <h1 itemprop="name">Research, Scholarly, and Creative Achievements</h1>
+        <p>Check out <a itemprop="sameAs" target="_blank" href="//scholar.google.com/citations?user=L-R5NXwAAAAJ">my Google
+                Scholar profile</a>.</p>
+    
+        <!-- Journal Articles -->
+        <h2>Journal Articles</h2>
+        {% bibliography --file journals --template scholar/bib_template_journal %}
+    
+        <!-- Book Chapters -->
+        <h2>Book Chapters</h2>
+        {% bibliography --file chapters --template scholar/bib_template_book_chapter %}
+    
+        <!-- Conference Papers -->
+        <h2>Conference Papers</h2>
+        {% bibliography --file conferences --template scholar/bib_template_conference %}
+    
+        <!-- Workshop Papers -->
+        <h2>Workshop Papers</h2>
+        {% bibliography --file workshops --template scholar/bib_template_workshop %}
+    
+        <!-- Extended Abstracts -->
+        <h2>Extended Abstracts</h2>
+        {% bibliography --file extended_abstracts --template scholar/bib_template_extended_abstract %}
+    
+        <!-- Tutorials -->
+        <h2>Tutorials</h2>
+        {% bibliography --file tutorials --template scholar/bib_template_tutorial %}
+    
+        <!-- Workshops (Hosting/Organizing) -->
+        <h2>Workshops (Hosting/Organizing)</h2>
+        {% bibliography --file hosted_workshops --template scholar/bib_template_hosted_workshop %}
+    
+        <!-- Reports and White Papers -->
+        <h2>Other Reports and White Papers</h2>
+        {% bibliography --file reports --template scholar/bib_template_report %}
+    </div>
 </div>
