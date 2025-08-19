@@ -1,6 +1,12 @@
+- date: "June 2025"
+  content: >
+    Our worshop paper <a href="https://arxiv.org/abs/2507.02139v1" target="_blank">"When LLMs Disagree: Diagnosing Relevance Filtering Bias and Retrieval Divergence in SDG Search"</a> has been accepted for presentation at the LLM4Eval at SIGIR '25 in Padua, Italy. See the accepted papers on the <a href="https://llm4eval.github.io/SIGIR2025/papers/" target="_blank">workshop website</a>.
+- date: "April 2025"
+  content: >
+    My paper <a href="https://doi.org/10.1145/3726302.3730128" target="_blank">"Evaluating the Impact of Automated Labeling on Retrieval Instability in Neural IR"</a> has been accepted to the doctoral consortium at SIGIR.
 - date: "January 2025"
   content: >
-    Our paper “VTechAGP: An Academic-to-General-Audience Text Paraphrase Dataset and Benchmark Models” has been accepted for publication in the NAACL 2025 Main Conference. Read more at <a href="https://doi.org/10.48550/arXiv.2411.04825" target="_blank">DOI: 10.48550/arXiv.2411.04825</a>.
+    Our paper "VTechAGP: An Academic-to-General-Audience Text Paraphrase Dataset and Benchmark Models" has been accepted for publication in the NAACL 2025 Main Conference. Read more at <a href="https://doi.org/10.48550/arXiv.2411.04825" target="_blank">DOI: 10.48550/arXiv.2411.04825</a>.
 - date: "November 2024"
   content: >
     Three of our posters and one workshop paper have been accepted at the <a href="https://www3.cs.stonybrook.edu/~ieeebigdata2024/" target="_blank">2024 IEEE International Conference on Big Data (IEEE BigData 2024)</a>.
