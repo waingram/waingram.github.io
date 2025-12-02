@@ -1,3 +1,18 @@
+- date: "November 2025"
+  content: >
+    Our paper entitled "Retrieval-Augmented LLMs for ETD Subject Classification", has been accepted at the 2025 IEEE Big Data Workshop on Computational Archival Science. Congratulations Hajra!
+- date: "November 2025"
+  content: >
+    Our paper titled: "Learning from LLM Disagreement in Retrieval Evaluation” has been accepted for presentation at the 2025 ACM/IEEE Joint Conference on Digital Libraries (JCDL 2025).
+- date: "November 2025"
+  content: >
+    Our paper titled: "Identifying Future Work Chapters in Electronic Theses and Dissertations” has been accepted for presentation at the 2025 ACM/IEEE Joint Conference on Digital Libraries (JCDL 2025). Congratulations Amr!
+- date: "November 2025"
+  content: >
+    Our paper titled: "Context-Based URL Classification for Open Access Datasets and Software in Scholarly Documents” has been accepted for presentation at the 2025 ACM/IEEE Joint Conference on Digital Libraries (JCDL 2025). Congratulations Lamia!
+- date: "July 2025"
+  content: >
+    Our paper "Evaluating Human-LLM Alignment in ETD Subject Classification" has been accepted for presentation at TPDL 2025 in Tampere, Finland. Congratulations Hajra!
 - date: "June 2025"
   content: >
     Our worshop paper <a href="https://arxiv.org/abs/2507.02139v1" target="_blank">"When LLMs Disagree: Diagnosing Relevance Filtering Bias and Retrieval Divergence in SDG Search"</a> has been accepted for presentation at the LLM4Eval at SIGIR '25 in Padua, Italy. See the accepted papers on the <a href="https://llm4eval.github.io/SIGIR2025/papers/" target="_blank">workshop website</a>.
