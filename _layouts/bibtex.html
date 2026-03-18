@@ -1,0 +1,79 @@
+---
+layout: default
+---
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "name": {{ page.entry.title | jsonify }}
+  ,"author": [
+    {% assign _authors = page.entry.author | split: ' and ' %}
+    {% for _author in _authors %}
+    {"@type": "Person", "name": {{ _author | strip | jsonify }}}{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ]
+  {% if page.entry.year %},"datePublished": {{ page.entry.year | jsonify }}{% endif %}
+  {% if page.entry.doi %},"identifier": {{ page.entry.doi | prepend: "https://doi.org/" | jsonify }}{% endif %}
+  {% if page.entry.abstract %},"description": {{ page.entry.abstract | jsonify }}{% endif %}
+  {% if page.entry.booktitle %},"isPartOf": {"@type": "Event", "name": {{ page.entry.booktitle | jsonify }}}
+  {% elsif page.entry.journal %},"isPartOf": {"@type": "Periodical", "name": {{ page.entry.journal | jsonify }}}
+  {% endif %}
+  ,"url": {{ site.url | append: page.url | jsonify }}
+}
+</script>
+
+<nav class="mb-4">
+  <a href="/publications/">&larr; Publications</a>
+</nav>
+
+<article itemscope itemtype="https://schema.org/ScholarlyArticle" class="publication-detail">
+
+  <h1 itemprop="name">{{ page.entry.title }}</h1>
+
+  {%- if page.entry.doi %}
+  <p><a href="https://doi.org/{{ page.entry.doi }}" target="_blank" class="btn btn-sm btn-outline-primary">View at Publisher &rarr;</a></p>
+  {%- elsif page.entry.url %}
+  <p><a href="{{ page.entry.url }}" target="_blank" class="btn btn-sm btn-outline-primary">View Online &rarr;</a></p>
+  {%- endif %}
+
+  <section class="mt-4">
+    <h2>Abstract</h2>
+    {%- if page.entry.abstract %}
+    <p itemprop="abstract">{{ page.entry.abstract }}</p>
+    {%- else %}
+    <p class="text-muted fst-italic">No abstract on file. Add an <code>abstract = {...}</code> field to this entry in the BibTeX source to display it here.</p>
+    {%- endif %}
+  </section>
+
+  <section class="mt-4">
+    <h2>Citation</h2>
+    {% bibliography --file journals --query @*[key={{ page.key }}] --template scholar/bib_template_journal %}
+    {% bibliography --file chapters --query @*[key={{ page.key }}] --template scholar/bib_template_book_chapter %}
+    {% bibliography --file conferences --query @*[key={{ page.key }}] --template scholar/bib_template_conference %}
+    {% bibliography --file workshops --query @*[key={{ page.key }}] --template scholar/bib_template_workshop %}
+    {% bibliography --file extended_abstracts --query @*[key={{ page.key }}] --template scholar/bib_template_extended_abstract %}
+    {% bibliography --file tutorials --query @*[key={{ page.key }}] --template scholar/bib_template_tutorial %}
+    {% bibliography --file hosted_workshops --query @*[key={{ page.key }}] --template scholar/bib_template_hosted_workshop %}
+    {% bibliography --file reports --query @*[key={{ page.key }}] --template scholar/bib_template_report %}
+  </section>
+
+  <section class="mt-4">
+    <h2>BibTeX</h2>
+    <div class="bibtex-block position-relative">
+      <pre><code id="bibtex-{{ page.key }}">{{ page.entry.bibtex | xml_escape }}</code></pre>
+      <button class="btn btn-sm btn-outline-secondary bibtex-copy-btn"
+              onclick="copyBibtex('bibtex-{{ page.key }}', this)">Copy</button>
+    </div>
+  </section>
+
+</article>
+
+<script>
+function copyBibtex(id, btn) {
+  var text = document.getElementById(id).textContent;
+  navigator.clipboard.writeText(text).then(function () {
+    btn.textContent = 'Copied!';
+    setTimeout(function () { btn.textContent = 'Copy'; }, 2000);
+  });
+}
+</script>

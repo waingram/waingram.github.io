@@ -26,6 +26,19 @@
 
     <meta name="theme-color" content="#fafafa">
 
+    {% if page.entry %}
+    <meta name="citation_title" content="{{ page.entry.title | xml_escape }}">
+    {% assign _a = page.entry.author | split: ' and ' %}
+    {% for _author in _a %}<meta name="citation_author" content="{{ _author | strip | xml_escape }}">
+    {% endfor %}
+    {% if page.entry.year %}<meta name="citation_publication_date" content="{{ page.entry.year }}">{% endif %}
+    {% if page.entry.booktitle %}<meta name="citation_conference_title" content="{{ page.entry.booktitle | xml_escape }}">{% endif %}
+    {% if page.entry.journal %}<meta name="citation_journal_title" content="{{ page.entry.journal | xml_escape }}">{% endif %}
+    {% if page.entry.doi %}<meta name="citation_doi" content="{{ page.entry.doi }}">{% endif %}
+    {% if page.entry.pages %}{% assign _pp = page.entry.pages | replace: '--', '|||' | replace: '–', '|||' | split: '|||' %}{% if _pp.size == 2 %}<meta name="citation_firstpage" content="{{ _pp[0] | strip }}">
+    <meta name="citation_lastpage" content="{{ _pp[1] | strip }}">{% endif %}{% endif %}
+    {% endif %}
+
     {% if site.google_analytics_tag %}
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics_tag }}"></script>

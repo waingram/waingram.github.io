@@ -1,0 +1,50 @@
+<div id="{{entry.key}}" class="publication-listing">
+  <div class="listing-title">
+    {%- if details %}
+    <a href="{{ details }}"><span class="title" itemprop="headline">{{ entry.title }}</span></a>
+    {%- else %}
+    <span class="title" itemprop="headline">{{ entry.title }}</span>
+    {%- endif %}
+  </div>
+  <div class="listing-authors">
+    {% include author_block.html entry=entry %}
+  </div>
+  {%- if entry.journal %}
+  <div class="listing-venue">
+    <span class="journal" itemprop="isPartOf" itemscope itemtype="https://schema.org/PublicationIssue">
+      <span itemscope itemprop="isPartOf" itemtype="https://schema.org/Periodical" itemid="#periodical-{{ entry.key }}">
+        <em itemprop="name">{{ entry.journal | default: "Journal Name" }}</em></span>
+      {%- if entry.volume or entry.number -%}
+      ,
+      {%- if entry.volume %}
+      Vol. <span itemprop="isPartOf" itemscope itemtype="https://schema.org/PublicationVolume">
+        <link itemprop="isPartOf" href="#periodical-{{ entry.key }}" /><span itemprop="volumeNumber">{{ entry.volume }}</span>
+      </span>
+      {%- endif -%}
+      {%- if entry.number %}
+      (<span class="issue" itemprop="issueNumber">{{ entry.number }}</span>)
+      {%- endif -%}
+    {%- endif -%}
+    </span>
+    {%- if entry.year %}, {{ entry.year }}{%- endif %}
+  </div>
+  {%- elsif entry.editor %}
+  <div class="listing-venue">
+    In <span class="book-title" itemprop="isPartOf" itemscope itemtype="https://schema.org/Book">
+      <em itemprop="name">{{ entry.booktitle }}</em></span>
+    {%- if entry.year %}, {{ entry.year }}{%- endif %}
+  </div>
+  {%- elsif entry.booktitle or entry.howpublished %}
+  <div class="listing-venue">
+    {% include conference_block.html entry=entry %}
+    {%- if entry.year %} {{ entry.year }}{%- endif %}
+  </div>
+  {%- elsif entry.institution %}
+  <div class="listing-venue">
+    <span class="institution">{{ entry.institution }}</span>
+    {%- if entry.year %}, {{ entry.year }}{%- endif %}
+  </div>
+  {%- elsif entry.year %}
+  <div class="listing-venue">{{ entry.year }}</div>
+  {%- endif %}
+</div>

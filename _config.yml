@@ -59,6 +59,11 @@ scholar:
   style: association-for-computing-machinery  # Citation style
   locale: en
   source: _data/publications  # Directory where your BibTeX files are stored
+  bibliography: "*.bib"       # Read all .bib files (required for details page generation)
   sort_by: year
   order: descending
+  details_dir: publications
+  details_layout: bibtex.html
+  details_permalink: /:details_dir/:key:extension
+  details_link: false
 
