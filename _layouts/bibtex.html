@@ -47,14 +47,15 @@ layout: default
 
   <section class="mt-4">
     <h2>Citation</h2>
-    {% bibliography --file journals --query @*[key={{ page.key }}] --template scholar/bib_template_journal %}
-    {% bibliography --file chapters --query @*[key={{ page.key }}] --template scholar/bib_template_book_chapter %}
-    {% bibliography --file conferences --query @*[key={{ page.key }}] --template scholar/bib_template_conference %}
-    {% bibliography --file workshops --query @*[key={{ page.key }}] --template scholar/bib_template_workshop %}
-    {% bibliography --file extended_abstracts --query @*[key={{ page.key }}] --template scholar/bib_template_extended_abstract %}
-    {% bibliography --file tutorials --query @*[key={{ page.key }}] --template scholar/bib_template_tutorial %}
-    {% bibliography --file hosted_workshops --query @*[key={{ page.key }}] --template scholar/bib_template_hosted_workshop %}
-    {% bibliography --file reports --query @*[key={{ page.key }}] --template scholar/bib_template_report %}
+    {%- capture _cite %}{% bibliography --file journals --query @*[key={{ page.key }}] --template scholar/bib_template_journal %}{% endcapture -%}
+    {%- unless _cite contains '<li>' %}{% capture _cite %}{% bibliography --file chapters --query @*[key={{ page.key }}] --template scholar/bib_template_book_chapter %}{% endcapture %}{% endunless -%}
+    {%- unless _cite contains '<li>' %}{% capture _cite %}{% bibliography --file conferences --query @*[key={{ page.key }}] --template scholar/bib_template_conference %}{% endcapture %}{% endunless -%}
+    {%- unless _cite contains '<li>' %}{% capture _cite %}{% bibliography --file workshops --query @*[key={{ page.key }}] --template scholar/bib_template_workshop %}{% endcapture %}{% endunless -%}
+    {%- unless _cite contains '<li>' %}{% capture _cite %}{% bibliography --file extended_abstracts --query @*[key={{ page.key }}] --template scholar/bib_template_extended_abstract %}{% endcapture %}{% endunless -%}
+    {%- unless _cite contains '<li>' %}{% capture _cite %}{% bibliography --file tutorials --query @*[key={{ page.key }}] --template scholar/bib_template_tutorial %}{% endcapture %}{% endunless -%}
+    {%- unless _cite contains '<li>' %}{% capture _cite %}{% bibliography --file hosted_workshops --query @*[key={{ page.key }}] --template scholar/bib_template_hosted_workshop %}{% endcapture %}{% endunless -%}
+    {%- unless _cite contains '<li>' %}{% capture _cite %}{% bibliography --file reports --query @*[key={{ page.key }}] --template scholar/bib_template_report %}{% endcapture %}{% endunless -%}
+    {{ _cite | remove: '<ol class="bibliography"><li>' | remove: '</li></ol>' }}
   </section>
 
   <section class="mt-4">

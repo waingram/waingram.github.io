@@ -125,6 +125,10 @@ svg.bi {
   font-variant-numeric: tabular-nums; /* Ensures aligned numbering */
 }
 
+.publication-detail .bibliography li::before {
+  content: none;
+}
+
 a.footnote:before {   
   content: "[";
  }

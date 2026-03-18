@@ -66,4 +66,5 @@ scholar:
   details_layout: bibtex.html
   details_permalink: /:details_dir/:key:extension
   details_link: false
+  bibtex_skip_fields: [abstract]
 

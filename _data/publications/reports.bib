@@ -1,23 +1,25 @@
 @article{obadage2025url,
-  title        = {Toward Robust {URL} Extraction for Open Science: {A} Study of arXiv File Formats and Temporal Trends},
-  author       = {Rochana R. Obadage and Lamia Salsabil and Sawood Alam and Bipasha Banarjee and William A. Ingram and Edward A. Fox and Jian Wu},
-  year         = 2025,
-  journal      = {CoRR},
-  volume       = {abs/2509.04759},
-  doi          = {10.48550/ARXIV.2509.04759},
-  url          = {https://doi.org/10.48550/arXiv.2509.04759},
-  eprinttype   = {arXiv},
-  eprint       = {2509.04759},
+  title      = {Toward Robust {URL} Extraction for Open Science: {A} Study of arXiv File Formats and Temporal Trends},
+  author     = {Rochana R. Obadage and Lamia Salsabil and Sawood Alam and Bipasha Banarjee and William A. Ingram and Edward A. Fox and Jian Wu},
+  year       = 2025,
+  journal    = {CoRR},
+  volume     = {abs/2509.04759},
+  doi        = {10.48550/ARXIV.2509.04759},
+  url        = {https://doi.org/10.48550/arXiv.2509.04759},
+  eprinttype = {arXiv},
+  eprint     = {2509.04759},
+  abstract   = {In this work, we study how URL extraction results depend on input format. We compiled a pilot dataset by extracting URLs from 10 arXiv papers and used the same heuristic method to extract URLs from four formats derived from the PDF files or the source LaTeX files. We found that accurate and complete URL extraction from any single format or a combination of multiple formats is challenging, with the best F1-score of 0.71. Using the pilot dataset, we evaluate extraction performance across formats and show that structured formats like HTML and XML produce more accurate results than PDFs or Text. Combining multiple formats improves coverage, especially when targeting research-critical resources. We further apply URL extraction on two tasks, namely classifying URLs into open-access datasets and software and the others, and analyzing the trend of URLs usage in arXiv papers from 1992 to 2024. These results suggest that using a combination of multiple formats achieves better performance on URL extraction than a single format, and the number of URLs in arXiv papers has been steadily increasing since 1992 to 2014 and has been drastically increasing from 2014 to 2024. The dataset and the Jupyter notebooks used for the preliminary analysis are publicly available at this https URL: https://github.com/lamps-lab/arxiv-urls}
 }
 
 @misc{fox2024structured,
-  author = {Fox, Edward A. and Ahuja, Aman and Ingram, William A. and Banerjee, Bipasha and Chekuri, Satvik},
-  title  = {Structured Document Access for Electronic Documents},
-  year   = {2024},
-  month  = {aug},
-  note   = {Patent No. 18/585,685, Filed August 29, 2024},
-  url    = {https://patents.google.com/patent/US18585685A/en},
-  type   = {Patent}
+  author   = {Fox, Edward A. and Ahuja, Aman and Ingram, William A. and Banerjee, Bipasha and Chekuri, Satvik},
+  title    = {Structured Document Access for Electronic Documents},
+  year     = {2024},
+  month    = {aug},
+  note     = {Patent No. 18/585,685, Filed August 29, 2024},
+  url      = {https://patents.google.com/patent/US20240289356A1},
+  type     = {Patent},
+  abstract = {Electronic documents of all kinds can be of immense value to the scholarly community. For example, many Electronic Theses and Dissertations (ETDs) are now publicly available online over public and private local and wide area networks, often through one of many digital libraries. However, since a majority of these digital libraries are institutional repositories with an objective being content archiving, they often lack end-user services needed to make this valuable data useful for the scholarly community. To effectively utilize such data to address the information needs of users, digital libraries should support various end-user services such as document search and browsing, document recommendation, as well as services to make navigation of electronic documents easier.}
 }
 
 @techreport{ingram2021govrecords,
@@ -28,7 +30,9 @@
   year        = {2021},
   month       = {January},
   url         = {http://hdl.handle.net/10919/108067},
-  note        = {Sponsored by The Andrew W. Mellon Foundation.}
+  note        = {Sponsored by The Andrew W. Mellon Foundation.},
+  abstract    = {This report summarizes the activities and outcomes of a collaborative planning project supported by The Andrew W. Mellon Foundation and organized by University Libraries at Virginia Tech, in collaboration with Virginia Tech Center for Humanities and the National Archives and Records Administration (NARA). A diverse group of archivists, librarians, humanists, technologists, information scientists, and computer scientists were convened for a five-part online workshop series to discuss and plan how artificial intelligence and machine learning could be used to ensure public access to the massive and ever-growing collection of government records in the NARA digital catalog.
+                 During the workshop, participants identified requirements, developed conceptual models, and discussed a work plan for a subsequent pilot project that would apply state-of-the-art tools and technologies to increase the effectiveness of archival programs and broaden public access to the important content in the NARA catalog. The workshop focused on humanistic and equitability issues of artificial intelligence and developing ethical, human-centered technology that promotes the public good. As such, the topic of intentional mitigation of AI bias was a thread that ran through the entirety of the workshop.}
 }
 
 @techreport{ahuja2018bigdata,
@@ -37,7 +41,10 @@
   institution = {Virginia Tech},
   year        = {2018},
   url         = {http://hdl.handle.net/10919/86406},
-  type        = {Term Paper}
+  type        = {Term Paper},
+  abstract    = {Team 16 in the fall 2018 course "CS 4984/5984 Big Data Text Summarization," in partnership with the University Libraries and the Digital Library Research Laboratory, prepared a corpus of electronic theses and dissertations (ETDs) for students to study natural language processing with the power of state-of-the-art deep learning technology. The ETD corpus is made up of 13,071 doctoral dissertations and 17,890 master theses downloaded from the University Libraries’ VTechWorks system. This particular study is designed to explore big data summarization for ETDs, which is a relatively under-explored area. The result of the project will help to address the difficulty of information extraction from ETD documents, the potential of transfer learning on automatic summarization of ETD chapters, and the quality of state-of-the-art deep learning summarization technologies when applied to the ETD corpus.
+                 The goal of this project is to generate chapter level abstractive summaries for an ETD collection through deep learning. Major challenges of the project include accurately extracting well-formatted chapter text from PDF files, and the lack of labeled data for supervised deep learning models. For PDF processing, we compare two state of the art scholarly PDF data extraction tools, Grobid and Science-Parse, which generate structured documents from which we can further extract metadata and chapter level text. For the second challenge, we perform transfer learning by training supervised learning models on a labeled dataset of Wikipedia articles related to the ETD collection. Our experimental models include Sequence-to-Sequence and Pointer Generator summarization models. Besides supervised models, we also experiment with an unsupervised reinforcement model, Fast Abstractive Summarization-RL.
+                 The general pipeline for our experiments consists of the following steps: PDF data processing and chapter extraction, collecting a training data set of Wikipedia articles, manually creating human generated gold standard summaries for testing and validation, building deep learning models for chapter summarization, evaluating and tuning the models based on results, and then iteratively refining the whole process.}
 }
 
 @techreport{aromando2020classification,
@@ -46,5 +53,6 @@
   institution = {Virginia Tech},
   year        = {2020},
   url         = {http://hdl.handle.net/10919/96645},
-  type        = {Term Paper}
+  type        = {Term Paper},
+  abstract    = {In recent years, advances in natural language processing, machine learning, and neural networks have led to powerful tools for digital libraries, allowing library collections to be discovered, used, and reused in exciting new ways. However, these new tools and techniques are not well-adapted to long documents such as electronic theses and dissertations (ETDs). The report describes three areas of study into improving access to ETDs. Our first goal is to use machine learning to automatically assign subject categories to these documents. Our second goal is to employ a neural network approach to parsing bibliographic data from reference strings. Our third goal is to use deep learning to identify and extract figures and their captions from ETDs. We describe the machine learning and natural language processing tools we use for performing multi-label classification of ETD documents. We show how references from ETDs can be parsed into their component parts (e.g., title, author, date) using deep neural networks. Finally, we show that figures can be accurately extracted from a collection of born-digital and scanned ETDs using deep learning.}
 }

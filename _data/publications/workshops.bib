@@ -1,25 +1,27 @@
 @inproceedings{obadage2025wadl,
-  title        = {Toward Robust URL Extraction for Open Science: A Study of arXiv File Formats and Temporal Trends},
-  author       = {Obadage, Rochana R. and Salsabil, Lamia and Alam, Sawood and Ingram, William A. and Banarjee, Bipasha and Fox, Edward A. and Wu, Jian},
-  year         = 2025,
-  month        = sep,
-  booktitle    = {36th ACM Conference on Hypertext and Social Media},
-  location     = {Chicago, Illinois, USA},
-  series       = {HT 2025},
-  url          = {https://wadlworkshop.github.io/2025/content/3-acceptedpapers.html},
-  note         = {Hybrid event},
-  maintitle    = {Web Archiving and Digital Libraries (WADL) Workshop 2025},
-  date         = 15,
+  title     = {Toward Robust URL Extraction for Open Science: A Study of arXiv File Formats and Temporal Trends},
+  author    = {Obadage, Rochana R. and Salsabil, Lamia and Alam, Sawood and Ingram, William A. and Banarjee, Bipasha and Fox, Edward A. and Wu, Jian},
+  year      = 2025,
+  month     = sep,
+  booktitle = {36th ACM Conference on Hypertext and Social Media},
+  location  = {Chicago, Illinois, USA},
+  series    = {HT 2025},
+  url       = {https://wadlworkshop.github.io/2025/content/3-acceptedpapers.html},
+  note      = {Hybrid event},
+  maintitle = {Web Archiving and Digital Libraries (WADL) Workshop 2025},
+  date      = 15,
+  abstract  = {In this work, we study how URL extraction results depend on input format. We compiled a pilot dataset by extracting URLs from 10 arXiv papers and used the same heuristic method to extract URLs from four formats derived from the PDF files or the source LaTeX files. We found that accurate and complete URL extraction from any single format or a combination of multiple formats is challenging, with the best F1-score of 0.71. Using the pilot dataset, we evaluate extraction performance across formats and show that structured formats like HTML and XML produce more accurate results than PDFs or Text. Combining multiple formats improves coverage, especially when targeting research-critical resources. We further apply URL extraction on two tasks, namely classifying URLs into open-access datasets and software and the others, and analyzing the trend of URLs usage in arXiv papers from 1992 to 2024. These results suggest that using a combination of multiple formats achieves better performance on URL extraction than a single format, and the number of URLs in arXiv papers has been steadily increasing since 1992 to 2014 and has been drastically increasing from 2014 to 2024. The dataset and the Jupyter notebooks used for the preliminary analysis are publicly available at https://github.com/lamps-lab/arxiv-urls.}
 }
 
 @inproceedings{ingram2025llm4eval,
-  title        = {When LLMs Disagree: Diagnosing Relevance Filtering Bias and Retrieval Divergence in SDG Search},
-  author       = {Ingram, William A. and Banerjee, Bipasha and Fox, Edward A.},
-  year         = 2025,
-  booktitle    = {48th International ACM SIGIR Conference on Research and Development in Information Retrieval},
-  location     = {Padua, Italy},
-  url          = {https://llm4eval.github.io/SIGIR2025/papers/},
-  maintitle    = {LLM4Eval \@ SIGIR 2025: The Third Workshop on Large Language Models for Evaluation in Information Retrieval},
+  title     = {When LLMs Disagree: Diagnosing Relevance Filtering Bias and Retrieval Divergence in SDG Search},
+  author    = {Ingram, William A. and Banerjee, Bipasha and Fox, Edward A.},
+  year      = 2025,
+  booktitle = {48th International ACM SIGIR Conference on Research and Development in Information Retrieval},
+  location  = {Padua, Italy},
+  url       = {https://llm4eval.github.io/SIGIR2025/papers/},
+  maintitle = {LLM4Eval \@ SIGIR 2025: The Third Workshop on Large Language Models for Evaluation in Information Retrieval},
+  abstract  = {Large language models (LLMs) are increasingly used to assign document relevance labels in information retrieval pipelines, especially in domains lacking human-labeled data. However, different models often disagree on borderline cases, raising concerns about how such disagreement affects downstream retrieval. This study examines labeling disagreement between two open-weight LLMs, LLaMA and Qwen, on a corpus of scholarly abstracts related to Sustainable Development Goals (SDGs) 1, 3, and 7. We isolate disagreement subsets and examine their lexical properties, rank-order behavior, and classification predictability. Our results show that model disagreement is systematic, not random: disagreement cases exhibit consistent lexical patterns, produce divergent top-ranked outputs under shared scoring functions, and are distinguishable with AUCs above 0.74 using simple classifiers. These findings suggest that LLM-based filtering introduces structured variability in document retrieval, even under controlled prompting and shared ranking logic. We propose using classification disagreement as an object of analysis in retrieval evaluation, particularly in policy-relevant or thematic search tasks.}
 }
 
 
@@ -37,7 +39,8 @@
   month     = {12},
   date      = {15-18},
   issn      = {2573-2978},
-  podissn   = {2639-1589}
+  podissn   = {2639-1589},
+  abstract  = {Traditional archival practices for describing electronic theses and dissertations (ETDs) rely on broad, high-level metadata schemes that fail to capture the depth, complexity, and interdisciplinary nature of these long scholarly works. The lack of detailed, chapter-level content descriptions impedes researchers’ ability to locate specific sections or themes, thereby reducing discoverability and overall accessibility. By providing chapter-level metadata information, we improve the effectiveness of ETDs as research resources. This makes it easier for scholars to navigate them efficiently and extract valuable insights. The absence of such metadata further obstructs interdisciplinary research by obscuring connections across fields, hindering new academic discoveries and collaboration. In this paper, we propose a machine learning and AI-driven solution to automatically categorize ETD chapters. This solution is intended to improve discoverability and promote understanding of chapters. Our approach enriches traditional archival practices by providing context-rich descriptions that facilitate targeted navigation and improved access. We aim to support interdisciplinary research and make ETDs more accessible. By providing chapter-level classification labels and using them to index in our developed prototype system, we make content in ETD chapters more discoverable and usable for a diverse range of scholarly needs. Implementing this AI-enhanced approach allows archives to serve researchers better, enabling efficient access to relevant information and supporting deeper engagement with ETDs. This will increase the impact of ETDs as research tools, foster interdisciplinary exploration, and reinforce the role of archives in scholarly communication within the data-intensive academic landscape.}
 }
 
 @inproceedings{ahuja2023new,
@@ -52,7 +55,8 @@
   series    = {WWW '23 Companion},
   pages     = {834--842},
   doi       = {10.1145/3543873.3587609},
-  isbn      = 9781450394192
+  isbn      = {9781450394192},
+  abstract  = {Parsing long documents, such as books, theses, and dissertations, is an important component of information extraction from scholarly documents. Layout analysis methods based on object detection have been developed in recent years to help with PDF document parsing. However, several challenges hinder the adoption of such methods for scholarly documents such as theses and dissertations. These include (a) the manual effort and resources required to annotate training datasets, (b) the scanned nature of many documents and the inherent noise present resulting from the capture process, and (c) the imbalanced distribution of various types of elements in the documents. In this paper, we address some of the challenges related to object detection based layout analysis for scholarly long documents. First, we propose an AI-aided annotation method to help develop training datasets for object detection based layout analysis. This leverages the knowledge of existing trained models to help human annotators, thus reducing the time required for annotation. It also addresses the class imbalance problem, guiding annotators to focus on labeling instances of rare classes. We also introduce ETD-ODv2, a novel dataset for object detection on electronic theses and dissertations (ETDs). In addition to the page images included in ETD-OD [1], our dataset consists of more than 16K manually annotated page images originating from 100 scanned ETDs, along with annotations for 20K page images primarily consisting of rare classes that were labeled using the proposed framework. The new dataset thus covers a diversity of document types, viz., scanned and born-digital, and is better balanced in terms of training samples from different object categories.}
 }
 
 @inproceedings{salsabil2022reproducibility,
@@ -66,7 +70,8 @@
   month     = {April},
   pages     = {784--788},
   doi       = {10.1145/3487553.3524658},
-  isbn      = {9781450391306}
+  isbn      = {9781450391306},
+  abstract  = {Datasets and software packages are considered important resources that can be used for replicating computational experiments. With the advocacy of Open Science and the growing interest of investigating reproducibility of scientific claims, including URLs linking to publicly available datasets and software packages has become an institutionalized part of research publications. In this preliminary study, we investigated the disciplinary dependency and chronological trends of including open access datasets and software (OADS) in electronic theses and dissertations (ETDs), based on a hybrid classifier called OADSClassifier, consisting of a heuristic and a supervised learning model. The classifier achieves the best F1 of 0.92. We found that the inclusion of OADS-URLs exhibited a strong disciplinary dependence and the fraction of ETDs containing OADS-URLs has been gradually increasing over the past 20 years. We developed and share a ground truth corpus consisting of 500 manually labeled sentences containing URLs from scientific papers. The dataset and source code are available at https://github.com/lamps-lab/oadsclassifier.}
 }
 
 @inproceedings{banerjee2022applications,
@@ -79,5 +84,6 @@
   location  = {Osaka, Japan},
   pages     = {2473--2481},
   doi       = {10.1109/BigData55660.2022.10020935},
-  maintitle = {The 7th Computational Archival Science (CAS) Workshop}
+  maintitle = {The 7th Computational Archival Science (CAS) Workshop},
+  abstract  = {Theses and dissertations record the work of graduate students and are typically a requirement at the culmination of the graduate degree. Thus, they contain important information that reflects a graduate student’s exploration of their research topic. Although print submission was commonplace early on, most universities now require students to submit an electronic version. The electronic document referred to as an ETD henceforth has become the primary way of submitting, storing, and distributing graduate work. Millions of such documents have been created in the past two decades. They are maintained and stored by university libraries, digital repositories, and other academic publishing companies. These online repositories have increased access to such documents. Nonetheless, these documents fail to meet the needs of researchers, who find it challenging to find and access knowledge from such long documents. The worldwide ETD collection has increased in volume to become what is known as ‘scholarly big data’. Apart from the text body, these documents contain a myriad of other pieces of knowledge like tables, figures, definitions, literature reviews, and references. There is a growing demand amongst researchers across various domains to make this collection of scholarly documents more computationally driven. We use ideas from natural language processing, information retrieval, and machine learning to excavate knowledge from this rich information source. In this paper, we examine some of the challenges we face, identify some key areas of exploration, and discuss our methods to mitigate the challenges.}
 }
