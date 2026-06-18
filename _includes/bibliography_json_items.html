@@ -1,0 +1,6 @@
+{%- assign parts = include.raw | split: "<li>" -%}
+{%- assign item_count = parts.size | minus: 1 -%}
+{%- for part in parts offset: 1 -%}
+  {%- assign item = part | split: "</li>" | first | strip -%}
+  {{ item }}{%- unless forloop.index == item_count -%},{%- endunless -%}
+{%- endfor -%}

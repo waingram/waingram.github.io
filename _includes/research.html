@@ -2,73 +2,151 @@
   <link itemprop="sameAs" href="//waingram.github.io/#waingram" />
   <h1>Research Program</h1>
 
-  <h2>Natural Language Processing and Information Retrieval for Scholarly Text Analysis</h2>
-  <p> My research focuses on the intersection of <span itemprop="knowsAbout">Natural Language
-      Processing (NLP)</span> and <span itemprop="knowsAbout">Information Retrieval (IR)</span> in the
-    context of <span itemprop="knowsAbout">Electronic Theses and Dissertations (ETDs)</span>. NLP
-    provides methods for structuring, classifying, and summarizing textual data, while IR enables
-    scalable indexing, retrieval, and ranking of relevant content. Together, these fields support
-    computational approaches for identifying research contributions, improving metadata quality, and
-    facilitating more effective access to ETD collections. </p>
+  <h2>Machine-Usable Scientific Knowledge</h2>
+  <p class="lead">
+    I study how scientific knowledge, data, workflows, and research outputs become machine-usable.
+    My research investigates how scholarly knowledge can be transformed from documents created for
+    human readers into representations that support computational discovery, reasoning, and
+    scientific reuse.
+  </p>
+  <p>
+    For more than twenty-five years, I have worked on different manifestations of this problem,
+    including <span itemprop="knowsAbout">digital libraries</span>,
+    <span itemprop="knowsAbout">repository interoperability</span>,
+    <span itemprop="knowsAbout">metadata standards</span>,
+    <span itemprop="knowsAbout">Natural Language Processing (NLP)</span>,
+    <span itemprop="knowsAbout">Information Retrieval (IR)</span>,
+    computational text analysis, and <span itemprop="knowsAbout">retrieval-augmented models</span>.
+    Across these areas, I examine how recorded research knowledge can be represented for machine
+    processing without losing provenance, context, or interpretive meaning.
+  </p>
+  <h2>Three Layers of Machine-Usable Knowledge</h2>
+  <p>
+    I organize this work through the linked problems of access, understanding, and use in
+    machine-usable scientific knowledge.
+  </p>
 
-  <h2>Computational Methods for Document Structure and Classification</h2>
-  <p> From 2019 to 2023, an IMLS-funded project developed methods for automated document structure
-    extraction and classification in <span itemprop="knowsAbout">ETDs</span>. This work applied <span
-      itemprop="knowsAbout">NLP</span> models for: </p>
+  <h3>Knowledge Access</h3>
+  <p>
+    The first layer asks how machines find and retrieve research knowledge. My work in repository
+    interoperability, metadata standards, ETD networks, indexing, document structure extraction, and
+    summarization has made distributed and long-form collections available for computational
+    analysis while preserving provenance and document context.
+  </p>
+
+  <h3>Knowledge Understanding</h3>
+  <p>
+    The second layer asks how machines recognize what research contributes to a goal. My dissertation
+    addressed this layer through the applied setting of alignment between ETDs and the
+    <span itemprop="knowsAbout">United Nations' Sustainable Development Goals (SDGs)</span>. It
+    treated contribution as an evaluative relation between a research record and a goal rather than
+    as a problem of topic classification.
+  </p>
+  <p>
+    The dissertation developed a framework for specifying evaluative functions with large language
+    models and distilling those judgments into classification and retrieval systems for large
+    research collections. The result is a computational model of scientific contribution at
+    collection scale.
+  </p>
+
+  <h3>Knowledge Use</h3>
+  <p>
+    The third layer asks how machines can use research knowledge to support scientific work. My
+    current work extends document structure, retrieval, and contribution modeling toward
+    representations of research processes, methodological context, and workflow-like knowledge. This
+    direction treats dissertations, reports, and related scholarly records as sources for
+    reconstructing how research was carried out, including the methods behind reported claims.
+  </p>
+  <p>
+    This layer connects the earlier work on access and evaluation to AI-assisted research systems
+    that need structured accounts of methods, evidence, decisions, and sequences of work. The
+    immediate problem is to extract and represent those accounts without collapsing them into
+    keywords or generic summaries.
+  </p>
+
+  <h2>ETDs as Long-Form Research Records</h2>
+  <p>
+    <span itemprop="knowsAbout">Electronic Theses and Dissertations (ETDs)</span> are long-form
+    research records within this program. They preserve extended argument, document
+    structure, methods, literature review, data description, and research context at a level of
+    detail that is often condensed in journal publication. My work has focused on making these
+    records available for computational analysis without reducing them to flat metadata or isolated
+    text snippets.
+  </p>
+  <p>
+    My work on ETDs includes document structure extraction, metadata enrichment, classification,
+    retrieval, and summarization. These methods support retrieval and discovery across large
+    collections while preserving the document context needed to interpret long-form research.
+  </p>
+
+  <h2>Selected Infrastructure Leadership</h2>
+  <p>
+    My earlier work in repository interoperability, metadata design, national-scale
+    discovery, and ETD networks addressed the same research problem by making scientific and
+    research knowledge accessible to computational systems. It connects to current research on
+    computational access, document structure extraction, retrieval, classification, summarization,
+    and metadata enrichment.
+  </p>
   <ul>
-    <li>Segmenting long-form academic texts into structured components, including chapters,
-      sections, figures, and tables.</li>
-    <li>Classifying text at multiple levels to improve metadata representation and retrieval.</li>
-    <li>Generating chapter-level summaries to support efficient navigation of dissertation content.</li>
-    <li>Developing a prototype digital library system that integrates these classification and
-      summarization methods into ETD collections.</li>
+    <li>
+      Repository interoperability and <span itemprop="knowsAbout">OAI-PMH</span> made
+      distributed research outputs harvestable across systems.
+    </li>
+    <li>
+      The Networked Digital Library of Theses and Dissertations and related ETD work supported
+      national and international coordination around computational access to long-form research
+      records.
+    </li>
+    <li>
+      Metadata standards, research discovery systems, and digital library services established
+      mechanisms for provenance, aggregation, and cross-system discovery.
+    </li>
   </ul>
-  <p> These approaches addressed the challenges of working with unstructured academic texts,
-    establishing methods for large-scale processing of <span itemprop="knowsAbout">ETDs</span> while
-    maintaining their integrity as structured research objects. </p>
 
-  <h2>Retrieval-Augmented NLP for SDG Classification and Synthesis</h2>
-  <p> A subsequent IMLS-funded project (2024–2027) builds on these methods by integrating <span
-      itemprop="knowsAbout">retrieval-augmented models</span> with a curated <span itemprop="knowsAbout">ETD
-      corpus</span>. This project investigates: </p>
-  <ul>
-    <li>Retrieval-augmented generation (RAG) for incorporating external knowledge from ETDs into
-      language model outputs.</li>
-    <li>Semantic representations of research contributions through transformer-based classifiers
-      trained to recognize alignment with <span itemprop="knowsAbout">United Nations’ Sustainable
-        Development Goals (SDGs)</span>.</li>
-    <li><span itemprop="knowsAbout">Transfer learning</span> techniques for adapting classification
-      models trained on journal literature to the distinct characteristics of ETDs.</li>
-    <li>Hybrid retrieval models that integrate sparse (BM25) and dense (neural) retrieval for more
-      precise identification of <span itemprop="knowsAbout">SDG-related</span> research.</li>
-    <li>Text generation methods for synthesizing research narratives from retrieved ETD content,
-      providing structured summaries of institutional research contributions.</li>
-  </ul>
-  <p> This work applies <span itemprop="knowsAbout">IR</span> techniques to enhance <span
-      itemprop="knowsAbout">NLP-driven classification</span> and text synthesis, addressing the
-    limitations of keyword-based SDG identification by introducing <span itemprop="knowsAbout">semantic
-      retrieval</span> and contextual classification models. The integration of retrieval-based
-    ranking and language modeling supports research applications that extend beyond static metadata,
-    allowing for more nuanced representations of academic work. </p>
+  <h2>Research Projects</h2>
+  <p>
+    From 2019 to 2023, an IMLS-funded project developed methods for automated
+    <span itemprop="knowsAbout">document structure extraction</span> and
+    <span itemprop="knowsAbout">classification</span> in <span itemprop="knowsAbout">ETDs</span>. The
+    project produced methods for transforming unstructured research texts into computationally
+    tractable research objects while preserving document structure and research context.
+  </p>
+  <p>
+    A subsequent IMLS-funded project (2024-2027) extends those methods by integrating
+    <span itemprop="knowsAbout">retrieval-augmented models</span> with curated
+    <span itemprop="knowsAbout">ETD corpora</span>. The project investigates
+    <span itemprop="knowsAbout">semantic retrieval</span>,
+    <span itemprop="knowsAbout">contextual classification</span>,
+    <span itemprop="knowsAbout">text generation constrained by retrieved evidence</span>, and
+    <span itemprop="knowsAbout">hybrid sparse/dense ranking</span> for
+    <span itemprop="knowsAbout">institutional research analysis</span>. These projects move from
+    static metadata toward representations that support AI-enabled discovery systems.
+  </p>
+  <p>
+    My dissertation research extended this work from access to interpretation by developing
+    computational methods for evaluating research contributions relative to explicit goals. Using
+    SDG alignment as a testbed, the dissertation developed a framework for goal-conditioned
+    evaluation in scholarly collections, treating large language models as explicit evaluative
+    functions whose judgments can be distilled into efficient retrieval and classification systems.
+  </p>
 
-  <h2>Artificial Intelligence for Scholarly Knowledge Systems</h2>
-  <p> The methodological contributions of this research inform the development of computational
-    models for scholarly information systems, with applications in document retrieval,
-    classification, and synthesis. By combining retrieval-based ranking, transformer-based text
-    classification, and generative summarization methods, this work develops computational
-    approaches for structuring and analyzing large-scale <span itemprop="knowsAbout">ETD</span>
-    collections. As <span itemprop="worksFor" itemscope itemtype="https://schema.org/EmployeeRole">
-      <span itemprop="roleName">Director</span> of the <span itemprop="worksFor" itemscope
-        itemtype="https://schema.org/ResearchOrganization">
+  <h2>Leadership in Scientific Knowledge Infrastructure</h2>
+  <p>
+    This research applies <span itemprop="knowsAbout">AI</span> within a longer program of making
+    scientific knowledge usable by computational systems. As
+    <span itemprop="worksFor" itemscope itemtype="https://schema.org/EmployeeRole">
+      <span itemprop="roleName">Director</span> of the
+      <span itemprop="worksFor" itemscope itemtype="https://schema.org/ResearchOrganization">
         <a href="//cdrs.lib.vt.edu/">
           <span itemprop="name">Center for Digital Research and Scholarship (CDRS)</span>
         </a>
         <meta itemprop="sameAs" content="//cdrs.lib.vt.edu/" />
       </span>
-    </span> at Virginia
-    Tech, I lead efforts to integrate <span itemprop="knowsAbout">AI</span>-driven methods into <span
-      itemprop="knowsAbout">digital scholarship</span>, supporting new models of scholarly
-    communication and research analysis. </p>
+    </span>
+    at Virginia Tech, I lead efforts that connect digital library practice, research communication,
+    information retrieval, NLP, and AI-enabled research systems, extending long-standing work in
+    discovery and interoperability toward machine-usable science.
+  </p>
 
   <h2>Grant Funding</h2>
   <ul>
@@ -136,5 +214,4 @@
       <link itemprop="sameAs" href="https://www.imls.gov/grants/awarded/lg-37-19-0078-19" />
     </li>
   </ul>
-
 </div>

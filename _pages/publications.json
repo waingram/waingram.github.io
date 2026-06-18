@@ -1,0 +1,51 @@
+---
+layout: null
+permalink: /publications.json
+---
+{%- assign publication_category = "journal_articles" -%}
+{%- capture journals_json -%}{% bibliography --file journals --template scholar/bib_template_json %}{%- endcapture -%}
+{%- assign publication_category = "book_chapters" -%}
+{%- capture chapters_json -%}{% bibliography --file chapters --template scholar/bib_template_json %}{%- endcapture -%}
+{%- assign publication_category = "conference_papers" -%}
+{%- capture conferences_json -%}{% bibliography --file conferences --template scholar/bib_template_json %}{%- endcapture -%}
+{%- assign publication_category = "workshop_papers" -%}
+{%- capture workshops_json -%}{% bibliography --file workshops --template scholar/bib_template_json %}{%- endcapture -%}
+{%- assign publication_category = "extended_abstracts" -%}
+{%- capture extended_abstracts_json -%}{% bibliography --file extended_abstracts --template scholar/bib_template_json %}{%- endcapture -%}
+{%- assign publication_category = "tutorials" -%}
+{%- capture tutorials_json -%}{% bibliography --file tutorials --template scholar/bib_template_json %}{%- endcapture -%}
+{%- assign publication_category = "hosted_workshops" -%}
+{%- capture hosted_workshops_json -%}{% bibliography --file hosted_workshops --template scholar/bib_template_json %}{%- endcapture -%}
+{%- assign publication_category = "reports" -%}
+{%- capture reports_json -%}{% bibliography --file reports --template scholar/bib_template_json %}{%- endcapture -%}
+{
+  "id": {{ site.url | append: "/publications.json" | jsonify }},
+  "type": "publication_collection",
+  "last_updated": {{ site.time | date: "%Y-%m-%d" | jsonify }},
+  "owner": {{ site.url | append: "/#waingram" | jsonify }},
+  "is_complete_publication_list": true,
+  "source": {
+    "human_readable_page": {{ site.url | append: "/publications/" | jsonify }},
+    "bibtex_directory": "_data/publications",
+    "categories": [
+      "journal_articles",
+      "book_chapters",
+      "conference_papers",
+      "workshop_papers",
+      "extended_abstracts",
+      "tutorials",
+      "hosted_workshops",
+      "reports"
+    ]
+  },
+  "publications": [
+    {% include bibliography_json_items.html raw=journals_json %},
+    {% include bibliography_json_items.html raw=chapters_json %},
+    {% include bibliography_json_items.html raw=conferences_json %},
+    {% include bibliography_json_items.html raw=workshops_json %},
+    {% include bibliography_json_items.html raw=extended_abstracts_json %},
+    {% include bibliography_json_items.html raw=tutorials_json %},
+    {% include bibliography_json_items.html raw=hosted_workshops_json %},
+    {% include bibliography_json_items.html raw=reports_json %}
+  ]
+}

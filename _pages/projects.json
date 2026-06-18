@@ -1,0 +1,117 @@
+---
+layout: null
+permalink: /projects.json
+---
+{
+  "id": "https://waingram.github.io/projects.json",
+  "type": "project_collection",
+  "last_updated": "2026-06-17",
+  "owner": "https://waingram.github.io/#waingram",
+  "projects": [
+    {
+      "id": "https://waingram.github.io/#project-goal-conditioned-evaluation",
+      "name": "Goal-Conditioned Evaluation in Scholarly Collections",
+      "status": "completed",
+      "completed": 2026,
+      "role": "Researcher",
+      "project_type": "dissertation research",
+      "research_layer": "Knowledge Understanding",
+      "description": "Developed a framework for evaluating research contributions relative to explicit goals, using SDG alignment as a testbed. The work treated large language models as explicit evaluative functions whose judgments can be distilled into retrieval and classification systems.",
+      "topics": [
+        "goal-conditioned evaluation",
+        "scientific contribution modeling",
+        "large language models",
+        "information retrieval",
+        "Sustainable Development Goals",
+        "scholarly collections"
+      ]
+    },
+    {
+      "id": "https://waingram.github.io/#project-harnessing-etds",
+      "name": "Harnessing ETDs: Pioneering AI-Driven Innovations in Library Service",
+      "status": "active",
+      "period": "2024-2027",
+      "role": "Principal Investigator",
+      "funding": "https://waingram.github.io/#grant-lg-256638-ols-24",
+      "research_layer": "Knowledge Access",
+      "description": "Integrates retrieval-augmented models with curated ETD corpora to investigate semantic retrieval, contextual classification, evidence-constrained generation, and hybrid sparse/dense ranking for institutional research analysis.",
+      "topics": [
+        "retrieval-augmented models",
+        "ETD corpora",
+        "semantic retrieval",
+        "contextual classification",
+        "evidence-constrained generation",
+        "hybrid sparse/dense ranking"
+      ]
+    },
+    {
+      "id": "https://waingram.github.io/#project-opening-books",
+      "name": "Opening Books and the National Corpus of Graduate Research",
+      "status": "completed",
+      "period": "2019-2023",
+      "role": "Principal Investigator",
+      "funding": "https://waingram.github.io/#grant-lg-37-19-0078-19",
+      "research_layer": "Knowledge Access",
+      "description": "Developed methods for computational access to book-length documents using Electronic Theses and Dissertations, including document structure extraction, classification, summarization, and metadata enrichment.",
+      "topics": [
+        "Electronic Theses and Dissertations",
+        "document structure extraction",
+        "classification",
+        "summarization",
+        "metadata enrichment",
+        "computational access"
+      ]
+    },
+    {
+      "id": "https://waingram.github.io/#project-oads-preservation",
+      "name": "Preserving Open Access Datasets and Software for Sustainable Computational Reproducibility",
+      "status": "active",
+      "period": "2024-2027",
+      "role": "Senior Personnel",
+      "funding": "https://waingram.github.io/#grant-lg-256694-ols-24",
+      "research_layer": "Knowledge Use",
+      "description": "Studies preservation of open access datasets and software used to reproduce research results reported in scholarly works.",
+      "topics": [
+        "open access datasets",
+        "research software",
+        "computational reproducibility",
+        "open science",
+        "scholarly documents"
+      ]
+    },
+    {
+      "id": "https://waingram.github.io/#project-etd-accessibility",
+      "name": "Enhancing Accessibility of Electronic Theses and Dissertations",
+      "status": "active",
+      "period": "2024-2026",
+      "role": "Co-Principal Investigator",
+      "funding": "https://waingram.github.io/#grant-lg-256693-ols-24",
+      "research_layer": "Knowledge Access",
+      "description": "Planning project for improving accessibility of Electronic Theses and Dissertations for blind and low-vision library users.",
+      "topics": [
+        "Electronic Theses and Dissertations",
+        "accessibility",
+        "blind and low-vision users",
+        "document structure",
+        "library services"
+      ]
+    },
+    {
+      "id": "https://waingram.github.io/#project-government-records",
+      "name": "Ensuring Scholarly Access to Government Records and Archives",
+      "status": "completed",
+      "period": "2020-2021",
+      "role": "Project Lead",
+      "funding": "https://waingram.github.io/#grant-1910-07229",
+      "research_layer": "Knowledge Access",
+      "description": "Convened experts to examine machine-learning techniques for enhancing public access to government records.",
+      "topics": [
+        "government records",
+        "archives",
+        "machine learning",
+        "public access",
+        "digital collections"
+      ]
+    }
+  ]
+}

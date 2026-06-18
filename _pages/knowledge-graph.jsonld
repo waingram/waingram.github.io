@@ -1,0 +1,658 @@
+---
+layout: null
+permalink: /knowledge-graph.jsonld
+---
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@id": "https://waingram.github.io/#waingram",
+      "@type": "Person",
+      "name": "William A. Ingram",
+      "givenName": "William",
+      "additionalName": "A.",
+      "familyName": "Ingram",
+      "honorificSuffix": "Ph.D.",
+      "email": "mailto:waingram@vt.edu",
+      "url": "https://waingram.github.io/",
+      "image": "https://avatars.githubusercontent.com/u/371268?v=4",
+      "description": "William A. Ingram studies how scientific knowledge, research workflows, and scholarly artifacts become machine-usable resources for computational discovery, reasoning, and reuse.",
+      "jobTitle": [
+        "Associate Professor",
+        "Associate Dean and Executive Director for IT",
+        "Director, Center for Digital Research and Scholarship"
+      ],
+      "worksFor": [
+        {
+          "@id": "https://waingram.github.io/#org-virginia-tech"
+        },
+        {
+          "@id": "https://waingram.github.io/#org-vt-libraries"
+        },
+        {
+          "@id": "https://waingram.github.io/#org-cdrs"
+        }
+      ],
+      "alumniOf": [
+        {
+          "@id": "https://waingram.github.io/#org-virginia-tech"
+        },
+        {
+          "@id": "https://waingram.github.io/#org-uiuc"
+        },
+        {
+          "@id": "https://waingram.github.io/#org-uva"
+        }
+      ],
+      "hasCredential": [
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "Ph.D., Computer Science",
+          "credentialCategory": "degree",
+          "recognizedBy": {
+            "@id": "https://waingram.github.io/#org-virginia-tech"
+          },
+          "dateCreated": "2026"
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "M.S., Library and Information Science",
+          "credentialCategory": "degree",
+          "recognizedBy": {
+            "@id": "https://waingram.github.io/#org-uiuc"
+          },
+          "dateCreated": "2008"
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "B.A., Cognitive Science",
+          "credentialCategory": "degree",
+          "recognizedBy": {
+            "@id": "https://waingram.github.io/#org-uva"
+          },
+          "dateCreated": "2005"
+        }
+      ],
+      "knowsAbout": [
+        {
+          "@id": "https://waingram.github.io/#concept-machine-usable-scientific-knowledge"
+        },
+        {
+          "@id": "https://waingram.github.io/#concept-scholarly-ai"
+        },
+        {
+          "@id": "https://waingram.github.io/#concept-scientific-knowledge-representation"
+        },
+        {
+          "@id": "https://waingram.github.io/#concept-information-retrieval"
+        },
+        {
+          "@id": "https://waingram.github.io/#concept-natural-language-processing"
+        },
+        {
+          "@id": "https://waingram.github.io/#concept-digital-libraries"
+        },
+        {
+          "@id": "https://waingram.github.io/#concept-electronic-theses-and-dissertations"
+        },
+        {
+          "@id": "https://waingram.github.io/#concept-retrieval-augmented-models"
+        },
+        {
+          "@id": "https://waingram.github.io/#concept-goal-conditioned-evaluation"
+        },
+        {
+          "@id": "https://waingram.github.io/#concept-research-workflow-extraction"
+        },
+        {
+          "@id": "https://waingram.github.io/#concept-document-structure-extraction"
+        },
+        {
+          "@id": "https://waingram.github.io/#concept-repository-interoperability"
+        }
+      ],
+      "sameAs": [
+        "https://orcid.org/0000-0002-8307-8844",
+        "https://scholar.google.com/citations?user=L-R5NXwAAAAJ",
+        "https://dblp.uni-trier.de/pid/271/4720.html",
+        "https://www.scopus.com/authid/detail.uri?authorId=57219743375",
+        "https://www.linkedin.com/in/waingram/",
+        "https://github.com/waingram",
+        "https://bsky.app/profile/waingram.bsky.social"
+      ],
+      "mainEntityOfPage": [
+        {
+          "@id": "https://waingram.github.io/#profile-page"
+        },
+        {
+          "@id": "https://waingram.github.io/research/#research-page"
+        }
+      ],
+      "subjectOf": [
+        {
+          "@id": "https://waingram.github.io/#research-program"
+        },
+        {
+          "@id": "https://waingram.github.io/#project-goal-conditioned-evaluation"
+        },
+        {
+          "@id": "https://waingram.github.io/#project-harnessing-etds"
+        },
+        {
+          "@id": "https://waingram.github.io/#project-opening-books"
+        },
+        {
+          "@id": "https://waingram.github.io/#project-oads-preservation"
+        },
+        {
+          "@id": "https://waingram.github.io/#project-etd-accessibility"
+        },
+        {
+          "@id": "https://waingram.github.io/#project-government-records"
+        }
+      ]
+    },
+    {
+      "@id": "https://waingram.github.io/#profile-page",
+      "@type": "ProfilePage",
+      "url": "https://waingram.github.io/",
+      "name": "William A. Ingram",
+      "mainEntity": {
+        "@id": "https://waingram.github.io/#waingram"
+      }
+    },
+    {
+      "@id": "https://waingram.github.io/research/#research-page",
+      "@type": "AboutPage",
+      "url": "https://waingram.github.io/research/",
+      "name": "Research Program",
+      "mainEntity": {
+        "@id": "https://waingram.github.io/#research-program"
+      }
+    },
+    {
+      "@id": "https://waingram.github.io/#research-program",
+      "@type": "CreativeWork",
+      "name": "Machine-Usable Scientific Knowledge",
+      "creator": {
+        "@id": "https://waingram.github.io/#waingram"
+      },
+      "abstract": "This research program studies how scientific knowledge, research workflows, and scholarly artifacts become machine-usable for computational discovery, reasoning, and reuse.",
+      "about": [
+        {
+          "@id": "https://waingram.github.io/#concept-machine-usable-scientific-knowledge"
+        },
+        {
+          "@id": "https://waingram.github.io/#concept-scientific-knowledge-representation"
+        },
+        {
+          "@id": "https://waingram.github.io/#concept-scholarly-ai"
+        },
+        {
+          "@id": "https://waingram.github.io/#concept-electronic-theses-and-dissertations"
+        }
+      ],
+      "hasPart": [
+        {
+          "@id": "https://waingram.github.io/#research-layer-knowledge-access"
+        },
+        {
+          "@id": "https://waingram.github.io/#research-layer-knowledge-understanding"
+        },
+        {
+          "@id": "https://waingram.github.io/#research-layer-knowledge-use"
+        }
+      ]
+    },
+    {
+      "@id": "https://waingram.github.io/#research-layer-knowledge-access",
+      "@type": "DefinedTerm",
+      "name": "Knowledge Access",
+      "description": "Work on how machines find and retrieve research knowledge through repository interoperability, metadata standards, ETD networks, indexing, document structure extraction, and summarization."
+    },
+    {
+      "@id": "https://waingram.github.io/#research-layer-knowledge-understanding",
+      "@type": "DefinedTerm",
+      "name": "Knowledge Understanding",
+      "description": "Work on how machines recognize what research contributes to a goal through goal-conditioned evaluation, evaluative functions, retrieval, classification, and scientific contribution modeling."
+    },
+    {
+      "@id": "https://waingram.github.io/#research-layer-knowledge-use",
+      "@type": "DefinedTerm",
+      "name": "Knowledge Use",
+      "description": "Work on how machines use research knowledge to support scientific work through representation of research processes, methodological context, and workflow-like knowledge."
+    },
+    {
+      "@id": "https://waingram.github.io/#project-goal-conditioned-evaluation",
+      "@type": "ResearchProject",
+      "name": "Goal-Conditioned Evaluation in Scholarly Collections",
+      "description": "Dissertation research that developed a framework for evaluating research contributions relative to explicit goals, using SDG alignment as a testbed.",
+      "member": {
+        "@id": "https://waingram.github.io/#waingram"
+      },
+      "about": [
+        {
+          "@id": "https://waingram.github.io/#concept-goal-conditioned-evaluation"
+        },
+        {
+          "@id": "https://waingram.github.io/#concept-scientific-contribution-modeling"
+        }
+      ]
+    },
+    {
+      "@id": "https://waingram.github.io/#project-harnessing-etds",
+      "@type": "ResearchProject",
+      "name": "Harnessing ETDs: Pioneering AI-Driven Innovations in Library Service",
+      "description": "Research project integrating retrieval-augmented models with curated ETD corpora for semantic retrieval, contextual classification, evidence-constrained generation, and hybrid sparse/dense ranking.",
+      "member": {
+        "@id": "https://waingram.github.io/#waingram"
+      },
+      "funding": {
+        "@id": "https://waingram.github.io/#grant-lg-256638-ols-24"
+      },
+      "about": [
+        {
+          "@id": "https://waingram.github.io/#concept-retrieval-augmented-models"
+        },
+        {
+          "@id": "https://waingram.github.io/#concept-electronic-theses-and-dissertations"
+        }
+      ]
+    },
+    {
+      "@id": "https://waingram.github.io/#project-opening-books",
+      "@type": "ResearchProject",
+      "name": "Opening Books and the National Corpus of Graduate Research",
+      "description": "Research project that developed computational access methods for book-length documents using Electronic Theses and Dissertations.",
+      "member": {
+        "@id": "https://waingram.github.io/#waingram"
+      },
+      "funding": {
+        "@id": "https://waingram.github.io/#grant-lg-37-19-0078-19"
+      },
+      "about": [
+        {
+          "@id": "https://waingram.github.io/#concept-document-structure-extraction"
+        },
+        {
+          "@id": "https://waingram.github.io/#concept-electronic-theses-and-dissertations"
+        }
+      ]
+    },
+    {
+      "@id": "https://waingram.github.io/#project-oads-preservation",
+      "@type": "ResearchProject",
+      "name": "Preserving Open Access Datasets and Software for Sustainable Computational Reproducibility",
+      "description": "Research project on preserving open access datasets and software used to reproduce research results reported in scholarly works.",
+      "member": {
+        "@id": "https://waingram.github.io/#waingram"
+      },
+      "funding": {
+        "@id": "https://waingram.github.io/#grant-lg-256694-ols-24"
+      },
+      "about": [
+        {
+          "@id": "https://waingram.github.io/#concept-open-access-datasets-and-software"
+        },
+        {
+          "@id": "https://waingram.github.io/#concept-computational-reproducibility"
+        }
+      ]
+    },
+    {
+      "@id": "https://waingram.github.io/#project-etd-accessibility",
+      "@type": "ResearchProject",
+      "name": "Enhancing Accessibility of Electronic Theses and Dissertations",
+      "description": "Planning project for improving accessibility of Electronic Theses and Dissertations for blind and low-vision library users.",
+      "member": {
+        "@id": "https://waingram.github.io/#waingram"
+      },
+      "funding": {
+        "@id": "https://waingram.github.io/#grant-lg-256693-ols-24"
+      },
+      "about": [
+        {
+          "@id": "https://waingram.github.io/#concept-electronic-theses-and-dissertations"
+        },
+        {
+          "@id": "https://waingram.github.io/#concept-accessibility"
+        }
+      ]
+    },
+    {
+      "@id": "https://waingram.github.io/#project-government-records",
+      "@type": "ResearchProject",
+      "name": "Ensuring Scholarly Access to Government Records and Archives",
+      "description": "Project that convened experts to examine machine-learning techniques for enhancing public access to government records.",
+      "member": {
+        "@id": "https://waingram.github.io/#waingram"
+      },
+      "funding": {
+        "@id": "https://waingram.github.io/#grant-1910-07229"
+      },
+      "about": [
+        {
+          "@id": "https://waingram.github.io/#concept-digital-libraries"
+        },
+        {
+          "@id": "https://waingram.github.io/#concept-natural-language-processing"
+        }
+      ]
+    },
+    {
+      "@id": "https://waingram.github.io/#grant-lg-256638-ols-24",
+      "@type": "Grant",
+      "name": "Harnessing ETDs: Pioneering AI-Driven Innovations in Library Service",
+      "identifier": "LG-256638-OLS-24",
+      "sameAs": "https://www.imls.gov/grants/awarded/lg-256638-ols-24",
+      "funder": {
+        "@id": "https://waingram.github.io/#org-imls"
+      },
+      "fundedItem": {
+        "@id": "https://waingram.github.io/#project-harnessing-etds"
+      },
+      "description": "2024 Institute of Museum and Library Services award. William A. Ingram is Principal Investigator."
+    },
+    {
+      "@id": "https://waingram.github.io/#grant-lg-256693-ols-24",
+      "@type": "Grant",
+      "name": "Enhancing Accessibility of Electronic Theses and Dissertations",
+      "identifier": "LG-256693-OLS-24",
+      "sameAs": "https://www.imls.gov/grants/awarded/lg-256693-ols-24",
+      "funder": {
+        "@id": "https://waingram.github.io/#org-imls"
+      },
+      "fundedItem": {
+        "@id": "https://waingram.github.io/#project-etd-accessibility"
+      },
+      "description": "2024 Institute of Museum and Library Services award. William A. Ingram is Co-Principal Investigator."
+    },
+    {
+      "@id": "https://waingram.github.io/#grant-lg-256694-ols-24",
+      "@type": "Grant",
+      "name": "Preserving Open Access Datasets and Software for Sustainable Computational Reproducibility",
+      "identifier": "LG-256694-OLS-24",
+      "sameAs": "https://www.imls.gov/grants/awarded/lg-256694-ols-24",
+      "funder": {
+        "@id": "https://waingram.github.io/#org-imls"
+      },
+      "fundedItem": {
+        "@id": "https://waingram.github.io/#project-oads-preservation"
+      },
+      "description": "2024 Institute of Museum and Library Services award. William A. Ingram is Senior Personnel."
+    },
+    {
+      "@id": "https://waingram.github.io/#grant-1910-07229",
+      "@type": "Grant",
+      "name": "Ensuring Scholarly Access to Government Records and Archives",
+      "identifier": "1910-07229",
+      "sameAs": "https://www.mellon.org/grant-details/20446635",
+      "funder": {
+        "@type": "Organization",
+        "name": "Andrew W. Mellon Foundation",
+        "sameAs": "https://www.mellon.org/"
+      },
+      "fundedItem": {
+        "@id": "https://waingram.github.io/#project-government-records"
+      },
+      "description": "2020 Andrew W. Mellon Foundation award for a convening on machine-learning techniques and public access to government records."
+    },
+    {
+      "@id": "https://waingram.github.io/#grant-lg-37-19-0078-19",
+      "@type": "Grant",
+      "name": "Opening Books and the National Corpus of Graduate Research",
+      "identifier": "LG-37-19-0078-19",
+      "sameAs": "https://www.imls.gov/grants/awarded/lg-37-19-0078-19",
+      "funder": {
+        "@id": "https://waingram.github.io/#org-imls"
+      },
+      "fundedItem": {
+        "@id": "https://waingram.github.io/#project-opening-books"
+      },
+      "description": "2019 Institute of Museum and Library Services award for computational access to book-length documents."
+    },
+    {
+      "@id": "https://waingram.github.io/#publication-ingram2025learning",
+      "@type": "ScholarlyArticle",
+      "name": "Learning from LLM Disagreement in Retrieval Evaluation",
+      "author": [
+        {
+          "@id": "https://waingram.github.io/#waingram"
+        },
+        {
+          "@type": "Person",
+          "name": "Bipasha Banerjee"
+        },
+        {
+          "@type": "Person",
+          "name": "Edward A. Fox"
+        }
+      ],
+      "datePublished": "2025",
+      "identifier": "https://doi.org/10.1109/JCDL67857.2025.00024",
+      "about": [
+        {
+          "@id": "https://waingram.github.io/#concept-goal-conditioned-evaluation"
+        },
+        {
+          "@id": "https://waingram.github.io/#concept-information-retrieval"
+        }
+      ]
+    },
+    {
+      "@id": "https://waingram.github.io/#publication-ingram2024building",
+      "@type": "ScholarlyArticle",
+      "name": "Building datasets to support information extraction and structure parsing from electronic theses and dissertations",
+      "author": [
+        {
+          "@id": "https://waingram.github.io/#waingram"
+        },
+        {
+          "@type": "Person",
+          "name": "Jian Wu"
+        },
+        {
+          "@type": "Person",
+          "name": "Sampanna Yashwant Kahu"
+        },
+        {
+          "@type": "Person",
+          "name": "Javaid Akbar Manzoor"
+        },
+        {
+          "@type": "Person",
+          "name": "Bipasha Banerjee"
+        },
+        {
+          "@type": "Person",
+          "name": "Aman Ahuja"
+        },
+        {
+          "@type": "Person",
+          "name": "Muntabir Hasan Choudhury"
+        },
+        {
+          "@type": "Person",
+          "name": "Lamia Salsabil"
+        },
+        {
+          "@type": "Person",
+          "name": "Winston Shields"
+        },
+        {
+          "@type": "Person",
+          "name": "Edward A. Fox"
+        }
+      ],
+      "datePublished": "2024",
+      "identifier": "https://doi.org/10.1007/s00799-024-00395-4",
+      "about": [
+        {
+          "@id": "https://waingram.github.io/#concept-document-structure-extraction"
+        },
+        {
+          "@id": "https://waingram.github.io/#concept-electronic-theses-and-dissertations"
+        }
+      ]
+    },
+    {
+      "@id": "https://waingram.github.io/#publication-choudhury2024etdpc",
+      "@type": "ScholarlyArticle",
+      "name": "ETDPC: A Multimodality Framework for Classifying Pages in Electronic Theses and Dissertations",
+      "author": [
+        {
+          "@type": "Person",
+          "name": "Muntabir Hasan Choudhury"
+        },
+        {
+          "@type": "Person",
+          "name": "Lamia Salsabil"
+        },
+        {
+          "@id": "https://waingram.github.io/#waingram"
+        },
+        {
+          "@type": "Person",
+          "name": "Edward A. Fox"
+        },
+        {
+          "@type": "Person",
+          "name": "Jian Wu"
+        }
+      ],
+      "datePublished": "2024",
+      "identifier": "https://doi.org/10.1609/AAAI.V38I21.30324",
+      "about": [
+        {
+          "@id": "https://waingram.github.io/#concept-document-structure-extraction"
+        },
+        {
+          "@id": "https://waingram.github.io/#concept-electronic-theses-and-dissertations"
+        }
+      ]
+    },
+    {
+      "@id": "https://waingram.github.io/#concept-machine-usable-scientific-knowledge",
+      "@type": "DefinedTerm",
+      "name": "Machine-Usable Scientific Knowledge"
+    },
+    {
+      "@id": "https://waingram.github.io/#concept-scholarly-ai",
+      "@type": "DefinedTerm",
+      "name": "Scholarly AI"
+    },
+    {
+      "@id": "https://waingram.github.io/#concept-scientific-knowledge-representation",
+      "@type": "DefinedTerm",
+      "name": "Scientific Knowledge Representation"
+    },
+    {
+      "@id": "https://waingram.github.io/#concept-information-retrieval",
+      "@type": "DefinedTerm",
+      "name": "Information Retrieval"
+    },
+    {
+      "@id": "https://waingram.github.io/#concept-natural-language-processing",
+      "@type": "DefinedTerm",
+      "name": "Natural Language Processing"
+    },
+    {
+      "@id": "https://waingram.github.io/#concept-digital-libraries",
+      "@type": "DefinedTerm",
+      "name": "Digital Libraries"
+    },
+    {
+      "@id": "https://waingram.github.io/#concept-electronic-theses-and-dissertations",
+      "@type": "DefinedTerm",
+      "name": "Electronic Theses and Dissertations",
+      "alternateName": "ETDs"
+    },
+    {
+      "@id": "https://waingram.github.io/#concept-retrieval-augmented-models",
+      "@type": "DefinedTerm",
+      "name": "Retrieval-Augmented Models"
+    },
+    {
+      "@id": "https://waingram.github.io/#concept-goal-conditioned-evaluation",
+      "@type": "DefinedTerm",
+      "name": "Goal-Conditioned Evaluation"
+    },
+    {
+      "@id": "https://waingram.github.io/#concept-scientific-contribution-modeling",
+      "@type": "DefinedTerm",
+      "name": "Scientific Contribution Modeling"
+    },
+    {
+      "@id": "https://waingram.github.io/#concept-research-workflow-extraction",
+      "@type": "DefinedTerm",
+      "name": "Research Workflow Extraction"
+    },
+    {
+      "@id": "https://waingram.github.io/#concept-document-structure-extraction",
+      "@type": "DefinedTerm",
+      "name": "Document Structure Extraction"
+    },
+    {
+      "@id": "https://waingram.github.io/#concept-repository-interoperability",
+      "@type": "DefinedTerm",
+      "name": "Repository Interoperability"
+    },
+    {
+      "@id": "https://waingram.github.io/#concept-open-access-datasets-and-software",
+      "@type": "DefinedTerm",
+      "name": "Open Access Datasets and Software"
+    },
+    {
+      "@id": "https://waingram.github.io/#concept-computational-reproducibility",
+      "@type": "DefinedTerm",
+      "name": "Computational Reproducibility"
+    },
+    {
+      "@id": "https://waingram.github.io/#concept-accessibility",
+      "@type": "DefinedTerm",
+      "name": "Accessibility"
+    },
+    {
+      "@id": "https://waingram.github.io/#org-virginia-tech",
+      "@type": "CollegeOrUniversity",
+      "name": "Virginia Tech",
+      "sameAs": "https://vt.edu/"
+    },
+    {
+      "@id": "https://waingram.github.io/#org-vt-libraries",
+      "@type": "LibrarySystem",
+      "name": "Virginia Tech University Libraries",
+      "sameAs": "https://lib.vt.edu/",
+      "parentOrganization": {
+        "@id": "https://waingram.github.io/#org-virginia-tech"
+      }
+    },
+    {
+      "@id": "https://waingram.github.io/#org-cdrs",
+      "@type": "ResearchOrganization",
+      "name": "Center for Digital Research and Scholarship",
+      "sameAs": "https://cdrs.lib.vt.edu/",
+      "parentOrganization": {
+        "@id": "https://waingram.github.io/#org-vt-libraries"
+      }
+    },
+    {
+      "@id": "https://waingram.github.io/#org-uiuc",
+      "@type": "CollegeOrUniversity",
+      "name": "University of Illinois at Urbana-Champaign",
+      "sameAs": "https://illinois.edu/"
+    },
+    {
+      "@id": "https://waingram.github.io/#org-uva",
+      "@type": "CollegeOrUniversity",
+      "name": "University of Virginia",
+      "sameAs": "https://virginia.edu/"
+    },
+    {
+      "@id": "https://waingram.github.io/#org-imls",
+      "@type": "Organization",
+      "name": "Institute of Museum and Library Services",
+      "sameAs": "https://www.imls.gov/"
+    }
+  ]
+}

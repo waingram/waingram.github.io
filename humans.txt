@@ -13,3 +13,11 @@
 
     CSS3, HTML5
     Apache Server Configs, jQuery, Modernizr, Normalize.css
+
+# MACHINE-READABLE RESEARCH RESOURCES
+
+    Research profile -- https://waingram.github.io/research.json
+    Research knowledge graph -- https://waingram.github.io/knowledge-graph.jsonld
+    Research projects -- https://waingram.github.io/projects.json
+    Grants -- https://waingram.github.io/grants.json
+    Publications -- https://waingram.github.io/publications.json

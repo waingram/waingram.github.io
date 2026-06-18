@@ -12,6 +12,43 @@
     <meta property="og:url" content="{{ site.url }}{{ page.url }}">
     <meta property="og:image" content="{{ page.og_image | default: site.og_image }}">
     <meta property="og:description" content="{{ page.description | default: site.description }}">
+    <link rel="alternate" type="application/ld+json" href="{{ '/knowledge-graph.jsonld' | relative_url }}"
+        title="Research knowledge graph">
+    <link rel="alternate" type="application/json" href="{{ '/research.json' | relative_url }}"
+        title="Structured research profile">
+    {% if page.url == "/research/" %}
+    <link rel="alternate" type="application/json" href="{{ '/projects.json' | relative_url }}"
+        title="Structured research projects">
+    <link rel="alternate" type="application/json" href="{{ '/grants.json' | relative_url }}"
+        title="Structured grant funding">
+    {% elsif page.url == "/publications/" %}
+    <link rel="alternate" type="application/json" href="{{ '/publications.json' | relative_url }}"
+        title="Structured publications">
+    {% endif %}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "{% if page.url == "/" %}ProfilePage{% elsif page.url == "/publications/" %}CollectionPage{% elsif page.url == "/research/" %}AboutPage{% elsif page.collection == "posts" %}BlogPosting{% else %}WebPage{% endif %}",
+      "@id": "https://waingram.github.io{{ page.url }}#webpage",
+      "url": "https://waingram.github.io{{ page.url }}",
+      "name": {{ page.title | default: site.title | jsonify }},
+      "mainEntity": {
+        "@id": "https://waingram.github.io/#waingram"
+      },
+      "encoding": [
+        {
+          "@type": "MediaObject",
+          "contentUrl": "https://waingram.github.io/knowledge-graph.jsonld",
+          "encodingFormat": "application/ld+json"
+        },
+        {
+          "@type": "MediaObject",
+          "contentUrl": "https://waingram.github.io/research.json",
+          "encodingFormat": "application/json"
+        }
+      ]
+    }
+    </script>
 
     <link rel="manifest" href="{{ '/site.webmanifest' | relative_url }}">
     <link rel="apple-touch-icon" href="{{ '/apple-touch-icon.png' | relative_url }}">

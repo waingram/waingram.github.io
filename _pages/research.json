@@ -1,0 +1,129 @@
+---
+layout: null
+permalink: /research.json
+---
+{
+  "id": "https://waingram.github.io/#waingram",
+  "type": "researcher_profile",
+  "last_updated": "2026-06-17",
+  "identity": {
+    "name": "William A. Ingram",
+    "honorific_suffix": "Ph.D.",
+    "email": "waingram@vt.edu",
+    "url": "https://waingram.github.io/",
+    "image": "https://avatars.githubusercontent.com/u/371268?v=4",
+    "same_as": [
+      "https://orcid.org/0000-0002-8307-8844",
+      "https://scholar.google.com/citations?user=L-R5NXwAAAAJ",
+      "https://dblp.uni-trier.de/pid/271/4720.html",
+      "https://www.scopus.com/authid/detail.uri?authorId=57219743375",
+      "https://www.linkedin.com/in/waingram/",
+      "https://github.com/waingram",
+      "https://bsky.app/profile/waingram.bsky.social"
+    ],
+    "positions": [
+      {
+        "title": "Associate Professor",
+        "organization": "Virginia Tech"
+      },
+      {
+        "title": "Associate Dean and Executive Director for IT",
+        "organization": "Virginia Tech University Libraries"
+      },
+      {
+        "title": "Director",
+        "organization": "Center for Digital Research and Scholarship"
+      }
+    ],
+    "education": [
+      {
+        "degree": "Ph.D.",
+        "field": "Computer Science",
+        "institution": "Virginia Tech",
+        "year": 2026
+      },
+      {
+        "degree": "M.S.",
+        "field": "Library and Information Science",
+        "institution": "University of Illinois at Urbana-Champaign",
+        "year": 2008
+      },
+      {
+        "degree": "B.A.",
+        "field": "Cognitive Science",
+        "institution": "University of Virginia",
+        "year": 2005
+      }
+    ]
+  },
+  "research_identity": {
+    "disciplines": [
+      "Computer Science",
+      "Information Science"
+    ],
+    "research_program": "Studies how scientific knowledge, research workflows, and scholarly artifacts become machine-usable resources for computational discovery, reasoning, and reuse.",
+    "research_question": "How can scientific knowledge, research workflows, and scholarly artifacts be represented so that they can be discovered, interpreted, and reused by intelligent systems?",
+    "machine_summary": "William A. Ingram studies machine-usable scientific knowledge across three connected layers: computational access to research collections, goal-conditioned interpretation of research contributions, and representation of methods and workflow-like knowledge for AI-assisted discovery.",
+    "research_layers": [
+      {
+        "name": "Knowledge Access",
+        "question": "How do machines find and retrieve research knowledge?",
+        "methods": [
+          "repository interoperability",
+          "metadata standards",
+          "ETD networks",
+          "large-scale indexing",
+          "document structure extraction",
+          "summarization"
+        ]
+      },
+      {
+        "name": "Knowledge Understanding",
+        "question": "How do machines recognize what research contributes to a goal?",
+        "methods": [
+          "goal-conditioned evaluation",
+          "large language models as evaluative functions",
+          "classification",
+          "retrieval evaluation",
+          "scientific contribution modeling"
+        ]
+      },
+      {
+        "name": "Knowledge Use",
+        "question": "How can machines use research knowledge to support scientific work?",
+        "methods": [
+          "research process representation",
+          "methodological context extraction",
+          "workflow-like knowledge representation",
+          "AI-assisted discovery"
+        ]
+      }
+    ],
+    "current_focus": [
+      "machine-usable scientific knowledge",
+      "scholarly AI",
+      "scientific knowledge representation",
+      "goal-conditioned evaluation",
+      "research workflow extraction",
+      "AI-assisted discovery",
+      "retrieval-augmented scholarly systems",
+      "Electronic Theses and Dissertations"
+    ],
+    "foundational_work": [
+      "repository interoperability",
+      "OAI-PMH",
+      "Networked Digital Library of Theses and Dissertations",
+      "metadata standards",
+      "digital libraries",
+      "scholarly communication infrastructure"
+    ]
+  },
+  "machine_readable_resources": {
+    "human_research_page": "https://waingram.github.io/research/",
+    "research_profile_json": "https://waingram.github.io/research.json",
+    "projects_json": "https://waingram.github.io/projects.json",
+    "grants_json": "https://waingram.github.io/grants.json",
+    "publications_json": "https://waingram.github.io/publications.json",
+    "knowledge_graph_jsonld": "https://waingram.github.io/knowledge-graph.jsonld"
+  }
+}
