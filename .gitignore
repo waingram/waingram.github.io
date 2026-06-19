@@ -13,4 +13,5 @@ node_modules/
 .agents/
 .claude/
 .codex/
+.worktrees/
 CLAUDE.md
