@@ -7,3 +7,9 @@ _site/
 vendor/
 # Ignore node modules
 node_modules/
+
+# Local agent configuration and runtime state
+.agents/
+.claude/
+.codex/
+CLAUDE.md
