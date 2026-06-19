@@ -395,6 +395,50 @@ describe("agent workflow evals", () => {
     assert(result.errors.some((error) => error.includes("Task 2: Extra work")));
   });
 
+  it("fails run evidence when a run plan task is not present in the plan file", () => {
+    const root = makeFixture();
+    writeCompleteFixture(root);
+    writeFile(root, "docs/superpowers/specs/example-design.md", approvedSpec());
+    writeFile(
+      root,
+      "docs/superpowers/plans/example.md",
+      "# Example Implementation Plan\n\n### Task 1: Build runner\n\n**Acceptance Criteria:** AC-1\n\n- [x] **Step 1:** Run tests\n",
+    );
+    writeFile(root, "docs/superpowers/runs/example-evidence.md", "# Evidence\n\n## Verification Commands\n\n- `npm run eval:agent`: passed\n");
+    writeJson(root, "docs/superpowers/runs/current.json", {
+      id: "example",
+      status: "active",
+      spec: "docs/superpowers/specs/example-design.md",
+      plan: "docs/superpowers/plans/example.md",
+      evidence: "docs/superpowers/runs/example-evidence.md",
+      acceptanceCriteria: ["AC-1"],
+      changedFiles: ["scripts/agent-workflow-evals.mjs"],
+      planTasks: [
+        {
+          task: "Task 1: Build runner",
+          acceptanceCriteria: ["AC-1"],
+        },
+        {
+          task: "Task 2: Fabricated task",
+          acceptanceCriteria: ["AC-2"],
+          changedFiles: ["scripts/agent-workflow-evals.mjs"],
+        },
+      ],
+      verification: [
+        {
+          command: "npm run eval:agent",
+          status: "passed",
+          evidence: "Agent workflow evals passed",
+        },
+      ],
+    });
+
+    const result = runAgentWorkflowEvals(root, { configPath: "agent-workflow.config.json" });
+
+    assert.equal(result.ok, false);
+    assert(result.errors.some((error) => error.includes("Task 2: Fabricated task")));
+  });
+
   it("emits advisory findings for vague acceptance criteria", () => {
     const root = makeFixture();
     writeCompleteFixture(root);

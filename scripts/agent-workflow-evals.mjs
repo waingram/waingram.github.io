@@ -253,6 +253,8 @@ function validateRunMappings(root, run) {
   const errors = [];
   const criteria = new Set(toArray(run.acceptanceCriteria).filter(hasText));
   const tasks = toArray(run.planTasks).filter(isObject);
+  const planTaskHeadings = collectPlanTaskHeadings(root, run);
+  const planTaskNames = new Set(planTaskHeadings);
   const taskNames = new Set();
   const mappedCriteria = new Set();
   const mappedFiles = new Set();
@@ -288,7 +290,13 @@ function validateRunMappings(root, run) {
     }
   }
 
-  for (const planTask of collectPlanTaskHeadings(root, run)) {
+  for (const taskName of taskNames) {
+    if (!planTaskNames.has(taskName)) {
+      errors.push(`${run.plan}: run.planTasks task is not present in plan: ${taskName}`);
+    }
+  }
+
+  for (const planTask of planTaskHeadings) {
     if (!taskNames.has(planTask)) {
       errors.push(`${run.plan}: plan task is not mapped in run.planTasks: ${planTask}`);
     }
