@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "workflowName": "waingram-github-io-agentic-workflow",
+  "paths": {
+    "specs": "docs/superpowers/specs",
+    "plans": "docs/superpowers/plans",
+    "runs": "docs/superpowers/runs",
+    "readme": "docs/superpowers/README.md",
+    "hookExample": "docs/superpowers/templates/codex-hooks.example.json",
+    "agentInstructions": "AGENTS.md",
+    "currentRun": "docs/superpowers/runs/current.json",
+    "templates": [
+      "docs/superpowers/templates/spec-template.md",
+      "docs/superpowers/templates/plan-template.md",
+      "docs/superpowers/templates/evidence-template.md",
+      "docs/superpowers/templates/review-template.md"
+    ]
+  },
+  "requiredPackageScripts": {
+    "eval:site": "node scripts/site-evals.mjs",
+    "eval:agent": "node scripts/agent-workflow-evals.mjs",
+    "eval:all": "npm run eval:site && npm run eval:agent"
+  },
+  "requiredAgentInstructionPhrases": [
+    "Slow Plan, Long Implement Workflow",
+    "docs/superpowers/specs/",
+    "docs/superpowers/plans/",
+    "npm run eval:agent",
+    "npm run eval:all"
+  ],
+  "projectVerificationCommands": [
+    "node --test scripts/site-evals.test.mjs scripts/agent-workflow-evals.test.mjs",
+    "/usr/bin/env GEM_HOME=/Users/waingram/.gem GEM_PATH=/Users/waingram/.gem GEMRC=/dev/null /opt/homebrew/opt/ruby/bin/bundle exec jekyll build",
+    "node scripts/site-evals.mjs _site",
+    "node scripts/agent-workflow-evals.mjs"
+  ],
+  "requireCurrentRun": false
+}

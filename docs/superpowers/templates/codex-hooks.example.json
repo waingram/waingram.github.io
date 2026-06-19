@@ -1,0 +1,30 @@
+{
+  "description": "Example Codex adapter for the portable agent workflow evals. Copy or merge into local .codex/hooks.json only after trusting this workspace.",
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "npm run eval:agent",
+            "timeout": 15,
+            "statusMessage": "Checking agent workflow evidence"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write|apply_patch",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node scripts/agent-workflow-evals.mjs --json",
+            "timeout": 10,
+            "statusMessage": "Checking workflow structure"
+          }
+        ]
+      }
+    ]
+  }
+}

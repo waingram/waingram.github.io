@@ -9,6 +9,17 @@
 - If verification is blocked by the local environment, commit the completed changes and report the verification blocker.
 - Use non-interactive Git commands.
 
+## Slow Plan, Long Implement Workflow
+
+- Use the workflow in `docs/superpowers/README.md` for multi-step development tasks.
+- Approved design specs live in `docs/superpowers/specs/`.
+- Implementation plans live in `docs/superpowers/plans/`.
+- Execution evidence for long-running tasks lives in `docs/superpowers/runs/`.
+- Keep the canonical workflow in committed files: `agent-workflow.config.json`, `scripts/agent-workflow-evals.mjs`, templates, docs, package scripts, and CI.
+- Treat `.codex/hooks.json` as a local Codex adapter only. Use `docs/superpowers/templates/codex-hooks.example.json` as the committed example.
+- Before claiming multi-step work is complete, run `npm run eval:agent` and the relevant project verification commands.
+- Before release-oriented completion, run `npm run eval:all` against a freshly built site.
+
 ## Environment
 
 - Ruby: `/opt/homebrew/opt/ruby/bin/` (Ruby 4.0.1 via Homebrew)

@@ -1,7 +1,10 @@
 {
   "scripts": {
     "eval": "node scripts/site-evals.mjs",
-    "test:eval": "node --test scripts/site-evals.test.mjs"
+    "eval:site": "node scripts/site-evals.mjs",
+    "eval:agent": "node scripts/agent-workflow-evals.mjs",
+    "eval:all": "npm run eval:site && npm run eval:agent",
+    "test:eval": "node --test scripts/site-evals.test.mjs scripts/agent-workflow-evals.test.mjs"
   },
   "devDependencies": {
     "@shopify/prettier-plugin-liquid": "^1.10.0",
