@@ -25,17 +25,36 @@ jobs:
         with:
           ruby-version: '3.1'  # Use a compatible Ruby version for Jekyll 4.x
 
-      # Step 3: Install dependencies
-      - name: Install Dependencies
+      # Step 3: Set up Node.js for eval scripts
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      # Step 4: Install Ruby dependencies
+      - name: Install Ruby Dependencies
         run: |
           gem install bundler
           bundle install
 
-      # Step 4: Build the Jekyll site
+      # Step 5: Install Node dependencies
+      - name: Install Node Dependencies
+        run: npm ci
+
+      # Step 6: Build the Jekyll site
       - name: Build Jekyll Site
         run: bundle exec jekyll build
 
-      # Step 5: Upload artifact for deployment
+      # Step 7: Run eval tests
+      - name: Run Eval Tests
+        run: npm run test:eval
+
+      # Step 8: Run site and workflow evals
+      - name: Run Site and Agent Workflow Evals
+        run: npm run eval:all
+
+      # Step 9: Upload artifact for deployment
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v3
         with:
