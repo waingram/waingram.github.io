@@ -32,6 +32,16 @@
       "@id": "https://waingram.github.io{{ page.url }}#webpage",
       "url": "https://waingram.github.io{{ page.url }}",
       "name": {{ page.title | default: site.title | jsonify }},
+      {% if page.collection == "posts" %}
+      "headline": {{ page.title | jsonify }},
+      "datePublished": {{ page.date | date_to_xmlschema | jsonify }},
+      "dateModified": {{ page.last_modified_at | default: page.date | date_to_xmlschema | jsonify }},
+      "author": {
+        "@id": "https://waingram.github.io/#waingram",
+        "@type": "Person",
+        "name": "William A. Ingram"
+      },
+      {% endif %}
       "mainEntity": {% if page.url == "/" %}{
         "@id": "https://waingram.github.io/#waingram",
         "@type": "Person",

@@ -1,4 +1,8 @@
 {
+  "scripts": {
+    "eval": "node scripts/site-evals.mjs",
+    "test:eval": "node --test scripts/site-evals.test.mjs"
+  },
   "devDependencies": {
     "@shopify/prettier-plugin-liquid": "^1.10.0",
     "prettier": "^3.8.1"

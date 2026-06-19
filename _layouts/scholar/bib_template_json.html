@@ -19,7 +19,7 @@
   {%- assign container_title = entry.institution -%}
 {%- endif -%}
 {
-  "id": {{ site.url | append: "/publications/" | append: entry.key | append: ".html" | jsonify }},
+  "id": {{ site.url | append: "/publications/" | append: entry.key | append: "/" | jsonify }},
   "type": {{ schema_type | jsonify }},
   "bibtex_key": {{ entry.key | jsonify }},
   "bibtex_type": {{ bibtex_type | jsonify }},
