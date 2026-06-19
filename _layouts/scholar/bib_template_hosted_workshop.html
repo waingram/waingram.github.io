@@ -48,6 +48,6 @@
 
       <!-- URL -->
       {%- if entry.url %}
-      <a href="{{ entry.url }}" target="_blank">{{ entry.url | replace: "https://", "" }}</a>.
+      <a href="{{ entry.url }}" target="_blank" rel="noopener noreferrer">{{ entry.url | replace: "https://", "" }}</a>.
       {% endif %}
   </span>

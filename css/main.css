@@ -262,6 +262,14 @@ p {
   max-width: 78ch;
 }
 
+.skippy a:focus {
+  background: var(--wai-surface);
+  color: var(--wai-blue-dark);
+  font-weight: 680;
+  outline: 3px solid var(--wai-focus);
+  outline-offset: 2px;
+}
+
 .page-hero {
   background: var(--wai-surface);
   border-top: 4px solid var(--wai-blue);
@@ -382,6 +390,65 @@ p {
 .publication-nav a {
   font-weight: 680;
   padding: 0.45rem 0.65rem;
+}
+
+.publication-highlights {
+  border-bottom: 1px solid var(--wai-line);
+  border-top: 1px solid var(--wai-line);
+  margin: 0 0 1.5rem;
+  padding: 1.3rem 0 1.4rem;
+}
+
+.section-intro {
+  margin-bottom: 1rem;
+}
+
+.section-intro h2 {
+  border-top: 0;
+  font-size: 1.45rem;
+  margin: 0 0 0.45rem;
+  padding-top: 0;
+}
+
+.section-intro p:last-child {
+  color: var(--wai-muted);
+  margin-bottom: 0;
+}
+
+.highlight-list {
+  counter-reset: highlight-counter;
+  display: grid;
+  gap: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.highlight-list li {
+  border-top: 1px solid var(--wai-line);
+  counter-increment: highlight-counter;
+  display: grid;
+  gap: 0.25rem;
+  grid-template-columns: 2.6rem minmax(0, 1fr);
+  padding: 0.85rem 0;
+}
+
+.highlight-list li::before {
+  color: var(--wai-soft);
+  content: "[" counter(highlight-counter) "]";
+  font-variant-numeric: tabular-nums;
+  grid-row: span 2;
+  padding-top: 0.02rem;
+}
+
+.highlight-list a {
+  font-weight: 680;
+  line-height: 1.35;
+}
+
+.highlight-list span {
+  color: var(--wai-muted);
+  line-height: 1.45;
 }
 
 .research-overview-nav a:hover,
@@ -670,6 +737,15 @@ a.footnote:after {
   .research-overview-nav a,
   .publication-nav a {
     width: 100%;
+  }
+
+  .publication-highlights {
+    margin-top: 0.5rem;
+    padding: 1.1rem 0 1.15rem;
+  }
+
+  .highlight-list li {
+    grid-template-columns: 2.1rem minmax(0, 1fr);
   }
 
   .bibliography li {

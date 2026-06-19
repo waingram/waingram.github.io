@@ -23,8 +23,8 @@
 
   <!-- DOI or URL -->
   {%- if entry.doi %}
-  <a href="https://doi.org/{{ entry.doi }}" itemprop="sameAs" target="_blank">{{ entry.doi }}</a>
+  <a href="https://doi.org/{{ entry.doi }}" itemprop="sameAs" target="_blank" rel="noopener noreferrer">{{ entry.doi }}</a>
   {%- elsif entry.url %}
-  <a href="{{ entry.url }}" itemprop="url" target="_blank">{{ entry.url | replace: "https://", "" }}</a>
+  <a href="{{ entry.url }}" itemprop="url" target="_blank" rel="noopener noreferrer">{{ entry.url | replace: "https://", "" }}</a>
   {% endif %}
 </span>

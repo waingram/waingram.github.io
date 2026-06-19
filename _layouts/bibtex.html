@@ -31,9 +31,9 @@ layout: default
   <h1 itemprop="name">{{ page.entry.title }}</h1>
 
   {%- if page.entry.doi %}
-  <p><a href="https://doi.org/{{ page.entry.doi }}" target="_blank" class="btn btn-sm btn-outline-primary">View at Publisher &rarr;</a></p>
+  <p><a href="https://doi.org/{{ page.entry.doi }}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-primary">View at Publisher &rarr;</a></p>
   {%- elsif page.entry.url %}
-  <p><a href="{{ page.entry.url }}" target="_blank" class="btn btn-sm btn-outline-primary">View Online &rarr;</a></p>
+  <p><a href="{{ page.entry.url }}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-primary">View Online &rarr;</a></p>
   {%- endif %}
 
   <section class="mt-4">
