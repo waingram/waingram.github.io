@@ -46,8 +46,52 @@ function validateConfig(config, configPath) {
   if (!isObject(config)) return [`${configPath}: config must be a JSON object`];
   if (config.schemaVersion !== 1) errors.push(`${configPath}: schemaVersion must be 1`);
   if (!hasText(config.workflowName)) errors.push(`${configPath}: workflowName is required`);
-  if (!isObject(config.paths)) errors.push(`${configPath}: paths object is required`);
+  if (!isObject(config.paths)) {
+    errors.push(`${configPath}: paths object is required`);
+  } else {
+    for (const field of ["specs", "plans", "runs", "readme", "hookExample", "agentInstructions"]) {
+      if (!hasText(config.paths[field])) errors.push(`${configPath}: paths.${field} is required`);
+    }
+    if (!Array.isArray(config.paths.templates) || config.paths.templates.length === 0) {
+      errors.push(`${configPath}: paths.templates must be a non-empty array`);
+    } else {
+      for (const templatePath of config.paths.templates) {
+        if (!hasText(templatePath)) errors.push(`${configPath}: paths.templates entries must be non-empty strings`);
+      }
+    }
+  }
+
+  if (!isObject(config.requiredPackageScripts) || Object.keys(config.requiredPackageScripts).length === 0) {
+    errors.push(`${configPath}: requiredPackageScripts object is required`);
+  } else {
+    for (const [name, command] of Object.entries(config.requiredPackageScripts)) {
+      if (!hasText(name) || !hasText(command)) {
+        errors.push(`${configPath}: requiredPackageScripts entries must map script names to non-empty commands`);
+      }
+    }
+  }
+
+  if (!Array.isArray(config.requiredAgentInstructionPhrases) || config.requiredAgentInstructionPhrases.length === 0) {
+    errors.push(`${configPath}: requiredAgentInstructionPhrases array is required`);
+  } else {
+    for (const phrase of config.requiredAgentInstructionPhrases) {
+      if (!hasText(phrase)) {
+        errors.push(`${configPath}: requiredAgentInstructionPhrases entries must be non-empty strings`);
+      }
+    }
+  }
+
   return errors;
+}
+
+function collectHookCommandStrings(value, commands = []) {
+  if (Array.isArray(value)) {
+    for (const item of value) collectHookCommandStrings(item, commands);
+  } else if (isObject(value)) {
+    if (typeof value.command === "string") commands.push(value.command);
+    for (const child of Object.values(value)) collectHookCommandStrings(child, commands);
+  }
+  return commands;
 }
 
 function validatePackageScripts(root, config) {
@@ -99,8 +143,8 @@ function validateHookExample(root, config) {
     return [`${hookPath}: invalid JSON: ${error.message}`];
   }
 
-  const serialized = JSON.stringify(hookConfig);
-  if (!serialized.includes("eval:agent")) {
+  const hookCommands = collectHookCommandStrings(hookConfig);
+  if (!hookCommands.some((command) => command.includes("eval:agent"))) {
     errors.push(`${hookPath}: example hook should run eval:agent`);
   }
   return errors;
@@ -248,9 +292,14 @@ function collectRunAdvisories(run) {
 function validateActiveRun(root, config, options = {}) {
   const errors = [];
   const advisories = [];
-  const runPath = options.runPath || config.paths?.currentRun;
+  const runPath = hasText(options.runPath) ? options.runPath : config.paths?.currentRun;
   const requireCurrentRun = Boolean(options.requireCurrentRun || config.requireCurrentRun);
-  if (!hasText(runPath)) return { errors, advisories };
+  if (!hasText(runPath)) {
+    if (requireCurrentRun) {
+      errors.push("agent workflow config: paths.currentRun or --run is required when current run evidence is required");
+    }
+    return { errors, advisories };
+  }
 
   if (!fileExists(root, runPath)) {
     if (requireCurrentRun) errors.push(`${runPath}: active run file is required`);
@@ -307,6 +356,14 @@ export function runAgentWorkflowEvals(projectRoot = process.cwd(), options = {})
   }
 
   errors.push(...validateConfig(config, configPath));
+  if (errors.length > 0) {
+    return {
+      ok: false,
+      errors,
+      advisories,
+    };
+  }
+
   errors.push(...validateRequiredFiles(root, config));
   errors.push(...validatePackageScripts(root, config));
   errors.push(...validateAgentInstructions(root, config));

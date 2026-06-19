@@ -50,6 +50,10 @@ const baseConfig = {
   ],
 };
 
+function clone(value) {
+  return JSON.parse(JSON.stringify(value));
+}
+
 function writeCompleteFixture(root) {
   writeJson(root, "agent-workflow.config.json", baseConfig);
   writeJson(root, "package.json", {
@@ -110,6 +114,82 @@ describe("agent workflow evals", () => {
 
     assert.deepEqual(result.errors, []);
     assert.equal(result.ok, true);
+  });
+
+  it("reports malformed or minimal workflow config shape", () => {
+    const root = makeFixture();
+    writeJson(root, "agent-workflow.config.json", {
+      schemaVersion: 1,
+      workflowName: "minimal-workflow",
+      paths: {},
+    });
+
+    const result = runAgentWorkflowEvals(root, { configPath: "agent-workflow.config.json" });
+
+    assert.equal(result.ok, false);
+    assert(result.errors.some((error) => error.includes("paths.readme")));
+    assert(result.errors.some((error) => error.includes("paths.agentInstructions")));
+    assert(result.errors.some((error) => error.includes("paths.hookExample")));
+    assert(result.errors.some((error) => error.includes("paths.templates")));
+    assert(result.errors.some((error) => error.includes("requiredPackageScripts")));
+    assert(result.errors.some((error) => error.includes("requiredAgentInstructionPhrases")));
+  });
+
+  it("requires a configured active run path when current run evidence is required", () => {
+    const root = makeFixture();
+    writeCompleteFixture(root);
+    const config = clone(baseConfig);
+    delete config.paths.currentRun;
+    writeJson(root, "agent-workflow.config.json", config);
+
+    const result = runAgentWorkflowEvals(root, {
+      configPath: "agent-workflow.config.json",
+      requireCurrentRun: true,
+    });
+
+    assert.equal(result.ok, false);
+    assert(result.errors.some((error) => error.includes("currentRun")));
+  });
+
+  it("returns config errors instead of throwing when templates has the wrong type", () => {
+    const root = makeFixture();
+    writeCompleteFixture(root);
+    const config = clone(baseConfig);
+    config.paths.templates = 42;
+    writeJson(root, "agent-workflow.config.json", config);
+
+    let result;
+    assert.doesNotThrow(() => {
+      result = runAgentWorkflowEvals(root, { configPath: "agent-workflow.config.json" });
+    });
+
+    assert.equal(result.ok, false);
+    assert(result.errors.some((error) => error.includes("paths.templates")));
+  });
+
+  it("requires hook command strings to run eval:agent", () => {
+    const root = makeFixture();
+    writeCompleteFixture(root);
+    writeJson(root, "docs/superpowers/templates/codex-hooks.example.json", {
+      description: "This example talks about eval:agent but does not run it.",
+      hooks: {
+        Stop: [
+          {
+            hooks: [
+              {
+                type: "command",
+                command: "npm test",
+              },
+            ],
+          },
+        ],
+      },
+    });
+
+    const result = runAgentWorkflowEvals(root, { configPath: "agent-workflow.config.json" });
+
+    assert.equal(result.ok, false);
+    assert(result.errors.some((error) => error.includes("eval:agent")));
   });
 
   it("validates active run evidence when a run file is present", () => {
