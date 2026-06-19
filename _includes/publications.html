@@ -1,40 +1,59 @@
 <div itemprop="mainEntity" itemtype="https://schema.org/Person" itemscope itemprop="creator">
     <link itemprop="sameAs" href="//waingram.github.io/#waingram">
     <div itemscope itemtype="https://schema.org/ProductCollection" itemid="#publications" itemprop="owns">
-        <h1 itemprop="name">Research, Scholarly, and Creative Achievements</h1>
-        <p>Check out <a itemprop="sameAs" target="_blank" href="//scholar.google.com/citations?user=L-R5NXwAAAAJ">my Google
-                Scholar profile</a>.</p>
+        <section class="page-hero publications-hero" aria-labelledby="publications-title">
+            <p class="page-kicker">Publications</p>
+            <h1 id="publications-title" itemprop="name">Research, scholarly, and creative achievements</h1>
+            <p class="lead">
+                Scholarly work organized by publication type, with external profiles available for citation
+                metrics, indexing, and identifier-based verification.
+            </p>
+            <div class="hero-actions">
+                <a class="btn btn-primary" itemprop="sameAs" target="_blank" rel="noopener noreferrer"
+                    href="//scholar.google.com/citations?user=L-R5NXwAAAAJ">Google Scholar profile</a>
+            </div>
+        </section>
+        <nav class="publication-nav" aria-label="Publication categories">
+            <a href="#journal-articles">Journal Articles</a>
+            <a href="#book-chapters">Book Chapters</a>
+            <a href="#conference-papers">Conference Papers</a>
+            <a href="#workshop-papers">Workshop Papers</a>
+            <a href="#extended-abstracts">Extended Abstracts</a>
+            <a href="#tutorials">Tutorials</a>
+            <a href="#hosted-workshops">Hosted Workshops</a>
+            <a href="#reports-white-papers">Reports and White Papers</a>
+        </nav>
     
         <!-- Journal Articles -->
-        <h2>Journal Articles</h2>
+        <h2 id="journal-articles">Journal Articles</h2>
         {% bibliography --file journals --template scholar/bib_template_listing %}
     
         <!-- Book Chapters -->
-        <h2>Book Chapters</h2>
+        <h2 id="book-chapters">Book Chapters</h2>
         {% bibliography --file chapters --template scholar/bib_template_listing %}
     
         <!-- Conference Papers -->
-        <h2>Conference Papers</h2>
+        <h2 id="conference-papers">Conference Papers</h2>
         {% bibliography --file conferences --template scholar/bib_template_listing %}
     
         <!-- Workshop Papers -->
-        <h2>Workshop Papers</h2>
+        <h2 id="workshop-papers">Workshop Papers</h2>
         {% bibliography --file workshops --template scholar/bib_template_listing %}
     
         <!-- Extended Abstracts -->
-        <h2>Extended Abstracts</h2>
+        <h2 id="extended-abstracts">Extended Abstracts</h2>
         {% bibliography --file extended_abstracts --template scholar/bib_template_listing %}
     
         <!-- Tutorials -->
-        <h2>Tutorials</h2>
+        <h2 id="tutorials">Tutorials</h2>
         {% bibliography --file tutorials --template scholar/bib_template_listing %}
     
         <!-- Workshops (Hosting/Organizing) -->
-        <h2>Workshops (Hosting/Organizing)</h2>
+        <h2 id="hosted-workshops">Workshops (Hosting/Organizing)</h2>
         {% bibliography --file hosted_workshops --template scholar/bib_template_listing %}
     
         <!-- Reports and White Papers -->
-        <h2>Preprints, White Papers, and Other Miscellanies</h2>
+        <h2 id="reports-white-papers">Preprints, White Papers, and Other Miscellanies</h2>
         {% bibliography --file reports --template scholar/bib_template_listing %}
     </div>
 </div>

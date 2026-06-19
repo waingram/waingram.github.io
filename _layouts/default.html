@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="">
+<html class="no-js" lang="en">
 
 <head>
     <meta charset="utf-8">
@@ -133,8 +133,8 @@
     <div class="container-xxl my-md-4 mt-4">
         <div class="row"> 
             {% include sidebar.html %}
-            <div class="col-md-9 mt-4">
-                <div class="py-sm-1 p-1">
+            <main id="content" class="col-md-9 content-column mt-4" tabindex="-1">
+                <div class="content-inner py-sm-1 p-1">
                     {% if paginator %}
                     {% include blog.html %}
                     {% elsif page.collection == "posts" %}
@@ -151,7 +151,7 @@
                     {{ content }}
                     {% endif %}
                 </div>
-            </div>
+            </main>
         </div>
         {% include footer.html %}
     </div>
