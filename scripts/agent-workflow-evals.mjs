@@ -3,6 +3,14 @@ import path from "node:path";
 import { pathToFileURL } from "node:url";
 
 const DEFAULT_CONFIG_PATH = "agent-workflow.config.json";
+const REQUIRED_SPEC_SECTIONS = [
+  "Goal",
+  "Users and Stakeholders",
+  "Non-Goals",
+  "Constraints",
+  "Risks",
+  "Acceptance Criteria",
+];
 
 function isObject(value) {
   return value !== null && typeof value === "object" && !Array.isArray(value);
@@ -77,6 +85,18 @@ function validateConfig(config, configPath) {
     for (const phrase of config.requiredAgentInstructionPhrases) {
       if (!hasText(phrase)) {
         errors.push(`${configPath}: requiredAgentInstructionPhrases entries must be non-empty strings`);
+      }
+    }
+  }
+
+  if (config.projectVerificationCommands !== undefined) {
+    if (!Array.isArray(config.projectVerificationCommands)) {
+      errors.push(`${configPath}: projectVerificationCommands must be an array when provided`);
+    } else {
+      for (const command of config.projectVerificationCommands) {
+        if (!hasText(command)) {
+          errors.push(`${configPath}: projectVerificationCommands entries must be non-empty strings`);
+        }
       }
     }
   }
@@ -185,8 +205,12 @@ function validateSpec(root, run) {
   if (!/Status:\s*Approved design/i.test(spec)) {
     errors.push(`${specPath}: spec status must include "Approved design"`);
   }
-  errors.push(...validateMarkdownSections(root, specPath, ["Goal", "Non-Goals", "Acceptance Criteria"]));
+  errors.push(...validateMarkdownSections(root, specPath, REQUIRED_SPEC_SECTIONS));
   return errors;
+}
+
+function parsePlanTaskHeadings(plan) {
+  return Array.from(plan.matchAll(/^###\s+(Task\s+\d+:\s*.+?)\s*$/gm), (match) => match[1].trim());
 }
 
 function validatePlan(root, run) {
@@ -197,7 +221,7 @@ function validatePlan(root, run) {
   if (!fileExists(root, planPath)) return errors;
 
   const plan = readText(root, planPath);
-  if (!/^### Task\s+\d+:/m.test(plan)) {
+  if (parsePlanTaskHeadings(plan).length === 0) {
     errors.push(`${planPath}: plan must contain numbered task sections`);
   }
   if (!/- \[[ x]\]/i.test(plan)) {
@@ -220,10 +244,16 @@ function validateEvidence(root, run) {
   return errors;
 }
 
-function validateRunMappings(run) {
+function collectPlanTaskHeadings(root, run) {
+  if (!hasText(run.plan) || !fileExists(root, run.plan)) return [];
+  return parsePlanTaskHeadings(readText(root, run.plan));
+}
+
+function validateRunMappings(root, run) {
   const errors = [];
   const criteria = new Set(toArray(run.acceptanceCriteria).filter(hasText));
   const tasks = toArray(run.planTasks).filter(isObject);
+  const taskNames = new Set();
   const mappedCriteria = new Set();
   const mappedFiles = new Set();
   const outOfScopeFiles = new Set(toArray(run.outOfScopeFiles).filter(hasText));
@@ -232,7 +262,11 @@ function validateRunMappings(run) {
   if (tasks.length === 0) errors.push("run evidence: planTasks must list at least one task");
 
   for (const task of tasks) {
-    if (!hasText(task.task)) errors.push("run evidence: each plan task needs a task name");
+    if (!hasText(task.task)) {
+      errors.push("run evidence: each plan task needs a task name");
+    } else {
+      taskNames.add(task.task.trim());
+    }
 
     const taskCriteria = toArray(task.acceptanceCriteria).filter(hasText);
     if (taskCriteria.length === 0) {
@@ -254,6 +288,12 @@ function validateRunMappings(run) {
     }
   }
 
+  for (const planTask of collectPlanTaskHeadings(root, run)) {
+    if (!taskNames.has(planTask)) {
+      errors.push(`${run.plan}: plan task is not mapped in run.planTasks: ${planTask}`);
+    }
+  }
+
   const verification = toArray(run.verification).filter(isObject);
   if (verification.length === 0) errors.push("run evidence: verification must list at least one command");
   for (const item of verification) {
@@ -263,6 +303,25 @@ function validateRunMappings(run) {
     }
     if (!hasText(item.evidence)) {
       errors.push(`run evidence: verification evidence is required for "${item.command || "unknown command"}"`);
+    }
+  }
+
+  return errors;
+}
+
+function validateProjectVerificationCommands(config, run) {
+  const errors = [];
+  if (run.status !== "complete") return errors;
+
+  const requiredCommands = toArray(config.projectVerificationCommands).filter(hasText).map((command) => command.trim());
+  const verification = toArray(run.verification).filter(isObject);
+
+  for (const command of requiredCommands) {
+    const matchingItems = verification.filter((item) => hasText(item.command) && item.command.trim() === command);
+    if (matchingItems.length === 0) {
+      errors.push(`run evidence: completed run is missing required project verification command: ${command}`);
+    } else if (!matchingItems.some((item) => ["passed", "blocked"].includes(item.status))) {
+      errors.push(`run evidence: required project verification command "${command}" must have status passed or blocked`);
     }
   }
 
@@ -325,7 +384,8 @@ function validateActiveRun(root, config, options = {}) {
   errors.push(...validateSpec(root, run));
   errors.push(...validatePlan(root, run));
   errors.push(...validateEvidence(root, run));
-  errors.push(...validateRunMappings(run));
+  errors.push(...validateRunMappings(root, run));
+  errors.push(...validateProjectVerificationCommands(config, run));
   advisories.push(...collectRunAdvisories(run));
   return { errors, advisories };
 }

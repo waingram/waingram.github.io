@@ -17,6 +17,10 @@ State the user-visible outcome in one or two precise paragraphs.
 
 - Name the work that this spec intentionally excludes.
 
+## Constraints
+
+- List platform, compatibility, ownership, timing, dependency, or policy constraints.
+
 ## Context
 
 Summarize existing project files, docs, commands, and constraints that shape the design.
