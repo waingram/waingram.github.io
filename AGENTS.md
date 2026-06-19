@@ -28,6 +28,13 @@
 /opt/homebrew/opt/ruby/bin/bundle install
 ```
 
+## Publishing
+
+- The site does not rely on GitHub Pages' default Jekyll build workflow.
+- Publishing is handled by the custom GitHub Actions workflow in `.github/workflows/deploy.yml`.
+- The workflow runs on pushes to `main`, builds the site with Ruby 3.1 using `bundle exec jekyll build`, uploads `./_site` as a Pages artifact, and deploys it with `actions/deploy-pages`.
+- Treat `.github/workflows/deploy.yml` as the source of truth for production build behavior. If build dependencies or Ruby assumptions change, check the workflow as well as local setup notes.
+
 ## Ruby 4.0 Compatibility
 
 Ruby 4.0 dropped `logger` from stdlib. The `gem "logger"` line in `Gemfile` is required to run Jekyll locally. GitHub Pages builds with an older Ruby and does not need this.
