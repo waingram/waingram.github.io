@@ -12,9 +12,8 @@
   {% include conference_block.html entry=entry %}
 
   {%- if entry.maintitle %}
-  As part of <span class="workshop-name" itemprop="http://purl.org/ontology/bibo/presentedAt" itemscope
-    itemtype="https://schema.org/Event">
-    <em itemprop="name">{{ entry.maintitle }}</em></span>.
+  As part of <span class="workshop-name">
+    <em>{{ entry.maintitle }}</em></span>.
   {%- endif %}
 
   <!-- Note (e.g., Best Paper, Editor's Pick) -->

@@ -88,10 +88,9 @@
   <h2>News</h2>
   <ul>
     {% for item in site.data.news %}
-    <li itemscope itemtype="https://schema.org/Event">
-      <meta itemprop="startDate" content="{{ item.date | date: '%Y-%m-%d' }}" />
+    <li>
       <strong><time datetime="{{ item.date | date: '%Y-%m-%d' }}">{{ item.date }}</time></strong>
-      <span itemprop="description">{{ item.content }}</span>
+      <span>{{ item.content }}</span>
     </li>
     {% endfor %}
   </ul>

@@ -14,12 +14,11 @@
       <span itemprop="name">{{ entry.location }}</span></span>
   {%- endif -%}
   {%- elsif entry.howpublished %}
-  Presented at <span class="venue" itemprop="http://purl.org/ontology/bibo/presentedAt" itemscope itemtype="https://schema.org/Event">
-    <em itemprop="name">{{ entry.howpublished }}</em>
+  Presented at <span class="venue">
+    <em>{{ entry.howpublished }}</em>
     {%- if entry.location -%}
       ,
-      <span class="location" itemprop="location" itemscope itemtype="https://schema.org/Place">
-        <span itemprop="name">{{ entry.location }}</span></span>
+      <span class="location">{{ entry.location }}</span>
     {%- endif -%}
   {%- endif -%}
   </span>

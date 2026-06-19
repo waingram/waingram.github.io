@@ -15,7 +15,7 @@ layout: default
   {% if page.entry.year %},"datePublished": {{ page.entry.year | jsonify }}{% endif %}
   {% if page.entry.doi %},"identifier": {{ page.entry.doi | prepend: "https://doi.org/" | jsonify }}{% endif %}
   {% if page.entry.abstract %},"description": {{ page.entry.abstract | jsonify }}{% endif %}
-  {% if page.entry.booktitle %},"isPartOf": {"@type": "Event", "name": {{ page.entry.booktitle | jsonify }}}
+  {% if page.entry.booktitle %},"isPartOf": {"@type": "CreativeWork", "name": {{ page.entry.booktitle | jsonify }}}
   {% elsif page.entry.journal %},"isPartOf": {"@type": "Periodical", "name": {{ page.entry.journal | jsonify }}}
   {% endif %}
   ,"url": {{ site.url | append: page.url | jsonify }}
