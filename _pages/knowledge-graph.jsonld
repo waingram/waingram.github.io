@@ -158,7 +158,9 @@ permalink: /knowledge-graph.jsonld
       "url": "https://waingram.github.io/",
       "name": "William A. Ingram",
       "mainEntity": {
-        "@id": "https://waingram.github.io/#waingram"
+        "@id": "https://waingram.github.io/#waingram",
+        "@type": "Person",
+        "name": "William A. Ingram"
       }
     },
     {

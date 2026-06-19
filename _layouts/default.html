@@ -32,9 +32,26 @@
       "@id": "https://waingram.github.io{{ page.url }}#webpage",
       "url": "https://waingram.github.io{{ page.url }}",
       "name": {{ page.title | default: site.title | jsonify }},
-      "mainEntity": {
+      "mainEntity": {% if page.url == "/" %}{
+        "@id": "https://waingram.github.io/#waingram",
+        "@type": "Person",
+        "name": "William A. Ingram",
+        "alternateName": "Bill Ingram",
+        "url": "https://waingram.github.io/",
+        "image": "https://avatars.githubusercontent.com/u/371268?v=4",
+        "description": {{ site.description | jsonify }},
+        "sameAs": [
+          "https://orcid.org/0000-0002-8307-8844",
+          "https://scholar.google.com/citations?user=L-R5NXwAAAAJ",
+          "https://dblp.uni-trier.de/pid/271/4720.html",
+          "https://www.scopus.com/authid/detail.uri?authorId=57219743375",
+          "https://www.linkedin.com/in/waingram/",
+          "https://github.com/waingram",
+          "https://bsky.app/profile/waingram.bsky.social"
+        ]
+      }{% else %}{
         "@id": "https://waingram.github.io/#waingram"
-      },
+      }{% endif %},
       "encoding": [
         {
           "@type": "MediaObject",
