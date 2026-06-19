@@ -37,6 +37,10 @@ function includesAllRequiredText(contents, requiredPhrases) {
   return requiredPhrases.filter((phrase) => !contents.includes(phrase));
 }
 
+function escapeRegExp(value) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
 function validateConfig(config, configPath) {
   const errors = [];
   if (!isObject(config)) return [`${configPath}: config must be a JSON object`];
@@ -118,7 +122,8 @@ function validateMarkdownSections(root, filePath, requiredSections) {
   const lines = readText(root, filePath).split(/\r?\n/);
   for (const section of requiredSections) {
     const requiredHeading = `## ${section}`;
-    if (!lines.includes(requiredHeading)) {
+    const headingPattern = new RegExp(`^##\\s+${escapeRegExp(section)}\\s*$`);
+    if (!lines.some((line) => headingPattern.test(line))) {
       errors.push(`${filePath}: missing section "${requiredHeading}"`);
     }
   }

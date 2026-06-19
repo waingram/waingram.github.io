@@ -118,7 +118,7 @@ describe("agent workflow evals", () => {
     writeFile(
       root,
       "docs/superpowers/specs/example-design.md",
-      "# Example Design\n\nStatus: Approved design\n\n## Goal\n\n## Non-Goals\n\n## Acceptance Criteria\n",
+      "# Example Design\n\nStatus: Approved design\n\n##  Goal\n\n## Non-Goals  \n\n##   Acceptance Criteria\n",
     );
     writeFile(
       root,
