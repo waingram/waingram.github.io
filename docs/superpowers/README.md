@@ -21,13 +21,21 @@ Run the workflow evals:
 npm run eval:agent
 ```
 
-Run the site evals:
+Before running site evals, build `_site` from the current source. The portable command is:
+
+```bash
+bundle exec jekyll build
+```
+
+For local workstation-specific Ruby or Bundler paths, follow `AGENTS.md`.
+
+Run the site evals against the freshly built `_site`:
 
 ```bash
 npm run eval:site
 ```
 
-Run both eval layers:
+Run both eval layers after a fresh site build:
 
 ```bash
 npm run eval:all

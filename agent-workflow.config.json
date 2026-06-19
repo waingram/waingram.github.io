@@ -30,7 +30,7 @@
   ],
   "projectVerificationCommands": [
     "node --test scripts/site-evals.test.mjs scripts/agent-workflow-evals.test.mjs",
-    "/usr/bin/env GEM_HOME=/Users/waingram/.gem GEM_PATH=/Users/waingram/.gem GEMRC=/dev/null /opt/homebrew/opt/ruby/bin/bundle exec jekyll build",
+    "bundle exec jekyll build",
     "node scripts/site-evals.mjs _site",
     "node scripts/agent-workflow-evals.mjs"
   ],
