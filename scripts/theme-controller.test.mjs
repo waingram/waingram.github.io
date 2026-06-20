@@ -47,7 +47,7 @@ function createElement(dataset = {}) {
   };
 }
 
-function createDocument() {
+function createDocument({ readyState = "loading" } = {}) {
   const documentElement = {
     attrs: {},
     dataset: {},
@@ -77,13 +77,18 @@ function createDocument() {
     icons,
     label,
     menu,
+    readyState,
     themeColor,
     toggle,
     addEventListener(type, handler) {
-      documentListeners[type] = handler;
+      documentListeners[type] ??= [];
+      documentListeners[type].push(handler);
     },
     dispatch(type, event) {
-      documentListeners[type]?.(event);
+      for (const handler of documentListeners[type] ?? []) handler(event);
+    },
+    listenerCount(type) {
+      return documentListeners[type]?.length ?? 0;
     },
     querySelector(selector) {
       if (selector === "[data-theme-toggle]") return toggle;
@@ -132,18 +137,26 @@ function createMediaQueryList(matches = false) {
   };
 }
 
-function loadTheme({ darkMatches = false, storageData = {} } = {}) {
-  const document = createDocument();
+function loadTheme({ darkMatches = false, readyState = "loading", storageData = {}, storageThrows = false } = {}) {
+  const document = createDocument({ readyState });
   const storage = createStorage(storageData);
   const mediaQueryList = createMediaQueryList(darkMatches);
   const window = {
     document,
-    localStorage: storage,
     matchMedia(query) {
       assert.equal(query, "(prefers-color-scheme: dark)");
       return mediaQueryList;
     },
   };
+  if (storageThrows) {
+    Object.defineProperty(window, "localStorage", {
+      get() {
+        throw new Error("localStorage blocked");
+      },
+    });
+  } else {
+    window.localStorage = storage;
+  }
   const sandbox = {
     document,
     localStorage: storage,
@@ -180,6 +193,19 @@ describe("theme controller", () => {
     assert.equal(document.documentElement.dataset.theme, "dark");
     assert.equal(document.themeColor.content, "#0d151d");
     assert.equal(document.label.textContent, "Theme: Dark");
+    assert.equal(document.toggle.dataset.themePreference, "dark");
+    assert.equal(document.toggle.dataset.effectiveTheme, "dark");
+    assert.equal(document.toggle.getAttribute("aria-label"), "Theme: Dark");
+  });
+
+  it("updates trigger state for the initial system preference", () => {
+    const { api, document, storage, window } = loadTheme();
+
+    api.initThemeController({ document, window, storage });
+
+    assert.equal(document.toggle.dataset.themePreference, "system");
+    assert.equal(document.toggle.dataset.effectiveTheme, "light");
+    assert.equal(document.toggle.getAttribute("aria-label"), "Theme: System");
   });
 
   it("clears invalid stored values and returns to system", () => {
@@ -198,6 +224,9 @@ describe("theme controller", () => {
     assert.equal(storage.getItem("themePreference"), null);
     assert.equal(document.documentElement.dataset.theme, undefined);
     assert.equal(document.label.textContent, "Theme: System");
+    assert.equal(document.toggle.dataset.themePreference, "system");
+    assert.equal(document.toggle.dataset.effectiveTheme, "light");
+    assert.equal(document.toggle.getAttribute("aria-label"), "Theme: System");
   });
 
   it("updates selected menu state when choosing light", () => {
@@ -212,6 +241,9 @@ describe("theme controller", () => {
     assert.equal(document.documentElement.dataset.theme, "light");
     assert.equal(light.getAttribute("aria-checked"), "true");
     assert.equal(dark.getAttribute("aria-checked"), "false");
+    assert.equal(document.toggle.dataset.themePreference, "light");
+    assert.equal(document.toggle.dataset.effectiveTheme, "light");
+    assert.equal(document.toggle.getAttribute("aria-label"), "Theme: Light");
   });
 
   it("updates system mode when the OS preference changes", () => {
@@ -222,6 +254,20 @@ describe("theme controller", () => {
 
     assert.equal(document.documentElement.dataset.theme, undefined);
     assert.equal(document.themeColor.content, "#0d151d");
+    assert.equal(document.toggle.dataset.themePreference, "system");
+    assert.equal(document.toggle.dataset.effectiveTheme, "dark");
+  });
+
+  it("tolerates blocked localStorage and initializes with system fallback", () => {
+    const { api, document, window } = loadTheme({ storageThrows: true });
+
+    assert.doesNotThrow(() => {
+      api.initThemeController({ document, window });
+    });
+    assert.equal(document.documentElement.dataset.theme, undefined);
+    assert.equal(document.documentElement.style.colorScheme, "light");
+    assert.equal(document.toggle.dataset.themePreference, "system");
+    assert.equal(document.toggle.dataset.effectiveTheme, "light");
   });
 
   it("closes the menu with Escape and outside clicks", () => {
@@ -238,5 +284,28 @@ describe("theme controller", () => {
     document.toggle.click();
     document.dispatch("click", { target: createElement() });
     assert.equal(document.menu.hidden, true);
+  });
+
+  it("registers DOMContentLoaded initialization while the document is loading", () => {
+    const { document } = loadTheme({ readyState: "loading" });
+
+    assert.equal(document.listenerCount("DOMContentLoaded"), 1);
+    assert.equal(document.label.textContent, "");
+
+    document.dispatch("DOMContentLoaded", {});
+
+    assert.equal(document.label.textContent, "Theme: System");
+    assert.equal(document.toggle.dataset.themePreference, "system");
+    assert.equal(document.toggle.dataset.effectiveTheme, "light");
+  });
+
+  it("initializes immediately when the document is already ready", () => {
+    const { document } = loadTheme({ readyState: "interactive", storageData: { themePreference: "dark" } });
+
+    assert.equal(document.documentElement.dataset.theme, "dark");
+    assert.equal(document.label.textContent, "Theme: Dark");
+    assert.equal(document.toggle.dataset.themePreference, "dark");
+    assert.equal(document.toggle.dataset.effectiveTheme, "dark");
+    assert.equal(document.toggle.getAttribute("aria-expanded"), "false");
   });
 });

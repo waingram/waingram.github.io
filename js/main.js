@@ -42,8 +42,16 @@
     }
   }
 
-  function readStoredPreference(storage = windowObject.localStorage) {
-    const storedPreference = getStorageValue(storage);
+  function getWindowStorage(targetWindow = windowObject) {
+    try {
+      return targetWindow?.localStorage ?? null;
+    } catch {
+      return null;
+    }
+  }
+
+  function readStoredPreference(storage) {
+    const storedPreference = getStorageValue(storage ?? getWindowStorage());
 
     if (!storedPreference) return SYSTEM;
     if (VALID_PREFERENCES.has(storedPreference)) return storedPreference;
@@ -99,6 +107,13 @@
     const label = document?.querySelector?.("[data-theme-toggle-label]");
     if (label) label.textContent = getPreferenceLabel(normalizedPreference);
 
+    const toggle = document?.querySelector?.("[data-theme-toggle]");
+    if (toggle) {
+      toggle.dataset.themePreference = normalizedPreference;
+      toggle.dataset.effectiveTheme = effectiveTheme;
+      toggle.setAttribute?.("aria-label", getPreferenceLabel(normalizedPreference));
+    }
+
     for (const icon of document?.querySelectorAll?.("[data-theme-icon]") ?? []) {
       icon.hidden = icon.dataset?.themeIcon !== normalizedPreference;
     }
@@ -115,13 +130,14 @@
   function initThemeController({
     document = windowObject.document,
     window = windowObject,
-    storage = windowObject.localStorage,
+    storage,
   } = {}) {
     const toggle = document?.querySelector?.("[data-theme-toggle]");
     const menu = document?.querySelector?.("[data-theme-menu]");
     const choices = Array.from(document?.querySelectorAll?.("[data-theme-choice]") ?? []);
     const mediaQueryList = window?.matchMedia?.("(prefers-color-scheme: dark)");
-    let preference = readStoredPreference(storage);
+    const resolvedStorage = storage ?? getWindowStorage(window);
+    let preference = readStoredPreference(resolvedStorage);
 
     function closeMenu() {
       if (menu) menu.hidden = true;
@@ -140,9 +156,9 @@
 
       preference = nextPreference;
       if (nextPreference === SYSTEM) {
-        removeStorageValue(storage);
+        removeStorageValue(resolvedStorage);
       } else {
-        setStorageValue(storage, nextPreference);
+        setStorageValue(resolvedStorage, nextPreference);
       }
 
       applyTheme(preference, { document, window });
@@ -192,4 +208,26 @@
     initThemeController,
     readStoredPreference,
   };
+
+  function initThemeControllerWhenReady() {
+    const document = windowObject.document;
+    if (!document) return;
+
+    const start = () => {
+      initThemeController({
+        document,
+        window: windowObject,
+        storage: getWindowStorage(windowObject),
+      });
+    };
+
+    if (document.readyState === "loading") {
+      document.addEventListener?.("DOMContentLoaded", start, { once: true });
+      return;
+    }
+
+    start();
+  }
+
+  initThemeControllerWhenReady();
 })(typeof window !== "undefined" ? window : globalThis);
