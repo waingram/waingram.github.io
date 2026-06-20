@@ -76,15 +76,20 @@ function normalizeHex(value) {
   return normalized;
 }
 
+function normalizeDeclarationValue(value) {
+  return value.replace(/\s*!important$/, "").trim();
+}
+
 function resolveColor(value, variables) {
-  const variableMatch = value.match(/^var\((--wai-[a-z-]+)\)$/);
+  const normalized = normalizeDeclarationValue(value);
+  const variableMatch = normalized.match(/^var\((--wai-[a-z-]+)\)$/);
   if (variableMatch) {
     assert.ok(variables[variableMatch[1]], `${variableMatch[1]} resolves to a color token`);
     return variables[variableMatch[1]];
   }
 
-  assert.match(value, /^#[0-9a-fA-F]{3}(?:[0-9a-fA-F]{3})?$/, `${value} is a hex color`);
-  return normalizeHex(value);
+  assert.match(normalized, /^#[0-9a-fA-F]{3}(?:[0-9a-fA-F]{3})?$/, `${value} is a hex color`);
+  return normalizeHex(normalized);
 }
 
 function variablesFrom(block) {
@@ -110,6 +115,56 @@ function contrast(foreground, background) {
   const a = luminance(foreground);
   const b = luminance(background);
   return (Math.max(a, b) + 0.05) / (Math.min(a, b) + 0.05);
+}
+
+function assertContrast(foreground, background, name, paletteName, role) {
+  assert.ok(
+    contrast(foreground, background) >= 4.5,
+    `${name} ${role} should meet 4.5:1 contrast in ${paletteName} mode (${foreground} on ${background})`,
+  );
+}
+
+function resolvedBackgrounds(declarations, variables, backgroundTokens) {
+  const background = declarations.background ?? declarations["background-color"];
+  if (!background || normalizeDeclarationValue(background) === "transparent") {
+    return backgroundTokens.map((token) => variables[token]);
+  }
+
+  return [resolveColor(background, variables)];
+}
+
+function assertResolvedPairings(state, variables, paletteName) {
+  const declarations = declarationsFor(state.selectors);
+  assert.ok(declarations.color, `${state.name} has a resolved foreground color`);
+
+  const backgrounds = resolvedBackgrounds(
+    declarations,
+    variables,
+    state.backgroundTokens ?? ["--wai-bg", "--wai-surface", "--wai-surface-strong"],
+  );
+  const foreground = resolveColor(declarations.color, variables);
+
+  for (const background of backgrounds) {
+    assertContrast(foreground, background, state.name, paletteName, "foreground");
+  }
+
+  if (state.checkBorder) {
+    assert.ok(declarations["border-color"], `${state.name} has a resolved border color`);
+    const border = resolveColor(declarations["border-color"], variables);
+
+    for (const background of backgrounds) {
+      assertContrast(border, background, state.name, paletteName, "border");
+    }
+  }
+
+  if (state.checkDecoration) {
+    assert.ok(declarations["text-decoration-color"], `${state.name} has a resolved underline color`);
+    const decoration = resolveColor(declarations["text-decoration-color"], variables);
+
+    for (const background of backgrounds) {
+      assertContrast(decoration, background, state.name, paletteName, "underline");
+    }
+  }
 }
 
 describe("theme CSS", () => {
@@ -196,6 +251,59 @@ describe("theme CSS", () => {
           contrast(foreground, background) >= 4.5,
           `${state.name} should meet 4.5:1 contrast in ${paletteName} mode (${foreground} on ${background})`,
         );
+      }
+    }
+  });
+
+  it("keeps Bootstrap secondary utilities at AA contrast in light and dark palettes", () => {
+    const palettes = {
+      light: variablesFrom(blockFor(":root")),
+      dark: variablesFrom(blockFor(':root[data-theme="dark"]')),
+    };
+    const secondaryStates = [
+      {
+        name: ".text-muted",
+        selectors: [".text-muted"],
+      },
+      {
+        name: ".link-secondary",
+        selectors: [".link-secondary"],
+        checkDecoration: true,
+      },
+      {
+        name: ".link-secondary:hover",
+        selectors: [".link-secondary", ".link-secondary:hover"],
+        checkDecoration: true,
+      },
+      {
+        name: ".link-secondary:focus",
+        selectors: [".link-secondary", ".link-secondary:focus"],
+        checkDecoration: true,
+      },
+      {
+        name: ".btn-outline-secondary",
+        selectors: [".btn-outline-secondary"],
+        checkBorder: true,
+      },
+      {
+        name: ".btn-outline-secondary:hover",
+        selectors: [".btn-outline-secondary", ".btn-outline-secondary:hover"],
+        checkBorder: true,
+      },
+      {
+        name: ".btn-outline-secondary:focus",
+        selectors: [".btn-outline-secondary", ".btn-outline-secondary:focus"],
+        checkBorder: true,
+      },
+      {
+        name: ".btn-outline-secondary:active",
+        selectors: [".btn-outline-secondary", ".btn-outline-secondary:active"],
+      },
+    ];
+
+    for (const [paletteName, variables] of Object.entries(palettes)) {
+      for (const state of secondaryStates) {
+        assertResolvedPairings(state, variables, paletteName);
       }
     }
   });

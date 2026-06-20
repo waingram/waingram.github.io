@@ -140,19 +140,69 @@
     const resolvedStorage = storage ?? getWindowStorage(window);
     let preference = readStoredPreference(resolvedStorage);
 
-    function closeMenu() {
+    function isMenuOpen() {
+      return Boolean(menu && !menu.hidden);
+    }
+
+    function focusChoice(index) {
+      if (!choices.length) return;
+
+      const normalizedIndex = (index + choices.length) % choices.length;
+      choices[normalizedIndex]?.focus?.();
+    }
+
+    function focusSelectedChoice() {
+      const selectedChoice =
+        choices.find((choice) => choice.dataset?.themeChoice === preference) ??
+        choices.find((choice) => choice.getAttribute?.("aria-checked") === "true") ??
+        choices[0];
+
+      selectedChoice?.focus?.();
+    }
+
+    function focusRelativeChoice(currentChoice, offset) {
+      const currentIndex = choices.indexOf(currentChoice);
+      focusChoice(currentIndex >= 0 ? currentIndex + offset : 0);
+    }
+
+    function menuContainsFocus() {
+      const activeElement = document?.activeElement;
+      return Boolean(
+        activeElement &&
+          (activeElement === toggle || choices.includes(activeElement) || menu?.contains?.(activeElement)),
+      );
+    }
+
+    function closeMenu({ restoreFocus = false } = {}) {
       if (menu) menu.hidden = true;
       setExpanded(toggle, false);
+      if (restoreFocus) toggle?.focus?.();
+    }
+
+    function openMenu({ focusIndex } = {}) {
+      if (!menu) return;
+
+      menu.hidden = false;
+      setExpanded(toggle, true);
+
+      if (typeof focusIndex === "number") {
+        focusChoice(focusIndex);
+      } else {
+        focusSelectedChoice();
+      }
     }
 
     function toggleMenu() {
       if (!menu) return;
 
-      menu.hidden = !menu.hidden;
-      setExpanded(toggle, !menu.hidden);
+      if (isMenuOpen()) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
     }
 
-    function selectPreference(nextPreference) {
+    function selectPreference(nextPreference, { restoreFocus = false } = {}) {
       if (!VALID_PREFERENCES.has(nextPreference)) return;
 
       preference = nextPreference;
@@ -163,22 +213,74 @@
       }
 
       applyTheme(preference, { document, window });
-      closeMenu();
+      closeMenu({ restoreFocus });
+    }
+
+    function handleToggleKeydown(event) {
+      if (event.key === "ArrowDown") {
+        event.preventDefault?.();
+        openMenu({ focusIndex: 0 });
+      } else if (event.key === "ArrowUp") {
+        event.preventDefault?.();
+        openMenu({ focusIndex: choices.length - 1 });
+      }
+    }
+
+    function handleChoiceKeydown(event, choice) {
+      if (!isMenuOpen()) return;
+
+      switch (event.key) {
+        case "ArrowDown":
+        case "ArrowRight":
+          event.preventDefault?.();
+          focusRelativeChoice(choice, 1);
+          break;
+        case "ArrowUp":
+        case "ArrowLeft":
+          event.preventDefault?.();
+          focusRelativeChoice(choice, -1);
+          break;
+        case "Home":
+          event.preventDefault?.();
+          focusChoice(0);
+          break;
+        case "End":
+          event.preventDefault?.();
+          focusChoice(choices.length - 1);
+          break;
+        case "Enter":
+        case " ":
+        case "Spacebar":
+          event.preventDefault?.();
+          selectPreference(choice.dataset?.themeChoice, { restoreFocus: true });
+          break;
+        case "Escape":
+          event.preventDefault?.();
+          closeMenu({ restoreFocus: true });
+          break;
+      }
     }
 
     applyTheme(preference, { document, window });
     closeMenu();
 
     toggle?.addEventListener?.("click", toggleMenu);
+    toggle?.addEventListener?.("keydown", handleToggleKeydown);
 
     for (const choice of choices) {
       choice.addEventListener?.("click", () => {
-        selectPreference(choice.dataset?.themeChoice);
+        selectPreference(choice.dataset?.themeChoice, { restoreFocus: true });
+      });
+      choice.addEventListener?.("keydown", (event) => {
+        handleChoiceKeydown(event, choice);
       });
     }
 
     document?.addEventListener?.("keydown", (event) => {
-      if (event.key === "Escape") closeMenu();
+      if (event.key === "Escape" && isMenuOpen()) {
+        event.preventDefault?.();
+        closeMenu({ restoreFocus: menuContainsFocus() });
+      }
     });
 
     document?.addEventListener?.("click", (event) => {

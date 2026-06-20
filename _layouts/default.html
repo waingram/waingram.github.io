@@ -6,14 +6,27 @@
     <title>{{ page.title | default: site.title }}</title>
     <meta name="description" content="{{ page.description | default: site.description }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f7f9fb">
 
     <script>
         window.__waiApplyInitialTheme = function () {
             try {
-                var preference = localStorage.getItem("themePreference");
-                if (preference !== "light" && preference !== "dark") return;
-                document.documentElement.dataset.theme = preference;
-                document.documentElement.style.colorScheme = preference;
+                var preference = null;
+                try {
+                    preference = localStorage.getItem("themePreference");
+                } catch (error) {
+                    preference = null;
+                }
+                var effectiveTheme = "light";
+                if (preference === "light" || preference === "dark") {
+                    document.documentElement.dataset.theme = preference;
+                    document.documentElement.style.colorScheme = preference;
+                    effectiveTheme = preference;
+                } else if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
+                    effectiveTheme = "dark";
+                }
+                var themeColor = document.querySelector('meta[name="theme-color"]');
+                if (themeColor) themeColor.setAttribute("content", effectiveTheme === "dark" ? "#0d151d" : "#f7f9fb");
             } catch (error) {
                 return;
             }
@@ -101,8 +114,6 @@
     <link rel="stylesheet" href="{{ '/css/academicons.min.css' | relative_url }}">
     <link rel="stylesheet" href="{{ '/css/cc-icons.min.css' | relative_url }}">
     <link rel="stylesheet" href="{{ '/css/main.css' | relative_url }}">
-
-    <meta name="theme-color" content="#f7f9fb">
 
     {% if page.entry %}
     <meta name="citation_title" content="{{ page.entry.title | xml_escape }}">

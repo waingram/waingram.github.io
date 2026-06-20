@@ -256,6 +256,55 @@ p {
   color: var(--wai-button-ink);
 }
 
+.text-muted {
+  color: var(--wai-muted) !important;
+}
+
+.link-secondary {
+  color: var(--wai-muted) !important;
+  text-decoration-color: var(--wai-muted) !important;
+}
+
+.link-secondary:hover,
+.link-secondary:focus {
+  color: var(--wai-blue-dark) !important;
+  text-decoration-color: var(--wai-blue-dark) !important;
+}
+
+.btn-outline-secondary {
+  --bs-btn-color: var(--wai-muted);
+  --bs-btn-border-color: var(--wai-muted);
+  --bs-btn-hover-color: var(--wai-ink);
+  --bs-btn-hover-bg: var(--wai-surface-strong);
+  --bs-btn-hover-border-color: var(--wai-muted);
+  --bs-btn-active-color: var(--wai-surface);
+  --bs-btn-active-bg: var(--wai-muted);
+  --bs-btn-active-border-color: var(--wai-muted);
+  --bs-btn-disabled-color: var(--wai-muted);
+  --bs-btn-disabled-bg: transparent;
+  --bs-btn-disabled-border-color: var(--wai-muted);
+  background: transparent;
+  border-color: var(--wai-muted);
+  color: var(--wai-muted);
+}
+
+.btn-outline-secondary:hover,
+.btn-outline-secondary:focus {
+  background: var(--wai-surface-strong);
+  border-color: var(--wai-muted);
+  color: var(--wai-ink);
+}
+
+.btn-outline-secondary:active,
+.btn-outline-secondary.active,
+.btn-outline-secondary.show,
+.btn-outline-secondary:first-child:active,
+:not(.btn-check) + .btn-outline-secondary:active {
+  background: var(--wai-muted);
+  border-color: var(--wai-muted);
+  color: var(--wai-surface);
+}
+
 .navbar {
   background: #16202a !important;
   border-bottom: 1px solid rgba(255, 255, 255, 0.12);

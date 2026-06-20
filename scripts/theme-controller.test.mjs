@@ -18,7 +18,7 @@ function createClassList() {
   };
 }
 
-function createElement(dataset = {}) {
+function createElement(dataset = {}, { focusElement } = {}) {
   const listeners = {};
   return {
     attrs: {},
@@ -27,16 +27,38 @@ function createElement(dataset = {}) {
     hidden: false,
     textContent: "",
     addEventListener(type, handler) {
-      listeners[type] = handler;
+      listeners[type] ??= [];
+      listeners[type].push(handler);
     },
     click() {
-      listeners.click?.({ target: this });
+      this.dispatch("click", { target: this });
     },
     contains(node) {
       return node === this;
     },
+    dispatch(type, event = {}) {
+      const eventObject = { target: this, ...event };
+      for (const handler of listeners[type] ?? []) handler(eventObject);
+      return eventObject;
+    },
+    focus() {
+      focusElement?.(this);
+    },
     getAttribute(name) {
       return this.attrs[name];
+    },
+    keydown(key, event = {}) {
+      const eventObject = {
+        key,
+        target: this,
+        defaultPrevented: false,
+        preventDefault() {
+          this.defaultPrevented = true;
+        },
+        ...event,
+      };
+      this.dispatch("keydown", eventObject);
+      return eventObject;
     },
     removeAttribute(name) {
       delete this.attrs[name];
@@ -48,6 +70,12 @@ function createElement(dataset = {}) {
 }
 
 function createDocument({ missingThemeMarkup = false, readyState = "loading" } = {}) {
+  const state = { activeElement: null };
+  const focusOptions = {
+    focusElement(element) {
+      state.activeElement = element;
+    },
+  };
   const documentElement = {
     attrs: {},
     dataset: {},
@@ -62,13 +90,13 @@ function createDocument({ missingThemeMarkup = false, readyState = "loading" } =
     },
   };
 
-  const toggle = createElement();
-  const label = createElement();
-  const menu = createElement();
+  const toggle = createElement({}, focusOptions);
+  const label = createElement({}, focusOptions);
+  const menu = createElement({}, focusOptions);
   menu.hidden = true;
   const themeColor = { content: "#f7f9fb" };
-  const icons = ["system", "light", "dark"].map((theme) => createElement({ themeIcon: theme }));
-  const choices = ["system", "light", "dark"].map((theme) => createElement({ themeChoice: theme }));
+  const icons = ["system", "light", "dark"].map((theme) => createElement({ themeIcon: theme }, focusOptions));
+  const choices = ["system", "light", "dark"].map((theme) => createElement({ themeChoice: theme }, focusOptions));
   const documentListeners = {};
 
   return {
@@ -80,6 +108,9 @@ function createDocument({ missingThemeMarkup = false, readyState = "loading" } =
     readyState,
     themeColor,
     toggle,
+    get activeElement() {
+      return state.activeElement;
+    },
     addEventListener(type, handler) {
       documentListeners[type] ??= [];
       documentListeners[type].push(handler);
@@ -357,6 +388,106 @@ describe("theme controller", () => {
     document.toggle.click();
     document.dispatch("click", { target: createElement() });
     assert.equal(document.menu.hidden, true);
+  });
+
+  it("focuses the selected theme when the menu opens", () => {
+    const { api, document, storage, window } = loadTheme({ storageData: { themePreference: "dark" } });
+    api.initThemeController({ document, window, storage });
+
+    document.toggle.click();
+
+    assert.equal(document.menu.hidden, false);
+    assert.equal(document.activeElement.dataset.themeChoice, "dark");
+  });
+
+  it("moves focus through open menu choices with arrows, Home, and End", () => {
+    const { api, document, storage, window } = loadTheme();
+    api.initThemeController({ document, window, storage });
+
+    document.toggle.click();
+    assert.equal(document.activeElement.dataset.themeChoice, "system");
+
+    document.activeElement.keydown("ArrowRight");
+    assert.equal(document.activeElement.dataset.themeChoice, "light");
+
+    document.activeElement.keydown("ArrowDown");
+    assert.equal(document.activeElement.dataset.themeChoice, "dark");
+
+    document.activeElement.keydown("ArrowDown");
+    assert.equal(document.activeElement.dataset.themeChoice, "system");
+
+    document.activeElement.keydown("ArrowLeft");
+    assert.equal(document.activeElement.dataset.themeChoice, "dark");
+
+    document.activeElement.keydown("ArrowUp");
+    assert.equal(document.activeElement.dataset.themeChoice, "light");
+
+    document.activeElement.keydown("Home");
+    assert.equal(document.activeElement.dataset.themeChoice, "system");
+
+    document.activeElement.keydown("End");
+    assert.equal(document.activeElement.dataset.themeChoice, "dark");
+  });
+
+  it("opens the closed trigger to first or last menu choice with arrow keys", () => {
+    const { api, document, storage, window } = loadTheme();
+    api.initThemeController({ document, window, storage });
+
+    document.toggle.keydown("ArrowDown");
+
+    assert.equal(document.menu.hidden, false);
+    assert.equal(document.toggle.getAttribute("aria-expanded"), "true");
+    assert.equal(document.activeElement.dataset.themeChoice, "system");
+
+    document.dispatch("keydown", { key: "Escape" });
+    document.toggle.keydown("ArrowUp");
+
+    assert.equal(document.menu.hidden, false);
+    assert.equal(document.activeElement.dataset.themeChoice, "dark");
+  });
+
+  it("selects focused menu choices with Enter and Space then restores trigger focus", () => {
+    for (const [key, expectedTheme] of [
+      ["Enter", "light"],
+      [" ", "dark"],
+    ]) {
+      const { api, document, storage, window } = loadTheme();
+      api.initThemeController({ document, window, storage });
+
+      document.toggle.click();
+      document.choices.find((choice) => choice.dataset.themeChoice === expectedTheme).focus();
+      document.activeElement.keydown(key);
+
+      assert.equal(storage.getItem("themePreference"), expectedTheme);
+      assert.equal(document.menu.hidden, true);
+      assert.equal(document.toggle.getAttribute("aria-expanded"), "false");
+      assert.equal(document.activeElement, document.toggle);
+    }
+  });
+
+  it("closes with Escape and restores trigger focus when focus is in the menu", () => {
+    const { api, document, storage, window } = loadTheme();
+    api.initThemeController({ document, window, storage });
+
+    document.toggle.click();
+    document.choices.find((choice) => choice.dataset.themeChoice === "light").focus();
+    document.dispatch("keydown", { key: "Escape" });
+
+    assert.equal(document.menu.hidden, true);
+    assert.equal(document.toggle.getAttribute("aria-expanded"), "false");
+    assert.equal(document.activeElement, document.toggle);
+  });
+
+  it("restores trigger focus after selecting an open choice with click", () => {
+    const { api, document, storage, window } = loadTheme();
+    api.initThemeController({ document, window, storage });
+
+    document.toggle.click();
+    document.choices.find((choice) => choice.dataset.themeChoice === "dark").click();
+
+    assert.equal(storage.getItem("themePreference"), "dark");
+    assert.equal(document.menu.hidden, true);
+    assert.equal(document.activeElement, document.toggle);
   });
 
   it("registers DOMContentLoaded initialization while the document is loading", () => {
