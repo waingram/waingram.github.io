@@ -98,6 +98,7 @@ textarea {
   --wai-line: #d7e0e7;
   --wai-blue: #165c7d;
   --wai-blue-dark: #0e3f59;
+  --wai-button-ink: #ffffff;
   --wai-copper: #9b5c22;
   --wai-focus: #c17a2d;
   --wai-lead: #2f4050;
@@ -120,6 +121,7 @@ textarea {
     --wai-line: #2b4152;
     --wai-blue: #76c7ef;
     --wai-blue-dark: #a7dcf6;
+    --wai-button-ink: #0d151d;
     --wai-copper: #d6a05d;
     --wai-focus: #f1b86d;
     --wai-lead: #d6e2ea;
@@ -142,6 +144,7 @@ textarea {
   --wai-line: #2b4152;
   --wai-blue: #76c7ef;
   --wai-blue-dark: #a7dcf6;
+  --wai-button-ink: #0d151d;
   --wai-copper: #d6a05d;
   --wai-focus: #f1b86d;
   --wai-lead: #d6e2ea;
@@ -231,12 +234,14 @@ p {
 .btn-primary {
   background: var(--wai-blue);
   border-color: var(--wai-blue);
+  color: var(--wai-button-ink);
 }
 
 .btn-primary:hover,
 .btn-primary:focus {
   background: var(--wai-blue-dark);
   border-color: var(--wai-blue-dark);
+  color: var(--wai-button-ink);
 }
 
 .btn-outline-primary {
@@ -248,7 +253,7 @@ p {
 .btn-outline-primary:focus {
   background: var(--wai-blue);
   border-color: var(--wai-blue);
-  color: #fff;
+  color: var(--wai-button-ink);
 }
 
 .navbar {

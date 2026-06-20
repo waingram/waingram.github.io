@@ -41,6 +41,52 @@ function assertDeclaration(block, property, value) {
   assert.match(block, new RegExp(`${escapeRegExp(property)}:\\s*${escapeRegExp(value)};`));
 }
 
+function declarationMap(block) {
+  return Object.fromEntries(
+    [...block.matchAll(/([a-z-]+):\s*([^;]+);/g)].map((match) => [match[1], match[2].trim()]),
+  );
+}
+
+function allRules(source = css) {
+  return [...source.matchAll(/([^{}]+)\{([^{}]*)\}/g)].map((match) => ({
+    selectors: match[1]
+      .split(",")
+      .map((selector) => selector.trim())
+      .filter((selector) => selector && !selector.startsWith("@")),
+    declarations: declarationMap(match[2]),
+  }));
+}
+
+function declarationsFor(matchingSelectors) {
+  return allRules().reduce((declarations, rule) => {
+    if (matchingSelectors.some((selector) => rule.selectors.includes(selector))) {
+      return { ...declarations, ...rule.declarations };
+    }
+
+    return declarations;
+  }, {});
+}
+
+function normalizeHex(value) {
+  const normalized = value.toLowerCase();
+  if (/^#[0-9a-f]{3}$/.test(normalized)) {
+    return `#${[...normalized.slice(1)].map((digit) => `${digit}${digit}`).join("")}`;
+  }
+
+  return normalized;
+}
+
+function resolveColor(value, variables) {
+  const variableMatch = value.match(/^var\((--wai-[a-z-]+)\)$/);
+  if (variableMatch) {
+    assert.ok(variables[variableMatch[1]], `${variableMatch[1]} resolves to a color token`);
+    return variables[variableMatch[1]];
+  }
+
+  assert.match(value, /^#[0-9a-fA-F]{3}(?:[0-9a-fA-F]{3})?$/, `${value} is a hex color`);
+  return normalizeHex(value);
+}
+
 function variablesFrom(block) {
   return Object.fromEntries(
     [...block.matchAll(/(--wai-[a-z-]+):\s*(#[0-9a-fA-F]{6})/g)].map((match) => [match[1], match[2].toLowerCase()]),
@@ -104,6 +150,51 @@ describe("theme CSS", () => {
         assert.ok(
           contrast(foreground, background) >= 4.5,
           `${foreground} on ${background} should meet 4.5:1 contrast`,
+        );
+      }
+    }
+  });
+
+  it("keeps button foregrounds at AA contrast in light and dark palettes", () => {
+    const palettes = {
+      light: variablesFrom(blockFor(":root")),
+      dark: variablesFrom(blockFor(':root[data-theme="dark"]')),
+    };
+    const buttonStates = [
+      {
+        name: ".btn-primary",
+        selectors: [".btn-primary"],
+        defaultForeground: "#fff",
+      },
+      {
+        name: ".btn-primary:hover",
+        selectors: [".btn-primary", ".btn-primary:hover"],
+        defaultForeground: "#fff",
+      },
+      {
+        name: ".btn-primary:focus",
+        selectors: [".btn-primary", ".btn-primary:focus"],
+        defaultForeground: "#fff",
+      },
+      {
+        name: ".btn-outline-primary:hover",
+        selectors: [".btn-outline-primary", ".btn-outline-primary:hover"],
+      },
+      {
+        name: ".btn-outline-primary:focus",
+        selectors: [".btn-outline-primary", ".btn-outline-primary:focus"],
+      },
+    ];
+
+    for (const [paletteName, variables] of Object.entries(palettes)) {
+      for (const state of buttonStates) {
+        const declarations = declarationsFor(state.selectors);
+        const foreground = resolveColor(declarations.color ?? state.defaultForeground, variables);
+        const background = resolveColor(declarations.background ?? declarations["background-color"], variables);
+
+        assert.ok(
+          contrast(foreground, background) >= 4.5,
+          `${state.name} should meet 4.5:1 contrast in ${paletteName} mode (${foreground} on ${background})`,
         );
       }
     }
