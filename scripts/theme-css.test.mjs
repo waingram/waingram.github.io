@@ -4,11 +4,41 @@ import { describe, it } from "node:test";
 
 const css = fs.readFileSync(new URL("../css/main.css", import.meta.url), "utf8");
 
-function blockFor(selector) {
-  const escaped = selector.replaceAll("[", "\\[").replaceAll("]", "\\]");
-  const match = css.match(new RegExp(`${escaped}\\s*\\{([\\s\\S]*?)\\n\\}`));
+function escapeRegExp(value) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+function blockFor(selector, source = css) {
+  const escaped = escapeRegExp(selector);
+  const match = source.match(new RegExp(`${escaped}\\s*\\{([\\s\\S]*?)\\n\\s*\\}`));
   assert.ok(match, `${selector} block is present`);
   return match[1];
+}
+
+function blockContentsStartingAt(openIndex) {
+  let depth = 0;
+
+  for (let index = openIndex; index < css.length; index += 1) {
+    if (css[index] === "{") depth += 1;
+    if (css[index] === "}") depth -= 1;
+    if (depth === 0) return css.slice(openIndex + 1, index);
+  }
+
+  assert.fail("CSS block is closed");
+}
+
+function mediaBlockFor(query) {
+  const prelude = `@media ${query}`;
+  const mediaIndex = css.indexOf(prelude);
+  assert.notEqual(mediaIndex, -1, `${prelude} block is present`);
+
+  const openIndex = css.indexOf("{", mediaIndex);
+  assert.notEqual(openIndex, -1, `${prelude} block has an opening brace`);
+  return blockContentsStartingAt(openIndex);
+}
+
+function assertDeclaration(block, property, value) {
+  assert.match(block, new RegExp(`${escapeRegExp(property)}:\\s*${escapeRegExp(value)};`));
 }
 
 function variablesFrom(block) {
@@ -65,6 +95,8 @@ describe("theme CSS", () => {
       darkVars["--wai-blue-dark"],
       darkVars["--wai-copper"],
       darkVars["--wai-focus"],
+      darkVars["--wai-lead"],
+      darkVars["--wai-profile-meta"],
     ];
 
     for (const background of backgrounds) {
@@ -84,5 +116,14 @@ describe("theme CSS", () => {
     assert.match(css, /\.theme-menu-item/);
     assert.match(css, /\.theme-menu-item\[aria-checked="true"\]/);
     assert.match(css, /@media \(max-width: 767\.98px\)[\s\S]*\.theme-switcher/);
+
+    const menuBlock = blockFor(".theme-menu");
+    assertDeclaration(menuBlock, "position", "absolute");
+    assertDeclaration(menuBlock, "top", "calc(100% + 0.45rem)");
+    assertDeclaration(menuBlock, "z-index", "20");
+
+    const mobileBlock = mediaBlockFor("(max-width: 767.98px)");
+    assertDeclaration(blockFor(".theme-toggle", mobileBlock), "width", "100%");
+    assertDeclaration(blockFor(".theme-menu", mobileBlock), "width", "100%");
   });
 });
