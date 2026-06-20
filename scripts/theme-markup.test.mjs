@@ -17,8 +17,8 @@ describe("theme source markup", () => {
     assert.ok(themeScriptIndex < stylesheetIndex);
     assert.match(layout, /localStorage\.getItem\("themePreference"\)/);
     assert.match(layout, /document\.documentElement\.dataset\.theme = preference/);
-    assert.match(layout, /document\.documentElement\.style\.colorScheme = preference/);
     assert.match(layout, /window\.matchMedia && window\.matchMedia\("\(prefers-color-scheme: dark\)"\)\.matches/);
+    assert.match(layout, /document\.documentElement\.style\.colorScheme = effectiveTheme/);
     assert.match(layout, /document\.querySelector\('meta\[name="theme-color"\]'\)/);
     assert.match(layout, /themeColor\.setAttribute\("content", effectiveTheme === "dark" \? "#0d151d" : "#f7f9fb"\)/);
     assert.equal(layout.match(/<meta name="theme-color" content="#f7f9fb">/g)?.length, 1);

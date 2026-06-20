@@ -28,12 +28,14 @@ html {
  */
 
 ::-moz-selection {
-  background: #b3d4fc;
+  background: var(--wai-selection-bg);
+  color: var(--wai-selection-ink);
   text-shadow: none;
 }
 
 ::selection {
-  background: #b3d4fc;
+  background: var(--wai-selection-bg);
+  color: var(--wai-selection-ink);
   text-shadow: none;
 }
 
@@ -99,6 +101,7 @@ textarea {
   --wai-blue: #165c7d;
   --wai-blue-dark: #0e3f59;
   --wai-button-ink: #ffffff;
+  --wai-code: #8a2558;
   --wai-copper: #9b5c22;
   --wai-focus: #c17a2d;
   --wai-lead: #2f4050;
@@ -106,7 +109,11 @@ textarea {
   --wai-nav-hover-line: #aec4d1;
   --wai-avatar-border: #ffffff;
   --wai-profile-meta: #2d3c49;
+  --wai-selection-bg: #c7deee;
+  --wai-selection-ink: #0d151d;
   --wai-shadow-soft: rgba(25, 38, 51, 0.12);
+  --bs-border-color: var(--wai-line);
+  --bs-code-color: var(--wai-code);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -122,6 +129,7 @@ textarea {
     --wai-blue: #76c7ef;
     --wai-blue-dark: #a7dcf6;
     --wai-button-ink: #0d151d;
+    --wai-code: #f0a7cd;
     --wai-copper: #d6a05d;
     --wai-focus: #f1b86d;
     --wai-lead: #d6e2ea;
@@ -129,7 +137,11 @@ textarea {
     --wai-nav-hover-line: #456175;
     --wai-avatar-border: #243544;
     --wai-profile-meta: #d0dde6;
+    --wai-selection-bg: #294b63;
+    --wai-selection-ink: #f7fbff;
     --wai-shadow-soft: rgba(0, 0, 0, 0.28);
+    --bs-border-color: var(--wai-line);
+    --bs-code-color: var(--wai-code);
   }
 }
 
@@ -145,6 +157,7 @@ textarea {
   --wai-blue: #76c7ef;
   --wai-blue-dark: #a7dcf6;
   --wai-button-ink: #0d151d;
+  --wai-code: #f0a7cd;
   --wai-copper: #d6a05d;
   --wai-focus: #f1b86d;
   --wai-lead: #d6e2ea;
@@ -152,7 +165,11 @@ textarea {
   --wai-nav-hover-line: #456175;
   --wai-avatar-border: #243544;
   --wai-profile-meta: #d0dde6;
+  --wai-selection-bg: #294b63;
+  --wai-selection-ink: #f7fbff;
   --wai-shadow-soft: rgba(0, 0, 0, 0.28);
+  --bs-border-color: var(--wai-line);
+  --bs-code-color: var(--wai-code);
 }
 
 body {
@@ -171,6 +188,10 @@ a {
 
 a:hover {
   color: var(--wai-blue-dark);
+}
+
+code {
+  color: var(--wai-code);
 }
 
 a:focus-visible,

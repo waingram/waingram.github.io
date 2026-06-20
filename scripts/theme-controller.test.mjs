@@ -47,6 +47,9 @@ function createElement(dataset = {}, { focusElement } = {}) {
     getAttribute(name) {
       return this.attrs[name];
     },
+    hasAttribute(name) {
+      return Object.hasOwn(this.attrs, name);
+    },
     keydown(key, event = {}) {
       const eventObject = {
         key,
@@ -65,6 +68,16 @@ function createElement(dataset = {}, { focusElement } = {}) {
     },
     setAttribute(name, value) {
       this.attrs[name] = String(value);
+    },
+    toggleAttribute(name, force) {
+      const shouldSet = force ?? !this.hasAttribute(name);
+      if (shouldSet) {
+        this.setAttribute(name, "");
+        return true;
+      }
+
+      this.removeAttribute(name);
+      return false;
     },
   };
 }
@@ -262,6 +275,25 @@ describe("theme controller", () => {
     assert.equal(document.toggle.dataset.themePreference, "system");
     assert.equal(document.toggle.dataset.effectiveTheme, "light");
     assert.equal(document.toggle.getAttribute("aria-label"), "Theme: System");
+  });
+
+  it("updates SVG icon hidden attributes for the selected preference", () => {
+    const { api, document, storage, window } = loadTheme({ storageData: { themePreference: "dark" } });
+    api.initThemeController({ document, window, storage });
+
+    const system = document.icons.find((icon) => icon.dataset.themeIcon === "system");
+    const light = document.icons.find((icon) => icon.dataset.themeIcon === "light");
+    const dark = document.icons.find((icon) => icon.dataset.themeIcon === "dark");
+
+    assert.equal(system.hasAttribute("hidden"), true);
+    assert.equal(light.hasAttribute("hidden"), true);
+    assert.equal(dark.hasAttribute("hidden"), false);
+
+    document.choices.find((choice) => choice.dataset.themeChoice === "system").click();
+
+    assert.equal(system.hasAttribute("hidden"), false);
+    assert.equal(light.hasAttribute("hidden"), true);
+    assert.equal(dark.hasAttribute("hidden"), true);
   });
 
   it("clears invalid stored values and returns to system", () => {

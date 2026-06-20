@@ -181,8 +181,11 @@ describe("theme CSS", () => {
     assert.equal(darkVars["--wai-soft"], "#8ea4b5");
     assert.equal(darkVars["--wai-blue"], "#76c7ef");
     assert.equal(darkVars["--wai-blue-dark"], "#a7dcf6");
+    assert.equal(darkVars["--wai-code"], "#f0a7cd");
     assert.equal(darkVars["--wai-copper"], "#d6a05d");
     assert.equal(darkVars["--wai-focus"], "#f1b86d");
+    assert.equal(darkVars["--wai-selection-bg"], "#294b63");
+    assert.equal(darkVars["--wai-selection-ink"], "#f7fbff");
   });
 
   it("keeps planned dark theme text colors at AA contrast", () => {
@@ -195,6 +198,7 @@ describe("theme CSS", () => {
       darkVars["--wai-blue"],
       darkVars["--wai-blue-dark"],
       darkVars["--wai-copper"],
+      darkVars["--wai-code"],
       darkVars["--wai-focus"],
       darkVars["--wai-lead"],
       darkVars["--wai-profile-meta"],
@@ -207,6 +211,40 @@ describe("theme CSS", () => {
           `${foreground} on ${background} should meet 4.5:1 contrast`,
         );
       }
+    }
+  });
+
+  it("keeps inline code and text selection at AA contrast", () => {
+    const palettes = {
+      light: variablesFrom(blockFor(":root")),
+      dark: variablesFrom(blockFor(':root[data-theme="dark"]')),
+    };
+    const codeBlock = blockFor("code");
+    const selectionBlock = blockFor("::selection");
+    const mozSelectionBlock = blockFor("::-moz-selection");
+
+    assertDeclaration(blockFor(":root"), "--bs-border-color", "var(--wai-line)");
+    assertDeclaration(blockFor(":root"), "--bs-code-color", "var(--wai-code)");
+    assertDeclaration(blockFor(':root[data-theme="dark"]'), "--bs-border-color", "var(--wai-line)");
+    assertDeclaration(blockFor(':root[data-theme="dark"]'), "--bs-code-color", "var(--wai-code)");
+    assertDeclaration(codeBlock, "color", "var(--wai-code)");
+    assertDeclaration(selectionBlock, "background", "var(--wai-selection-bg)");
+    assertDeclaration(selectionBlock, "color", "var(--wai-selection-ink)");
+    assertDeclaration(mozSelectionBlock, "background", "var(--wai-selection-bg)");
+    assertDeclaration(mozSelectionBlock, "color", "var(--wai-selection-ink)");
+
+    for (const [paletteName, variables] of Object.entries(palettes)) {
+      const backgrounds = [variables["--wai-bg"], variables["--wai-surface"], variables["--wai-surface-strong"]];
+      for (const background of backgrounds) {
+        assertContrast(variables["--wai-code"], background, "code", paletteName, "foreground");
+      }
+      assertContrast(
+        variables["--wai-selection-ink"],
+        variables["--wai-selection-bg"],
+        "::selection",
+        paletteName,
+        "foreground",
+      );
     }
   });
 

@@ -116,7 +116,14 @@
     }
 
     for (const icon of document?.querySelectorAll?.("[data-theme-icon]") ?? []) {
-      icon.hidden = icon.dataset?.themeIcon !== normalizedPreference;
+      const shouldHide = icon.dataset?.themeIcon !== normalizedPreference;
+      if (icon.toggleAttribute) {
+        icon.toggleAttribute("hidden", shouldHide);
+      } else if (shouldHide) {
+        icon.setAttribute?.("hidden", "");
+      } else {
+        icon.removeAttribute?.("hidden");
+      }
     }
 
     for (const choice of document?.querySelectorAll?.("[data-theme-choice]") ?? []) {

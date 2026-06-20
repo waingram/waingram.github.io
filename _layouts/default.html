@@ -20,11 +20,11 @@
                 var effectiveTheme = "light";
                 if (preference === "light" || preference === "dark") {
                     document.documentElement.dataset.theme = preference;
-                    document.documentElement.style.colorScheme = preference;
                     effectiveTheme = preference;
                 } else if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
                     effectiveTheme = "dark";
                 }
+                document.documentElement.style.colorScheme = effectiveTheme;
                 var themeColor = document.querySelector('meta[name="theme-color"]');
                 if (themeColor) themeColor.setAttribute("content", effectiveTheme === "dark" ? "#0d151d" : "#f7f9fb");
             } catch (error) {
