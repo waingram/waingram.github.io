@@ -88,6 +88,7 @@ textarea {
    ========================================================================== */
 
 :root {
+  color-scheme: light;
   --wai-bg: #f7f9fb;
   --wai-surface: #ffffff;
   --wai-surface-strong: #eef4f7;
@@ -99,6 +100,56 @@ textarea {
   --wai-blue-dark: #0e3f59;
   --wai-copper: #9b5c22;
   --wai-focus: #c17a2d;
+  --wai-lead: #2f4050;
+  --wai-nav-hover-bg: #e2edf2;
+  --wai-nav-hover-line: #aec4d1;
+  --wai-avatar-border: #ffffff;
+  --wai-profile-meta: #2d3c49;
+  --wai-shadow-soft: rgba(25, 38, 51, 0.12);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --wai-bg: #0d151d;
+    --wai-surface: #131f2a;
+    --wai-surface-strong: #1a2a37;
+    --wai-ink: #edf4f8;
+    --wai-muted: #b8c8d5;
+    --wai-soft: #8ea4b5;
+    --wai-line: #2b4152;
+    --wai-blue: #76c7ef;
+    --wai-blue-dark: #a7dcf6;
+    --wai-copper: #d6a05d;
+    --wai-focus: #f1b86d;
+    --wai-lead: #d6e2ea;
+    --wai-nav-hover-bg: #203242;
+    --wai-nav-hover-line: #456175;
+    --wai-avatar-border: #243544;
+    --wai-profile-meta: #d0dde6;
+    --wai-shadow-soft: rgba(0, 0, 0, 0.28);
+  }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --wai-bg: #0d151d;
+  --wai-surface: #131f2a;
+  --wai-surface-strong: #1a2a37;
+  --wai-ink: #edf4f8;
+  --wai-muted: #b8c8d5;
+  --wai-soft: #8ea4b5;
+  --wai-line: #2b4152;
+  --wai-blue: #76c7ef;
+  --wai-blue-dark: #a7dcf6;
+  --wai-copper: #d6a05d;
+  --wai-focus: #f1b86d;
+  --wai-lead: #d6e2ea;
+  --wai-nav-hover-bg: #203242;
+  --wai-nav-hover-line: #456175;
+  --wai-avatar-border: #243544;
+  --wai-profile-meta: #d0dde6;
+  --wai-shadow-soft: rgba(0, 0, 0, 0.28);
 }
 
 body {
@@ -163,7 +214,7 @@ p {
 }
 
 .lead {
-  color: #2f4050;
+  color: var(--wai-lead);
   font-size: 1.14rem;
   line-height: 1.65;
   max-width: 68ch;
@@ -252,6 +303,84 @@ p {
 .navbar .nav-link.active {
   background: rgba(255, 255, 255, 0.1);
   color: #fff !important;
+}
+
+.theme-switcher {
+  align-items: center;
+  display: flex;
+  position: relative;
+}
+
+.theme-toggle {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 0.3rem;
+  color: rgba(255, 255, 255, 0.88);
+  display: inline-flex;
+  height: 2.35rem;
+  justify-content: center;
+  min-width: 2.35rem;
+  padding: 0;
+}
+
+.theme-toggle:hover,
+.theme-toggle:focus {
+  background: rgba(255, 255, 255, 0.14);
+  color: #ffffff;
+}
+
+.theme-toggle-svg {
+  flex: 0 0 auto;
+}
+
+.theme-menu {
+  background: var(--wai-surface);
+  border: 1px solid var(--wai-line);
+  border-radius: 0.3rem;
+  color: var(--wai-ink);
+  min-width: 9.5rem;
+  padding: 0.35rem;
+  position: absolute;
+  right: 0;
+  top: calc(100% + 0.45rem);
+  z-index: 20;
+}
+
+.theme-menu-item {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  border-radius: 0.25rem;
+  color: var(--wai-ink);
+  display: flex;
+  font: inherit;
+  font-weight: 650;
+  gap: 0.55rem;
+  min-height: 2.25rem;
+  padding: 0.35rem 0.55rem;
+  text-align: left;
+  width: 100%;
+}
+
+.theme-menu-item::before {
+  border: 1px solid var(--wai-line);
+  border-radius: 999px;
+  content: "";
+  display: inline-block;
+  height: 0.72rem;
+  width: 0.72rem;
+}
+
+.theme-menu-item:hover,
+.theme-menu-item:focus {
+  background: var(--wai-surface-strong);
+}
+
+.theme-menu-item[aria-checked="true"]::before {
+  background: var(--wai-blue);
+  border-color: var(--wai-blue);
+  box-shadow: inset 0 0 0 2px var(--wai-surface);
 }
 
 .content-column {
@@ -455,8 +584,8 @@ p {
 .research-overview-nav a:focus,
 .publication-nav a:hover,
 .publication-nav a:focus {
-  background: #e2edf2;
-  border-color: #aec4d1;
+  background: var(--wai-nav-hover-bg);
+  border-color: var(--wai-nav-hover-line);
 }
 
 .profile-sidebar {
@@ -470,12 +599,12 @@ p {
 }
 
 .profile-sidebar .avatar {
-  border: 3px solid #fff !important;
-  box-shadow: 0 6px 14px rgba(25, 38, 51, 0.12);
+  border: 3px solid var(--wai-avatar-border) !important;
+  box-shadow: 0 6px 14px var(--wai-shadow-soft);
 }
 
 .profile-meta {
-  color: #2d3c49;
+  color: var(--wai-profile-meta);
   line-height: 1.5;
 }
 
@@ -570,7 +699,7 @@ a.footnote:after {
 }
 
 .listing-authors {
-  color: #2d3c49;
+  color: var(--wai-profile-meta);
   line-height: 1.45;
 }
 
@@ -615,6 +744,23 @@ a.footnote:after {
 
   .navbar .nav-link {
     min-height: 2.75rem;
+  }
+
+  .theme-switcher {
+    align-items: stretch;
+    margin-top: 0.35rem;
+    width: 100%;
+  }
+
+  .theme-toggle {
+    min-height: 2.75rem;
+    width: 100%;
+  }
+
+  .theme-menu {
+    left: 0;
+    right: auto;
+    width: 100%;
   }
 
   .profile-sidebar {

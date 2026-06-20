@@ -4,7 +4,8 @@
     "eval:site": "node scripts/site-evals.mjs",
     "eval:agent": "node scripts/agent-workflow-evals.mjs",
     "eval:all": "npm run eval:site && npm run eval:agent",
-    "test:eval": "node --test scripts/site-evals.test.mjs scripts/agent-workflow-evals.test.mjs"
+    "test:theme": "node --test scripts/theme-controller.test.mjs scripts/theme-markup.test.mjs scripts/theme-css.test.mjs",
+    "test:eval": "node --test scripts/site-evals.test.mjs scripts/agent-workflow-evals.test.mjs scripts/theme-controller.test.mjs scripts/theme-markup.test.mjs scripts/theme-css.test.mjs"
   },
   "devDependencies": {
     "@shopify/prettier-plugin-liquid": "^1.10.0",
