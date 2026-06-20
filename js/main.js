@@ -51,12 +51,13 @@
   }
 
   function readStoredPreference(storage) {
-    const storedPreference = getStorageValue(storage ?? getWindowStorage());
+    const resolvedStorage = storage ?? getWindowStorage();
+    const storedPreference = getStorageValue(resolvedStorage);
 
     if (!storedPreference) return SYSTEM;
     if (VALID_PREFERENCES.has(storedPreference)) return storedPreference;
 
-    removeStorageValue(storage);
+    removeStorageValue(resolvedStorage);
     return SYSTEM;
   }
 

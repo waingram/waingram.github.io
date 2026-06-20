@@ -47,7 +47,7 @@ function createElement(dataset = {}) {
   };
 }
 
-function createDocument({ readyState = "loading" } = {}) {
+function createDocument({ missingThemeMarkup = false, readyState = "loading" } = {}) {
   const documentElement = {
     attrs: {},
     dataset: {},
@@ -91,6 +91,7 @@ function createDocument({ readyState = "loading" } = {}) {
       return documentListeners[type]?.length ?? 0;
     },
     querySelector(selector) {
+      if (missingThemeMarkup) return null;
       if (selector === "[data-theme-toggle]") return toggle;
       if (selector === "[data-theme-toggle-label]") return label;
       if (selector === "[data-theme-menu]") return menu;
@@ -98,6 +99,7 @@ function createDocument({ readyState = "loading" } = {}) {
       return null;
     },
     querySelectorAll(selector) {
+      if (missingThemeMarkup) return [];
       if (selector === "[data-theme-choice]") return choices;
       if (selector === "[data-theme-icon]") return icons;
       return [];
@@ -154,11 +156,12 @@ function createLegacyMediaQueryList(matches = false) {
 function loadTheme({
   darkMatches = false,
   legacyMediaQuery = false,
+  missingThemeMarkup = false,
   readyState = "loading",
   storageData = {},
   storageThrows = false,
 } = {}) {
-  const document = createDocument({ readyState });
+  const document = createDocument({ missingThemeMarkup, readyState });
   const storage = createStorage(storageData);
   const mediaQueryList = legacyMediaQuery
     ? createLegacyMediaQueryList(darkMatches)
@@ -237,6 +240,13 @@ describe("theme controller", () => {
     assert.equal(storage.getItem("themePreference"), null);
   });
 
+  it("clears invalid stored values from default storage", () => {
+    const { api, storage } = loadTheme({ storageData: { themePreference: "sepia" } });
+
+    assert.equal(api.readStoredPreference(), "system");
+    assert.equal(storage.getItem("themePreference"), null);
+  });
+
   it("selecting system clears the explicit override", () => {
     const { api, document, storage, window } = loadTheme({ storageData: { themePreference: "dark" } });
     api.initThemeController({ document, window, storage });
@@ -290,6 +300,35 @@ describe("theme controller", () => {
     assert.equal(document.themeColor.content, "#0d151d");
     assert.equal(document.toggle.dataset.themePreference, "system");
     assert.equal(document.toggle.dataset.effectiveTheme, "dark");
+  });
+
+  it("keeps explicit preferences across system media changes", () => {
+    for (const preference of ["light", "dark"]) {
+      const { api, document, mediaQueryList, storage, window } = loadTheme({
+        darkMatches: preference === "dark",
+        storageData: { themePreference: preference },
+      });
+      api.initThemeController({ document, window, storage });
+
+      mediaQueryList.change(preference === "light");
+
+      assert.equal(document.documentElement.dataset.theme, preference);
+      assert.equal(document.documentElement.style.colorScheme, preference);
+      assert.equal(document.themeColor.content, preference === "dark" ? "#0d151d" : "#f7f9fb");
+      assert.equal(document.toggle.dataset.themePreference, preference);
+      assert.equal(document.toggle.dataset.effectiveTheme, preference);
+    }
+  });
+
+  it("tolerates missing optional theme markup", () => {
+    const { api, document, storage, window } = loadTheme({ missingThemeMarkup: true });
+
+    assert.doesNotThrow(() => {
+      api.initThemeController({ document, window, storage });
+    });
+    assert.doesNotThrow(() => {
+      api.applyTheme("dark", { document, window });
+    });
   });
 
   it("tolerates blocked localStorage and initializes with system fallback", () => {
