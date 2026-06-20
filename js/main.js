@@ -187,9 +187,14 @@
       closeMenu();
     });
 
-    mediaQueryList?.addEventListener?.("change", () => {
+    const handleMediaQueryChange = () => {
       if (preference === SYSTEM) applyTheme(preference, { document, window });
-    });
+    };
+    if (mediaQueryList?.addEventListener) {
+      mediaQueryList.addEventListener("change", handleMediaQueryChange);
+    } else {
+      mediaQueryList?.addListener?.(handleMediaQueryChange);
+    }
 
     return {
       applyTheme(nextPreference = preference) {

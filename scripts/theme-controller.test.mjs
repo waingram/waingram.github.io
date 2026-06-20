@@ -137,10 +137,32 @@ function createMediaQueryList(matches = false) {
   };
 }
 
-function loadTheme({ darkMatches = false, readyState = "loading", storageData = {}, storageThrows = false } = {}) {
+function createLegacyMediaQueryList(matches = false) {
+  const listeners = new Set();
+  return {
+    matches,
+    addListener(listener) {
+      listeners.add(listener);
+    },
+    change(nextMatches) {
+      this.matches = nextMatches;
+      for (const listener of listeners) listener({ matches: nextMatches });
+    },
+  };
+}
+
+function loadTheme({
+  darkMatches = false,
+  legacyMediaQuery = false,
+  readyState = "loading",
+  storageData = {},
+  storageThrows = false,
+} = {}) {
   const document = createDocument({ readyState });
   const storage = createStorage(storageData);
-  const mediaQueryList = createMediaQueryList(darkMatches);
+  const mediaQueryList = legacyMediaQuery
+    ? createLegacyMediaQueryList(darkMatches)
+    : createMediaQueryList(darkMatches);
   const window = {
     document,
     matchMedia(query) {
@@ -248,6 +270,18 @@ describe("theme controller", () => {
 
   it("updates system mode when the OS preference changes", () => {
     const { api, document, mediaQueryList, storage, window } = loadTheme();
+    api.initThemeController({ document, window, storage });
+
+    mediaQueryList.change(true);
+
+    assert.equal(document.documentElement.dataset.theme, undefined);
+    assert.equal(document.themeColor.content, "#0d151d");
+    assert.equal(document.toggle.dataset.themePreference, "system");
+    assert.equal(document.toggle.dataset.effectiveTheme, "dark");
+  });
+
+  it("updates system mode through the legacy media query listener", () => {
+    const { api, document, mediaQueryList, storage, window } = loadTheme({ legacyMediaQuery: true });
     api.initThemeController({ document, window, storage });
 
     mediaQueryList.change(true);
