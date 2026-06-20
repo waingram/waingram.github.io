@@ -303,6 +303,13 @@ describe("theme controller", () => {
     assert.equal(storage.getItem("themePreference"), null);
   });
 
+  it("clears stale stored system values and returns to system", () => {
+    const { api, storage } = loadTheme({ storageData: { themePreference: "system" } });
+
+    assert.equal(api.readStoredPreference(storage), "system");
+    assert.equal(storage.getItem("themePreference"), null);
+  });
+
   it("clears invalid stored values from default storage", () => {
     const { api, storage } = loadTheme({ storageData: { themePreference: "sepia" } });
 

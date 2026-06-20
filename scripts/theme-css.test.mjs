@@ -248,6 +248,10 @@ describe("theme CSS", () => {
     }
   });
 
+  it("maps generic separators to theme line color", () => {
+    assertDeclaration(blockFor("hr"), "border-top", "1px solid var(--wai-line)");
+  });
+
   it("keeps button foregrounds at AA contrast in light and dark palettes", () => {
     const palettes = {
       light: variablesFrom(blockFor(":root")),

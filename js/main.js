@@ -55,7 +55,7 @@
     const storedPreference = getStorageValue(resolvedStorage);
 
     if (!storedPreference) return SYSTEM;
-    if (VALID_PREFERENCES.has(storedPreference)) return storedPreference;
+    if (EXPLICIT_THEMES.has(storedPreference)) return storedPreference;
 
     removeStorageValue(resolvedStorage);
     return SYSTEM;
