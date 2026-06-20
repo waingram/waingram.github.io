@@ -17,14 +17,34 @@
 - Execution evidence for long-running tasks lives in `docs/superpowers/runs/`.
 - Keep the canonical workflow in committed files: `agent-workflow.config.json`, `scripts/agent-workflow-evals.mjs`, templates, docs, package scripts, and CI.
 - Treat `.codex/hooks.json` as a local Codex adapter only. Use `docs/superpowers/templates/codex-hooks.example.json` as the committed example.
-- Before claiming multi-step work is complete, run `npm run eval:agent` and the relevant project verification commands.
-- Before release-oriented completion, run `npm run eval:all` against a freshly built site.
+- Before claiming multi-step work is complete, run `npm run eval:agent` and the relevant project verification commands. In the Codex desktop environment, `npm` may be unavailable; when `command -v npm` fails, use the bundled Node.js runtime directly as documented under "Node/NPM Availability".
+- Before release-oriented completion, run `npm run eval:all` against a freshly built site, or the direct bundled-Node equivalents when `npm` is unavailable.
 
 ## Environment
 
 - Ruby: `/opt/homebrew/opt/ruby/bin/` (Ruby 4.0.1 via Homebrew)
 - Bundler/Jekyll: prefix commands with `/opt/homebrew/opt/ruby/bin/bundle exec`
 - Gems: installed in `~/.gem/gems/`
+
+## Node/NPM Availability
+
+- In the Codex desktop environment, `npm` is not installed by default. Check with `command -v npm` before using any `npm run ...` command.
+- Bundled Node.js is available at `/Users/waingram/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node`.
+- If `npm` is unavailable, use the bundled Node.js command directly:
+
+```bash
+# Equivalent to npm run eval:agent
+/Users/waingram/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node scripts/agent-workflow-evals.mjs
+
+# Equivalent to npm run eval:site
+/Users/waingram/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node scripts/site-evals.mjs
+
+# Equivalent to npm run test:theme
+/Users/waingram/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node --test scripts/theme-controller.test.mjs scripts/theme-markup.test.mjs scripts/theme-css.test.mjs
+
+# Equivalent to npm run test:eval
+/Users/waingram/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node --test scripts/site-evals.test.mjs scripts/agent-workflow-evals.test.mjs scripts/theme-controller.test.mjs scripts/theme-markup.test.mjs scripts/theme-css.test.mjs
+```
 
 ## Common Commands
 
