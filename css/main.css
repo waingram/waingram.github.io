@@ -482,13 +482,13 @@ p {
   padding: 1.5rem 1.35rem;
 }
 
-.page-hero h1 {
+/* .page-hero h1 {
   max-width: 16ch;
 }
 
 .publications-hero h1 {
   max-width: 18ch;
-}
+} */
 
 .page-kicker {
   color: var(--wai-copper);
@@ -704,9 +704,9 @@ p {
   padding-left: 0.45rem;
 }
 
-svg.bi {    
-   /* vertical-align: text-bottom; */
-   margin-bottom:4px;
+svg.bi {
+  /* vertical-align: text-bottom; */
+  margin-bottom: 4px;
 }
 
 .social-icons .label {
@@ -714,7 +714,7 @@ svg.bi {
 }
 
 .width-full {
-  width: 100%!important;
+  width: 100% !important;
 }
 
 .drop-cap:first-letter {
@@ -722,11 +722,11 @@ svg.bi {
   margin: -5px 2px -5px 0;
   font-size: 335%;
   line-height: 100%;
-} 
+}
 
 .bibliography {
   list-style: none; /* Removes default bullets or numbers */
-  counter-reset: publication-counter; /* Resets the counter */ 
+  counter-reset: publication-counter; /* Resets the counter */
   margin: 1rem 0 2.4rem;
   padding-left: 0;
 }
@@ -755,13 +755,13 @@ svg.bi {
   content: none;
 }
 
-a.footnote:before {   
+a.footnote:before {
   content: "[";
- }
- 
+}
+
 a.footnote:after {
-     content: "]";
- }
+  content: "]";
+}
 
 .publication-listing {
   max-width: 68ch;
