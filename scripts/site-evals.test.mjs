@@ -104,4 +104,37 @@ describe("site eval helpers", () => {
       /main id="content"/,
     );
   });
+
+  it("requires browser titles to include the site name", () => {
+    const html = `<!doctype html>
+<html lang="en">
+<head>
+  <title>Home</title>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"ProfilePage","name":"Home","mainEntity":{"@type":"Person","name":"William A. Ingram"}}
+  </script>
+</head>
+<body>
+  <main id="content"><h1>Home</h1></main>
+</body>
+</html>`;
+
+    assert.match(validatePageHtml("index.html", html, new Set())[0], /title should include William A\. Ingram/);
+  });
+
+  it("validates WebSite structured data for Google site-name signals", () => {
+    assert.deepEqual(
+      validateJsonLdNode(
+        {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          name: "William A. Ingram",
+          url: "https://waingram.github.io/",
+        },
+        "fixture",
+      ),
+      [],
+    );
+    assert.match(validateJsonLdNode({ "@type": "WebSite", name: "William A. Ingram" }, "fixture")[0], /url/);
+  });
 });

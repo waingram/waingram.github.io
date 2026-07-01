@@ -3,6 +3,7 @@ import path from "node:path";
 import { pathToFileURL } from "node:url";
 
 export const SITE_URL = "https://waingram.github.io";
+export const SITE_NAME = "William A. Ingram";
 
 const STRUCTURED_ENDPOINTS = [
   "/research.json",
@@ -84,6 +85,11 @@ function decodeXmlEntities(value) {
     .replaceAll("&gt;", ">")
     .replaceAll("&quot;", '"')
     .replaceAll("&apos;", "'");
+}
+
+function extractTitle(html) {
+  const match = html.match(/<title>\s*([\s\S]*?)\s*<\/title>/i);
+  return match ? decodeXmlEntities(match[1].replace(/\s+/g, " ").trim()) : "";
 }
 
 export function parseSitemapLocations(xml) {
@@ -204,6 +210,14 @@ export function validateJsonLdNode(node, source) {
     if (!hasText(node.headline) && !hasText(node.name)) errors.push(`${source}: BlogPosting missing headline or name`);
     addRequired(errors, node, "author", source);
     addRequired(errors, node, "datePublished", source);
+  }
+
+  if (hasType(node, "WebSite")) {
+    addRequired(errors, node, "name", source);
+    addRequired(errors, node, "url", source);
+    if (hasText(node.url) && node.url !== `${SITE_URL}/`) {
+      errors.push(`${source}: WebSite url should be the canonical home page ${SITE_URL}/`);
+    }
   }
 
   if (hasType(node, "ScholarlyArticle")) {
@@ -385,7 +399,12 @@ export function validatePageHtml(filePath, html, sitePaths = new Set(), options 
   const errors = [];
   const siteDir = options.siteDir || "_site";
   if (!/<html\b[^>]*\blang=["']en["']/i.test(html)) errors.push(`${filePath}: <html> should set lang="en"`);
-  if (!/<title>[^<]+<\/title>/i.test(html)) errors.push(`${filePath}: missing non-empty <title>`);
+  const title = extractTitle(html);
+  if (!hasText(title)) {
+    errors.push(`${filePath}: missing non-empty <title>`);
+  } else if (title !== SITE_NAME && !title.includes(SITE_NAME)) {
+    errors.push(`${filePath}: title should include ${SITE_NAME}`);
+  }
 
   const mainMatch = html.match(/<main\b[^>]*\bid=["']content["'][^>]*>([\s\S]*?)<\/main>/i);
   const mainHtml = mainMatch ? mainMatch[1] : "";
