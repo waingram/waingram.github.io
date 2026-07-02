@@ -20,7 +20,44 @@ The analysis measured agreement and Cohen's kappa, compared lexical patterns in 
 
 Across the three SDGs, the models assigned the same label in 83.6% of cases, but Cohen's kappa was only 0.467. Raw agreement overstated reliability because both models labeled many abstracts as relevant. Kappa showed weaker reliability once chance agreement and class imbalance were taken into account. The disagreement region, roughly 15-20% of decisions per SDG, was a structured set of borderline cases rather than a random residue.
 
+<figure class="paper-figure">
+  <img src="{{ '/img/blog/llm-agreement-breakdown.png' | relative_url }}" alt="Stacked bar chart showing both non-relevant labels, both relevant labels, and model disagreement for SDG 1, SDG 3, and SDG 7, with kappa values of 0.51, 0.40, and 0.43.">
+  <figcaption>Agreement between LLaMA and Qwen was concentrated in shared relevant labels, which explains why raw agreement and Cohen's kappa diverged across SDGs.</figcaption>
+</figure>
+
 Lexical analysis identified model-specific relevance criteria. For SDG 1, LLaMA assigned relevance more often to documents using healthcare access terms such as health, care, insurance, and coverage, while Qwen assigned relevance more often to documents using terms associated with structural inequality, wealth, income, and taxation. For SDG 3, LLaMA assigned relevance more often to clinical and procedural terms, while Qwen assigned relevance more often to molecular and cellular terms. For SDG 7, LLaMA assigned relevance more often to systems and infrastructure terms, while Qwen assigned relevance more often to electrochemistry and battery terms. The FDR-adjusted p-values for the reported terms were below 0.001.
+
+<figure class="paper-table">
+  <figcaption>Top differentiating terms between LLaMA-relevant and Qwen-relevant documents in the disagreement subsets. Positive values indicate terms with higher mean TF-IDF in LLaMA-relevant documents; negative values indicate terms with higher mean TF-IDF in Qwen-relevant documents.</figcaption>
+  <div class="paper-table-scroll" role="region" aria-label="Top differentiating terms by SDG" tabindex="0">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">SDG</th>
+          <th scope="col">LLaMA-relevant terms</th>
+          <th scope="col">Qwen-relevant terms</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">SDG 1<br><span>No Poverty</span></th>
+          <td>health (+0.019), care (+0.014), insurance (+0.013), covid (+0.010), coverage (+0.010)</td>
+          <td>inequality (-0.020), wealth (-0.012), income (-0.009), tax (-0.008), political (-0.005)</td>
+        </tr>
+        <tr>
+          <th scope="row">SDG 3<br><span>Health</span></th>
+          <td>patients (+0.023), risk (+0.007), tavr (+0.007), stroke (+0.006), coronary (+0.006)</td>
+          <td>cells (-0.019), cancer (-0.018), cell (-0.017), tumor (-0.015), human (-0.007)</td>
+        </tr>
+        <tr>
+          <th scope="row">SDG 7<br><span>Energy</span></th>
+          <td>fuel (+0.006), computing (+0.006), neural (+0.004), plasma (+0.004), network (+0.005)</td>
+          <td>lithium (-0.018), capacity (-0.018), ion (-0.016), batteries (-0.016), anode (-0.015)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</figure>
 
 The retrieval experiments show a direct consequence for ranked output. Under a fixed scoring function applied to the same disagreement pool, the top-ranked documents changed according to the model that filtered the candidate set. In SDG 7, the LLaMA-relevant subset contained 19 of the top 20 centroid-ranked disagreement documents, while the Qwen-relevant subset contained one. The ranking logic was held constant, so the difference came from the earlier relevance filter.
 

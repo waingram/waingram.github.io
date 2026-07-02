@@ -466,6 +466,72 @@ p {
   max-width: 78ch;
 }
 
+.paper-figure,
+.paper-table {
+  border-bottom: 1px solid var(--wai-line);
+  border-top: 1px solid var(--wai-line);
+  margin: 1.6rem 0 1.9rem;
+  max-width: 72ch;
+  padding: 1rem 0;
+}
+
+.paper-figure img {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+
+.paper-figure figcaption,
+.paper-table figcaption {
+  color: var(--wai-muted);
+  font-size: 0.94rem;
+  line-height: 1.55;
+  margin-top: 0.8rem;
+  max-width: 70ch;
+}
+
+.paper-table figcaption {
+  margin: 0 0 0.8rem;
+}
+
+.paper-table-scroll {
+  overflow-x: auto;
+}
+
+.paper-table table {
+  border-collapse: collapse;
+  color: var(--wai-ink);
+  font-size: 0.92rem;
+  line-height: 1.45;
+  min-width: 44rem;
+  width: 100%;
+}
+
+.paper-table th,
+.paper-table td {
+  border: 1px solid var(--wai-line);
+  padding: 0.7rem 0.8rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+.paper-table thead th {
+  background: var(--wai-surface-strong);
+  color: var(--wai-ink);
+  font-weight: 700;
+}
+
+.paper-table tbody th {
+  color: var(--wai-blue-dark);
+  font-weight: 700;
+  width: 8.5rem;
+}
+
+.paper-table tbody th span {
+  color: var(--wai-muted);
+  font-weight: 600;
+}
+
 .skippy a:focus {
   background: var(--wai-surface);
   color: var(--wai-blue-dark);
