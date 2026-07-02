@@ -25,6 +25,8 @@ Across the three SDGs, the models assigned the same label in 83.6% of cases, but
   <figcaption>Agreement between LLaMA and Qwen was concentrated in shared relevant labels, which explains why raw agreement and Cohen's kappa diverged across SDGs.</figcaption>
 </figure>
 
+We ran a negative control to test whether the shared relevant labels reflected a general tendency to include documents. Applying the SDG 7 energy prompt to abstracts retrieved by the SDG 1 poverty query produced 91% agreement, with Cohen's kappa of 0.59. The models jointly assigned non-relevance to 84% of cases, jointly assigned relevance to 7%, and disagreed on 8%. The main experiment therefore cannot be reduced to affirmative-label bias; the models converged on rejection when the prompt and candidate set described conceptually distant SDGs.
+
 Lexical analysis identified model-specific relevance criteria. For SDG 1, LLaMA assigned relevance more often to documents using healthcare access terms such as health, care, insurance, and coverage, while Qwen assigned relevance more often to documents using terms associated with structural inequality, wealth, income, and taxation. For SDG 3, LLaMA assigned relevance more often to clinical and procedural terms, while Qwen assigned relevance more often to molecular and cellular terms. For SDG 7, LLaMA assigned relevance more often to systems and infrastructure terms, while Qwen assigned relevance more often to electrochemistry and battery terms. The FDR-adjusted p-values for the reported terms were below 0.001.
 
 <figure class="paper-table">
