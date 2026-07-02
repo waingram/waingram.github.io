@@ -182,6 +182,7 @@ body {
 
 a {
   color: var(--wai-blue);
+  overflow-wrap: break-word;
   text-decoration-thickness: 0.08em;
   text-underline-offset: 0.16em;
 }
@@ -953,13 +954,24 @@ p {
 }
 
 .profile-sidebar {
+  --wai-profile-avatar-size: 13.25rem;
   color: var(--wai-ink);
+  font-size: 0.94rem;
+  line-height: 1.48;
+  padding-left: clamp(1.25rem, 2vw, 2rem);
+  padding-right: clamp(0.9rem, 1.8vw, 1.65rem);
 }
 
 .profile-sidebar h1 {
-  font-size: 2rem;
+  font-size: 1.58rem;
   font-weight: 680;
+  line-height: 1.14;
   margin-bottom: 0;
+}
+
+#profile_image {
+  max-width: var(--wai-profile-avatar-size);
+  width: min(100%, var(--wai-profile-avatar-size));
 }
 
 .profile-sidebar .avatar {
@@ -967,20 +979,31 @@ p {
   box-shadow: 0 6px 14px var(--wai-shadow-soft);
 }
 
+.profile-honorific {
+  white-space: nowrap;
+}
+
 .profile-meta {
   color: var(--wai-profile-meta);
-  line-height: 1.5;
+  font-size: 0.91rem;
+  line-height: 1.48;
 }
 
 .profile-links {
-  gap: 0.1rem;
+  gap: 0.05rem;
   padding-bottom: 0.8rem;
 }
 
 .profile-links .nav-link {
+  align-items: center;
   border-radius: 0.25rem;
   color: var(--wai-ink) !important;
-  min-height: 2.35rem;
+  display: flex;
+  font-size: 0.92rem;
+  gap: 0.5rem;
+  line-height: 1.25;
+  min-height: 2.08rem;
+  padding: 0.32rem 0.45rem;
 }
 
 .profile-links .nav-link:hover,
@@ -989,17 +1012,29 @@ p {
   color: var(--wai-blue-dark) !important;
 }
 
-.profile-links .label {
-  padding-left: 0.45rem;
-}
-
-svg.bi {
-  /* vertical-align: text-bottom; */
-  margin-bottom: 4px;
-}
-
+.profile-links .label,
 .social-icons .label {
-  padding-left: 5px;
+  min-width: 0;
+  padding-left: 0;
+}
+
+.profile-links i,
+.profile-link-icon {
+  flex: 0 0 1rem;
+  font-size: 1rem;
+  height: 1rem;
+  width: 1rem;
+}
+
+.profile-links svg.bi,
+.profile-link-icon {
+  margin-bottom: 0;
+}
+
+@media (min-width: 768px) {
+  .profile-sidebar {
+    align-self: flex-start;
+  }
 }
 
 .width-full {
@@ -1073,14 +1108,6 @@ a.footnote:after {
   margin-top: 0.1rem;
 }
 
-@media (min-width: 768px) {
-  .profile-sidebar {
-    align-self: flex-start;
-    position: sticky;
-    top: 1.25rem;
-  }
-}
-
 @media (max-width: 767.98px) {
   body {
     font-size: 1rem;
@@ -1128,8 +1155,10 @@ a.footnote:after {
   }
 
   .profile-sidebar {
+    --wai-profile-avatar-size: 4.25rem;
     background: var(--wai-surface);
     border-bottom: 1px solid var(--wai-line);
+    font-size: 0.93rem;
     margin: -0.25rem 0 1.15rem;
     padding: 1rem 0.85rem 0.85rem;
   }
@@ -1139,20 +1168,23 @@ a.footnote:after {
   }
 
   #profile_image {
-    width: 4rem;
+    width: var(--wai-profile-avatar-size);
   }
 
   .profile-name {
+    flex: 1 1 0;
+    min-width: 0;
     padding: 0 !important;
+    width: auto !important;
   }
 
   .profile-sidebar h1 {
-    font-size: 1.52rem;
+    font-size: 1.35rem;
   }
 
   .profile-meta {
     border-top: 0 !important;
-    font-size: 0.96rem;
+    font-size: 0.9rem;
     padding: 0.75rem 0 !important;
   }
 
@@ -1162,22 +1194,21 @@ a.footnote:after {
 
   .profile-links {
     border-bottom: 0 !important;
-    display: flex !important;
-    flex-direction: row !important;
-    flex-wrap: wrap;
+    display: grid !important;
     gap: 0.25rem 0.35rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     padding: 0.55rem 0 0;
   }
 
   .profile-links li {
-    flex: 1 1 45%;
+    min-width: 0;
   }
 
   .profile-links .nav-link {
     background: var(--wai-surface-strong);
-    font-size: 0.95rem;
-    min-height: 2.25rem;
-    padding: 0.35rem 0.5rem;
+    font-size: 0.89rem;
+    min-height: 2.18rem;
+    padding: 0.38rem 0.48rem;
   }
 
   .content-column {

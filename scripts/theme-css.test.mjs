@@ -252,6 +252,10 @@ describe("theme CSS", () => {
     assertDeclaration(blockFor("hr"), "border-top", "1px solid var(--wai-line)");
   });
 
+  it("allows long links to wrap within narrow content columns", () => {
+    assert.match(css, /(?:^|\n)a\s*\{[\s\S]*?overflow-wrap:\s*break-word;/);
+  });
+
   it("keeps button foregrounds at AA contrast in light and dark palettes", () => {
     const palettes = {
       light: variablesFrom(blockFor(":root")),

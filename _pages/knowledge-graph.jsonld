@@ -112,6 +112,7 @@ permalink: /knowledge-graph.jsonld
         }
       ],
       "sameAs": [
+        "https://experts.vt.edu/5675-william-a-ingram",
         "https://orcid.org/0000-0002-8307-8844",
         "https://scholar.google.com/citations?user=L-R5NXwAAAAJ",
         "https://dblp.uni-trier.de/pid/271/4720.html",

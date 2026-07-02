@@ -5,7 +5,7 @@ permalink: /research.json
 {
   "id": "https://waingram.github.io/#waingram",
   "type": "researcher_profile",
-  "last_updated": "2026-06-17",
+  "last_updated": "2026-07-02",
   "identity": {
     "name": "William A. Ingram",
     "honorific_suffix": "Ph.D.",
@@ -13,6 +13,7 @@ permalink: /research.json
     "url": "https://waingram.github.io/",
     "image": "https://avatars.githubusercontent.com/u/371268?v=4",
     "same_as": [
+      "https://experts.vt.edu/5675-william-a-ingram",
       "https://orcid.org/0000-0002-8307-8844",
       "https://scholar.google.com/citations?user=L-R5NXwAAAAJ",
       "https://dblp.uni-trier.de/pid/271/4720.html",
