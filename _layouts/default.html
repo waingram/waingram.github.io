@@ -42,7 +42,7 @@
 
     <meta property="og:title" content="{{ document_title | xml_escape }}">
     <meta property="og:site_name" content="{{ site.title | xml_escape }}">
-    <meta property="og:type" content="website">
+    <meta property="og:type" content="{% if page.collection == 'posts' %}article{% else %}website{% endif %}">
     <meta property="og:url" content="{{ site.url }}{{ page.url }}">
     <meta property="og:image" content="{{ page.og_image | default: site.og_image }}">
     <meta property="og:description" content="{{ page.description | default: site.description }}">
@@ -50,6 +50,10 @@
         title="Research knowledge graph">
     <link rel="alternate" type="application/json" href="{{ '/research.json' | relative_url }}"
         title="Structured research profile">
+    {% if page.url == "/blog/" %}
+    <link rel="alternate" type="application/rss+xml" href="{{ '/feed.xml' | relative_url }}"
+        title="{{ site.title | xml_escape }} research blog feed">
+    {% endif %}
     {% if page.url == "/research/" %}
     <link rel="alternate" type="application/json" href="{{ '/projects.json' | relative_url }}"
         title="Structured research projects">
@@ -62,14 +66,39 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "{% if page.url == "/" %}ProfilePage{% elsif page.url == "/publications/" %}CollectionPage{% elsif page.url == "/research/" %}AboutPage{% elsif page.collection == "posts" %}BlogPosting{% else %}WebPage{% endif %}",
+      "@type": "{% if page.url == "/" %}ProfilePage{% elsif page.url == "/publications/" %}CollectionPage{% elsif page.url == "/blog/" %}CollectionPage{% elsif page.url == "/research/" %}AboutPage{% elsif page.collection == "posts" %}BlogPosting{% else %}WebPage{% endif %}",
       "@id": "https://waingram.github.io{{ page.url }}#webpage",
       "url": "https://waingram.github.io{{ page.url }}",
       "name": {{ document_title | jsonify }},
+      {% if page.url == "/blog/" %}
+      "description": {{ page.description | default: site.description | jsonify }},
+      "isPartOf": {
+        "@type": "Blog",
+        "@id": "https://waingram.github.io/blog/#blog",
+        "name": "Research Blog",
+        "publisher": {
+          "@id": "https://waingram.github.io/#waingram"
+        }
+      },
+      {% endif %}
       {% if page.collection == "posts" %}
+      {% assign page_word_count = page.content | strip_html | number_of_words %}
+      {% assign page_reading_minutes = page_word_count | plus: 224 | divided_by: 225 %}
+      {% if page_reading_minutes < 1 %}
+      {% assign page_reading_minutes = 1 %}
+      {% endif %}
+      {% assign page_keywords = page.tags | default: page.categories | join: ", " %}
       "headline": {{ page.title | jsonify }},
       "datePublished": {{ page.date | date_to_xmlschema | jsonify }},
       "dateModified": {{ page.last_modified_at | default: page.date | date_to_xmlschema | jsonify }},
+      {% if page.description %}
+      "description": {{ page.description | jsonify }},
+      {% endif %}
+      {% if page_keywords != "" %}
+      "keywords": {{ page_keywords | jsonify }},
+      {% endif %}
+      "wordCount": {{ page_word_count | jsonify }},
+      "timeRequired": "PT{{ page_reading_minutes }}M",
       "author": {
         "@id": "https://waingram.github.io/#waingram",
         "@type": "Person",
@@ -93,6 +122,8 @@
           "https://github.com/waingram",
           "https://bsky.app/profile/waingram.bsky.social"
         ]
+      }{% elsif page.url == "/blog/" %}{
+        "@id": "https://waingram.github.io/blog/#blog"
       }{% else %}{
         "@id": "https://waingram.github.io/#waingram"
       }{% endif %},

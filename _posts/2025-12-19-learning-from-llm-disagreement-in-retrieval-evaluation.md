@@ -3,6 +3,7 @@ layout: default
 title: 'Learning from LLM Disagreement in Retrieval Evaluation'
 date: 2025-12-19 12:00 -0500
 categories: AI, Digital Libraries, Information Retrieval, SDGs, JCDL
+tags: [AI, Digital Libraries, Information Retrieval, SDGs, JCDL]
 ---
 Our [JCDL 2025](https://2025.jcdl.org/) paper with [Bipasha Banerjee](https://bipasha-banerjee.github.io/) and [Edward A. Fox](https://fox.cs.vt.edu/) examines how model disagreement changes retrieval evaluation when large language models filter scholarly records before ranking. "Learning from LLM Disagreement in Retrieval Evaluation" shows that disagreement between relevance labelers can identify cases near the boundary of an information need. In thematic retrieval tasks, particularly ones involving [Sustainable Development Goals (SDGs)](https://sdgs.un.org/goals), those boundary cases determine which records remain available to a dashboard, bibliography, or downstream synthesis.[^1]
 

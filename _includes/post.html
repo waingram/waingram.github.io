@@ -1,7 +1,36 @@
+{% assign post_word_count = page.content | strip_html | number_of_words %}
+{% assign post_reading_minutes = post_word_count | plus: 224 | divided_by: 225 %}
+{% if post_reading_minutes < 1 %}
+  {% assign post_reading_minutes = 1 %}
+{% endif %}
+{% assign post_topics = page.tags | default: page.categories %}
+
 <article class="blog-post">
-    <h1>{{ page.title }}</h1>
-    <p><strong>{{ page.date | date: "%B %d, %Y" }}</strong></p>
-    <div class="post-content">
+    <p class="back-to-blog"><a href="{{ '/blog/' | relative_url }}">Back to Research Blog</a></p>
+    <header class="post-header">
+        <p class="page-kicker">Research note</p>
+        <h1 itemprop="headline">{{ page.title }}</h1>
+        <div class="post-meta post-header-meta">
+            <span>Published <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%B %-d, %Y" }}</time></span>
+            {% if page.last_modified_at %}
+              <span class="post-meta-separator" aria-hidden="true">/</span>
+              <span>Updated <time datetime="{{ page.last_modified_at | date_to_xmlschema }}" itemprop="dateModified">{{ page.last_modified_at | date: "%B %-d, %Y" }}</time></span>
+            {% endif %}
+            <span class="post-meta-separator" aria-hidden="true">/</span>
+            <span>{{ post_reading_minutes }} min read</span>
+        </div>
+        {% if post_topics and post_topics != empty %}
+          <ul class="post-tags post-header-tags" aria-label="Post topics">
+            {% for topic in post_topics %}
+              {% assign topic_name = topic | strip %}
+              {% if topic_name != "" %}
+                <li itemprop="keywords">{{ topic_name }}</li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        {% endif %}
+    </header>
+    <div class="post-content" itemprop="articleBody">
         {{ content }}
     </div>
 </article>

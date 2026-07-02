@@ -1,18 +1,84 @@
-<div class="blog-posts">
-    <h1>Research Blog</h1>
-    {% for post in paginator.posts %}
-      <article>
-        <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
-        <p>{{ post.excerpt }}</p>
-      </article>
+{% assign visible_posts = paginator.posts | default: site.posts %}
+{% assign post_total = site.posts | size %}
+{% assign topic_count = 0 %}
+{% assign topic_index = "" %}
+{% for blog_post in site.posts %}
+  {% assign topic_source = blog_post.tags | default: blog_post.categories %}
+  {% for topic in topic_source %}
+    {% assign topic_name = topic | strip %}
+    {% if topic_name != "" %}
+      {% assign topic_key = "|" | append: topic_name | append: "|" %}
+      {% unless topic_index contains topic_key %}
+        {% assign topic_index = topic_index | append: topic_key %}
+        {% assign topic_count = topic_count | plus: 1 %}
+      {% endunless %}
+    {% endif %}
+  {% endfor %}
+{% endfor %}
+
+<section class="blog-hero" aria-labelledby="blog-title">
+  <p class="page-kicker">Research notes</p>
+  <h1 id="blog-title">Research Blog</h1>
+  <p class="blog-hero-copy">
+    Concise notes on digital libraries, machine learning, scholarly communication, and the systems that make research evidence easier to find, evaluate, and reuse.
+  </p>
+  <div class="blog-hero-meta" aria-label="Blog overview">
+    <span><strong>{{ post_total }}</strong> posts</span>
+    <span><strong>{{ topic_count }}</strong> topics</span>
+    <a href="{{ '/feed.xml' | relative_url }}" rel="alternate" type="application/rss+xml">RSS feed</a>
+  </div>
+</section>
+
+<section class="blog-index" aria-label="Research blog posts">
+  <ol class="blog-list">
+    {% for post in visible_posts %}
+      {% assign post_word_count = post.content | strip_html | number_of_words %}
+      {% assign post_reading_minutes = post_word_count | plus: 224 | divided_by: 225 %}
+      {% if post_reading_minutes < 1 %}
+        {% assign post_reading_minutes = 1 %}
+      {% endif %}
+      {% assign post_topics = post.tags | default: post.categories %}
+      <li class="blog-list-item">
+        <article class="blog-preview" itemtype="https://schema.org/BlogPosting" itemscope>
+          <header class="blog-preview-header">
+            <p class="blog-preview-date">
+              <time datetime="{{ post.date | date_to_xmlschema }}" itemprop="datePublished">{{ post.date | date: "%B %-d, %Y" }}</time>
+            </p>
+            <h2 class="blog-preview-title" itemprop="headline">
+              <a href="{{ post.url | relative_url }}" itemprop="url">{{ post.title }}</a>
+            </h2>
+          </header>
+          <div class="blog-preview-summary" itemprop="description">
+            {{ post.excerpt | strip_html | truncatewords: 42 }}
+          </div>
+          <footer class="post-meta blog-preview-meta">
+            <span>{{ post_reading_minutes }} min read</span>
+            {% if post_topics and post_topics != empty %}
+              <span class="post-meta-separator" aria-hidden="true">/</span>
+              <ul class="post-tags" aria-label="Post topics">
+                {% for topic in post_topics %}
+                  {% assign topic_name = topic | strip %}
+                  {% if topic_name != "" %}
+                    <li itemprop="keywords">{{ topic_name }}</li>
+                  {% endif %}
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </footer>
+        </article>
+      </li>
     {% endfor %}
-  </div>
-  
-  <div class="pagination">
+  </ol>
+</section>
+
+{% if paginator.total_pages > 1 %}
+  <nav class="pagination blog-pagination" aria-label="Blog pagination">
     {% if paginator.previous_page %}
-      <a href="{{ paginator.previous_page_path | relative_url }}">Previous</a>
+      <a href="{{ paginator.previous_page_path | relative_url }}">Newer posts</a>
     {% endif %}
+    <span>Page {{ paginator.page }} of {{ paginator.total_pages }}</span>
     {% if paginator.next_page %}
-      <a href="{{ paginator.next_page_path | relative_url }}">Next</a>
+      <a href="{{ paginator.next_page_path | relative_url }}">Older posts</a>
     {% endif %}
-  </div>
+  </nav>
+{% endif %}

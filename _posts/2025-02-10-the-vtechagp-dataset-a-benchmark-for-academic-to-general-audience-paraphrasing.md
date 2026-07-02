@@ -2,6 +2,7 @@
 layout: default
 title: 'The VTechAGP Dataset: A Benchmark for Academic-to-General-Audience Paraphrasing'
 date: 2025-02-10 15:58 -0500
+tags: [NLP, Datasets, Digital Libraries, Text Simplification]
 ---
 I recently collaborated with [Ming Cheng](https://github.com/SIGSEGV-0x7) and 
 [Jiaying Gong](https://sites.google.com/vt.edu/jiaying-gong/home), two members of

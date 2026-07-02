@@ -3,6 +3,7 @@ layout: default
 title:  "Small, Locally-Hosted LLMs for Sustainable Development Goal Classification"
 date:   2024-12-05 12:36:48 -0500
 categories: AI, SDGs, IEEE, BigData, Poster
+tags: [AI, SDGs, IEEE BigData, Poster]
 ---
 We are excited to announce that "Agentic AI for Improving Precision in Identifying Contributions to Sustainable Development Goals" has been accepted as a poster at the 2024 IEEE International Conference on Big Data (IEEE BigData 2024), which will take place from December 15–18, 2024, in Washington, DC. [Learn more about the conference](http://bigdataieee.org/BigData2024/).
 
