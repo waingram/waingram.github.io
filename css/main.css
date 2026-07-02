@@ -1164,18 +1164,25 @@ a.footnote:after {
   }
 
   .profile-summary {
+    align-items: center !important;
+    flex-direction: column;
+    gap: 0.65rem;
     margin-bottom: 0.7rem !important;
+    text-align: center;
   }
 
   #profile_image {
+    margin-right: 0 !important;
     width: var(--wai-profile-avatar-size);
   }
 
   .profile-name {
-    flex: 1 1 0;
+    flex: 0 1 auto;
+    max-width: 100%;
     min-width: 0;
     padding: 0 !important;
-    width: auto !important;
+    text-align: center;
+    width: 100% !important;
   }
 
   .profile-sidebar h1 {
@@ -1186,6 +1193,7 @@ a.footnote:after {
     border-top: 0 !important;
     font-size: 0.9rem;
     padding: 0.75rem 0 !important;
+    text-align: center;
   }
 
   .profile-meta .p-adr {

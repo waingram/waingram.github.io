@@ -15,6 +15,10 @@ function labelsFromSidebar() {
   return [...sidebar.matchAll(/<span class="label"[^>]*>([^<]+)<\/span>/g)].map((match) => match[1].trim());
 }
 
+function visibleText(source) {
+  return source.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+}
+
 function escapeRegExp(value) {
   return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
@@ -50,8 +54,13 @@ function mediaBlockFor(query) {
 
 describe("profile sidebar", () => {
   it("shows the Ph.D. suffix as part of the visible name", () => {
-    assert.match(sidebar, /itemprop="honorificSuffix">Ph\.D\.<\/span>/);
-    assert.match(sidebar, /William[\s\S]*A\.[\s\S]*Ingram[\s\S]*Ph\.D\./);
+    assert.match(sidebar, /,\s*<span class="profile-honorific" itemprop="honorificSuffix">Ph\.D\.<\/span>/);
+    assert.match(visibleText(sidebar), /William\s+A\.\s+Ingram\s*,\s+Ph\.D\./);
+  });
+
+  it("uses the standard page container for steadier sidebar margins", () => {
+    assert.match(layout, /<div class="container my-md-4 mt-4">/);
+    assert.doesNotMatch(layout, /container-xxl my-md-4 mt-4/);
   });
 
   it("orders profile links for scholarly verification and an even mobile grid", () => {
@@ -87,8 +96,12 @@ describe("profile sidebar", () => {
 
   it("uses a stable two-column mobile link grid", () => {
     const mobileBlock = mediaBlockFor("(max-width: 767.98px)");
-    assert.match(mobileBlock, /\.profile-name\s*\{[\s\S]*min-width:\s*0;/);
-    assert.match(mobileBlock, /\.profile-name\s*\{[\s\S]*width:\s*auto !important;/);
+    assert.match(mobileBlock, /\.profile-summary\s*\{[\s\S]*align-items:\s*center !important;/);
+    assert.match(mobileBlock, /\.profile-summary\s*\{[\s\S]*flex-direction:\s*column;/);
+    assert.match(mobileBlock, /#profile_image\s*\{[\s\S]*margin-right:\s*0 !important;/);
+    assert.match(mobileBlock, /\.profile-name\s*\{[\s\S]*text-align:\s*center;/);
+    assert.match(mobileBlock, /\.profile-name\s*\{[\s\S]*width:\s*100% !important;/);
+    assert.match(mobileBlock, /\.profile-meta\s*\{[\s\S]*text-align:\s*center;/);
     assert.match(mobileBlock, /\.profile-links\s*\{[\s\S]*display:\s*grid !important;/);
     assert.match(mobileBlock, /grid-template-columns:\s*repeat\(2, minmax\(0, 1fr\)\);/);
     assert.match(mobileBlock, /--wai-profile-avatar-size:\s*4\.25rem;/);
