@@ -29,10 +29,10 @@ We ran a negative control to test whether the shared relevant labels reflected a
 
 Lexical analysis identified model-specific relevance criteria. For SDG 1, LLaMA assigned relevance more often to documents using healthcare access terms such as health, care, insurance, and coverage, while Qwen assigned relevance more often to documents using terms associated with structural inequality, wealth, income, and taxation. For SDG 3, LLaMA assigned relevance more often to clinical and procedural terms, while Qwen assigned relevance more often to molecular and cellular terms. For SDG 7, LLaMA assigned relevance more often to systems and infrastructure terms, while Qwen assigned relevance more often to electrochemistry and battery terms. The FDR-adjusted p-values for the reported terms were below 0.001.
 
-<figure class="paper-table">
-  <figcaption>Top differentiating terms between LLaMA-relevant and Qwen-relevant documents in the disagreement subsets. Positive values indicate terms with higher mean TF-IDF in LLaMA-relevant documents; negative values indicate terms with higher mean TF-IDF in Qwen-relevant documents.</figcaption>
+<figure class="paper-table" aria-labelledby="sdg-terms-table-caption">
+  <figcaption id="sdg-terms-table-caption">Top differentiating terms between LLaMA-relevant and Qwen-relevant documents in the disagreement subsets. Positive values indicate terms with higher mean TF-IDF in LLaMA-relevant documents; negative values indicate terms with higher mean TF-IDF in Qwen-relevant documents.</figcaption>
   <div class="paper-table-scroll" role="region" aria-label="Top differentiating terms by SDG" tabindex="0">
-    <table>
+    <table aria-describedby="sdg-terms-table-caption">
       <thead>
         <tr>
           <th scope="col">SDG</th>

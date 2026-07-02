@@ -495,7 +495,13 @@ p {
 }
 
 .paper-table-scroll {
+  -webkit-overflow-scrolling: touch;
   overflow-x: auto;
+}
+
+.paper-table-scroll:focus-visible {
+  outline: 3px solid var(--wai-focus);
+  outline-offset: 3px;
 }
 
 .paper-table table {
