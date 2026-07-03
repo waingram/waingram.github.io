@@ -104,7 +104,7 @@ textarea {
   --wai-code: #8a2558;
   --wai-copper: #9b5c22;
   --wai-focus: #c17a2d;
-  --wai-lead: #2f4050;
+  --wai-lead: #263847;
   --wai-nav-hover-bg: #e2edf2;
   --wai-nav-hover-line: #aec4d1;
   --wai-avatar-border: #ffffff;
@@ -241,6 +241,7 @@ p {
 .lead {
   color: var(--wai-lead);
   font-size: 1.14rem;
+  font-weight: 500;
   line-height: 1.65;
   max-width: 68ch;
 }
@@ -1271,9 +1272,27 @@ a.footnote:after {
     flex-direction: column;
   }
 
+  .research-overview-nav {
+    gap: 0.5rem;
+  }
+
   .research-overview-nav a,
   .publication-nav a {
     width: 100%;
+  }
+
+  .research-overview-nav a {
+    flex: 0 1 auto;
+    padding: 0.62rem 0.72rem;
+  }
+
+  .research-overview-nav span {
+    font-size: 0.82rem;
+    margin-bottom: 0.12rem;
+  }
+
+  .research-overview-nav strong {
+    line-height: 1.28;
   }
 
   .publication-highlights {

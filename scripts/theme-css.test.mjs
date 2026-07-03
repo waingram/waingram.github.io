@@ -214,6 +214,21 @@ describe("theme CSS", () => {
     }
   });
 
+  it("keeps lead copy readable in light and dark palettes", () => {
+    const palettes = {
+      light: variablesFrom(blockFor(":root")),
+      dark: variablesFrom(blockFor(':root[data-theme="dark"]')),
+    };
+
+    assertDeclaration(blockFor(".lead"), "font-weight", "500");
+
+    for (const [paletteName, variables] of Object.entries(palettes)) {
+      for (const background of [variables["--wai-bg"], variables["--wai-surface"]]) {
+        assertContrast(variables["--wai-lead"], background, ".lead", paletteName, "foreground");
+      }
+    }
+  });
+
   it("keeps inline code and text selection at AA contrast", () => {
     const palettes = {
       light: variablesFrom(blockFor(":root")),
@@ -370,5 +385,14 @@ describe("theme CSS", () => {
     const mobileBlock = mediaBlockFor("(max-width: 767.98px)");
     assertDeclaration(blockFor(".theme-toggle", mobileBlock), "width", "100%");
     assertDeclaration(blockFor(".theme-menu", mobileBlock), "width", "100%");
+  });
+
+  it("keeps research overview navigation compact when stacked on mobile", () => {
+    const mobileBlock = mediaBlockFor("(max-width: 767.98px)");
+    const linkBlock = blockFor(".research-overview-nav a", mobileBlock);
+
+    assertDeclaration(linkBlock, "flex", "0 1 auto");
+    assertDeclaration(linkBlock, "padding", "0.62rem 0.72rem");
+    assertDeclaration(blockFor(".research-overview-nav strong", mobileBlock), "line-height", "1.28");
   });
 });
