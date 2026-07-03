@@ -5,6 +5,7 @@ import { describe, it } from "node:test";
 const blogInclude = fs.readFileSync(new URL("../_includes/blog.html", import.meta.url), "utf8");
 const postInclude = fs.readFileSync(new URL("../_includes/post.html", import.meta.url), "utf8");
 const layout = fs.readFileSync(new URL("../_layouts/default.html", import.meta.url), "utf8");
+const styles = fs.readFileSync(new URL("../css/main.css", import.meta.url), "utf8");
 
 describe("blog source markup", () => {
   it("renders the blog index as a scholarly article list with metadata", () => {
@@ -31,5 +32,11 @@ describe("blog source markup", () => {
     assert.match(layout, /page\.url == "\/blog\/"/);
     assert.match(layout, /type="application\/rss\+xml"/);
     assert.match(layout, /href="{{ '\/feed\.xml' \| relative_url }}"/);
+  });
+
+  it("keeps blog previews stacked with longer summaries", () => {
+    assert.match(blogInclude, /truncatewords:\s*72/);
+    assert.doesNotMatch(styles, /grid-template-columns:\s*minmax\(9rem,\s*0\.28fr\)\s*minmax\(0,\s*1fr\)/);
+    assert.doesNotMatch(styles, /\.blog-preview-meta\s*{[\s\S]*?grid-column:/);
   });
 });

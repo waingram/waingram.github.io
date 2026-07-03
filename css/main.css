@@ -649,7 +649,7 @@ p {
 .blog-preview-summary {
   color: var(--wai-lead);
   line-height: 1.6;
-  max-width: 68ch;
+  max-width: 72ch;
 }
 
 .post-meta {
@@ -939,18 +939,6 @@ p {
 .publication-nav a:focus {
   background: var(--wai-nav-hover-bg);
   border-color: var(--wai-nav-hover-line);
-}
-
-@media (min-width: 48em) {
-  .blog-preview {
-    gap: 1.25rem;
-    grid-template-columns: minmax(9rem, 0.28fr) minmax(0, 1fr);
-  }
-
-  .blog-preview-summary,
-  .blog-preview-meta {
-    grid-column: 2;
-  }
 }
 
 .profile-sidebar {
