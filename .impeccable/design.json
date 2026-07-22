@@ -1,0 +1,137 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-07-22",
+  "title": "Design System: William A. Ingram — Academic Portfolio",
+  "extensions": {
+    "colorMeta": {
+      "printers-blue": { "role": "primary", "displayName": "Printer's Blue", "canonical": "#165c7d", "dark": "#76c7ef", "tonalRamp": ["oklch(15% 0.07 230)", "oklch(25% 0.07 230)", "oklch(35% 0.07 230)", "oklch(46% 0.07 230)", "oklch(58% 0.07 230)", "oklch(70% 0.07 230)", "oklch(82% 0.07 230)", "oklch(94% 0.07 230)"] },
+      "printers-blue-deep": { "role": "primary", "displayName": "Deep Printer's Blue", "canonical": "#0e3f59", "dark": "#a7dcf6", "tonalRamp": ["oklch(15% 0.07 230)", "oklch(25% 0.07 230)", "oklch(35% 0.07 230)", "oklch(46% 0.07 230)", "oklch(58% 0.07 230)", "oklch(70% 0.07 230)", "oklch(82% 0.07 230)", "oklch(94% 0.07 230)"] },
+      "bookbinder-copper": { "role": "secondary", "displayName": "Bookbinder Copper", "canonical": "#9b5c22", "dark": "#d6a05d", "tonalRamp": ["oklch(15% 0.1 60)", "oklch(25% 0.1 60)", "oklch(35% 0.1 60)", "oklch(46% 0.1 60)", "oklch(58% 0.1 60)", "oklch(70% 0.1 60)", "oklch(82% 0.1 60)", "oklch(94% 0.1 60)"] },
+      "amber-bookmark": { "role": "secondary", "displayName": "Amber Bookmark", "canonical": "#c17a2d", "dark": "#f1b86d", "tonalRamp": ["oklch(15% 0.11 65)", "oklch(25% 0.11 65)", "oklch(35% 0.11 65)", "oklch(46% 0.11 65)", "oklch(58% 0.11 65)", "oklch(70% 0.11 65)", "oklch(82% 0.11 65)", "oklch(94% 0.11 65)"] },
+      "marginalia-berry": { "role": "tertiary", "displayName": "Marginalia Berry", "canonical": "#8a2558", "dark": "#f0a7cd", "tonalRamp": ["oklch(15% 0.13 350)", "oklch(25% 0.13 350)", "oklch(35% 0.13 350)", "oklch(46% 0.13 350)", "oklch(58% 0.13 350)", "oklch(70% 0.13 350)", "oklch(82% 0.13 350)", "oklch(94% 0.13 350)"] },
+      "iron-gall-ink": { "role": "neutral", "displayName": "Iron Gall Ink", "canonical": "#192633", "dark": "#edf4f8", "tonalRamp": ["oklch(15% 0.01 235)", "oklch(25% 0.01 235)", "oklch(35% 0.01 235)", "oklch(47% 0.01 235)", "oklch(60% 0.01 235)", "oklch(72% 0.01 235)", "oklch(85% 0.01 235)", "oklch(95% 0.01 235)"] },
+      "lede-ink": { "role": "neutral", "displayName": "Lede Ink", "canonical": "#263847", "dark": "#d6e2ea", "tonalRamp": ["oklch(15% 0.01 235)", "oklch(25% 0.01 235)", "oklch(35% 0.01 235)", "oklch(47% 0.01 235)", "oklch(60% 0.01 235)", "oklch(72% 0.01 235)", "oklch(85% 0.01 235)", "oklch(95% 0.01 235)"] },
+      "faded-ink": { "role": "neutral", "displayName": "Faded Ink", "canonical": "#4f6070", "dark": "#b8c8d5", "tonalRamp": ["oklch(15% 0.01 235)", "oklch(25% 0.01 235)", "oklch(35% 0.01 235)", "oklch(47% 0.01 235)", "oklch(60% 0.01 235)", "oklch(72% 0.01 235)", "oklch(85% 0.01 235)", "oklch(95% 0.01 235)"] },
+      "pencil": { "role": "neutral", "displayName": "Pencil", "canonical": "#6f7d89", "dark": "#8ea4b5", "tonalRamp": ["oklch(15% 0.01 235)", "oklch(25% 0.01 235)", "oklch(35% 0.01 235)", "oklch(47% 0.01 235)", "oklch(60% 0.01 235)", "oklch(72% 0.01 235)", "oklch(85% 0.01 235)", "oklch(95% 0.01 235)"] },
+      "cool-paper": { "role": "neutral", "displayName": "Cool Paper", "canonical": "#f7f9fb", "dark": "#0d151d", "tonalRamp": ["oklch(15% 0.005 235)", "oklch(25% 0.005 235)", "oklch(35% 0.005 235)", "oklch(47% 0.005 235)", "oklch(60% 0.005 235)", "oklch(72% 0.005 235)", "oklch(85% 0.005 235)", "oklch(95% 0.005 235)"] },
+      "page-white": { "role": "neutral", "displayName": "Page White", "canonical": "#ffffff", "dark": "#131f2a", "tonalRamp": ["oklch(15% 0.005 235)", "oklch(25% 0.005 235)", "oklch(35% 0.005 235)", "oklch(47% 0.005 235)", "oklch(60% 0.005 235)", "oklch(72% 0.005 235)", "oklch(85% 0.005 235)", "oklch(100% 0 0)"] },
+      "paper-wash": { "role": "neutral", "displayName": "Paper Wash", "canonical": "#eef4f7", "dark": "#1a2a37", "tonalRamp": ["oklch(15% 0.02 225)", "oklch(25% 0.02 225)", "oklch(35% 0.02 225)", "oklch(47% 0.02 225)", "oklch(60% 0.02 225)", "oklch(72% 0.02 225)", "oklch(85% 0.02 225)", "oklch(95% 0.02 225)"] },
+      "paper-wash-deep": { "role": "neutral", "displayName": "Deep Paper Wash", "canonical": "#e2edf2", "dark": "#203242", "tonalRamp": ["oklch(15% 0.02 225)", "oklch(25% 0.02 225)", "oklch(35% 0.02 225)", "oklch(47% 0.02 225)", "oklch(60% 0.02 225)", "oklch(72% 0.02 225)", "oklch(85% 0.02 225)", "oklch(95% 0.02 225)"] },
+      "ruled-line": { "role": "neutral", "displayName": "Ruled Line", "canonical": "#d7e0e7", "dark": "#2b4152", "tonalRamp": ["oklch(15% 0.02 225)", "oklch(25% 0.02 225)", "oklch(35% 0.02 225)", "oklch(47% 0.02 225)", "oklch(60% 0.02 225)", "oklch(72% 0.02 225)", "oklch(85% 0.02 225)", "oklch(95% 0.02 225)"] },
+      "masthead-ink": { "role": "neutral", "displayName": "Masthead Ink", "canonical": "#16202a", "dark": "#16202a", "tonalRamp": ["oklch(15% 0.01 235)", "oklch(25% 0.01 235)", "oklch(35% 0.01 235)", "oklch(47% 0.01 235)", "oklch(60% 0.01 235)", "oklch(72% 0.01 235)", "oklch(85% 0.01 235)", "oklch(95% 0.01 235)"] },
+      "selection-wash": { "role": "neutral", "displayName": "Selection Wash", "canonical": "#c7deee", "dark": "#294b63", "tonalRamp": ["oklch(15% 0.02 225)", "oklch(25% 0.02 225)", "oklch(35% 0.02 225)", "oklch(47% 0.02 225)", "oklch(60% 0.02 225)", "oklch(72% 0.02 225)", "oklch(85% 0.02 225)", "oklch(95% 0.02 225)"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Page titles; text-wrap: balance; 1.82rem on mobile." },
+      "headline": { "displayName": "Headline", "purpose": "Ruled section openers — hairline top border with 1.35rem padding above; 1.45rem on mobile." },
+      "title": { "displayName": "Title", "purpose": "Subsections in Deep Printer's Blue; scroll-margin-top 5rem." },
+      "lede": { "displayName": "Lede", "purpose": "Standfirst paragraphs in Lede Ink, max 68ch." },
+      "body": { "displayName": "Body", "purpose": "Reading text, max 72ch, text-wrap: pretty." },
+      "label": { "displayName": "Label", "purpose": "Copper page kickers; sentence case, never uppercase." }
+    },
+    "shadows": [
+      { "name": "portrait", "value": "0 6px 14px rgba(25, 38, 51, 0.12)", "purpose": "The system's only shadow, under the framed profile portrait (The Portrait Exception). Dark theme: 0 6px 14px rgba(0, 0, 0, 0.28)." }
+    ],
+    "motion": [],
+    "breakpoints": [
+      { "name": "md", "value": "768px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Hero and primary actions; deepens to Deep Printer's Blue on hover.",
+      "html": "<button class=\"ds-btn-primary\">Publications</button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; background: #165c7d; color: #ffffff; border: 1px solid #165c7d; border-radius: 0.3rem; padding: 0.62rem 0.95rem; min-height: 2.75rem; font-family: \"Avenir Next\", \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif; font-size: 1rem; font-weight: 680; letter-spacing: 0; line-height: 1.2; cursor: pointer; } .ds-btn-primary:hover { background: #0e3f59; border-color: #0e3f59; } .ds-btn-primary:focus-visible { outline: 3px solid #c17a2d; outline-offset: 3px; }"
+    },
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Secondary actions; fills solid Printer's Blue on hover.",
+      "html": "<button class=\"ds-btn-outline\">View on ORCID</button>",
+      "css": ".ds-btn-outline { display: inline-flex; align-items: center; justify-content: center; background: transparent; color: #165c7d; border: 1px solid #165c7d; border-radius: 0.3rem; padding: 0.62rem 0.95rem; min-height: 2.75rem; font-family: \"Avenir Next\", \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif; font-size: 1rem; font-weight: 680; letter-spacing: 0; line-height: 1.2; cursor: pointer; } .ds-btn-outline:hover { background: #165c7d; color: #ffffff; } .ds-btn-outline:focus-visible { outline: 3px solid #c17a2d; outline-offset: 3px; }"
+    },
+    {
+      "name": "Masthead",
+      "kind": "nav",
+      "refersTo": "masthead",
+      "description": "The constant ink-dark band: square WAI monogram, name, links with an active white pill. Identical in both themes.",
+      "html": "<nav class=\"ds-masthead\"><span class=\"ds-masthead-brand\"><span class=\"ds-masthead-mark\">WAI</span><span class=\"ds-masthead-name\">William A. Ingram</span></span><span class=\"ds-masthead-links\"><a class=\"ds-masthead-link\" href=\"#\">Home</a><a class=\"ds-masthead-link ds-active\" href=\"#\">Publications</a><a class=\"ds-masthead-link\" href=\"#\">Research</a></span></nav>",
+      "css": ".ds-masthead { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; background: #16202a; border-bottom: 1px solid rgba(255, 255, 255, 0.12); min-height: 4.2rem; padding: 0.6rem 1rem; font-family: \"Avenir Next\", \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif; } .ds-masthead-brand { display: inline-flex; align-items: center; gap: 0.7rem; } .ds-masthead-mark { display: inline-flex; align-items: center; justify-content: center; width: 2.15rem; height: 2.15rem; border: 1px solid rgba(255, 255, 255, 0.34); color: #ffffff; font-size: 0.82rem; font-weight: 800; } .ds-masthead-name { color: rgba(255, 255, 255, 0.95); font-size: 1rem; font-weight: 700; } .ds-masthead-links { display: inline-flex; gap: 0.25rem; } .ds-masthead-link { color: rgba(255, 255, 255, 0.72); text-decoration: none; font-weight: 650; font-size: 0.95rem; padding: 0.5rem; border-radius: 0.25rem; } .ds-masthead-link:hover { color: #ffffff; } .ds-masthead-link:focus-visible { outline: 3px solid #c17a2d; outline-offset: 3px; color: #ffffff; } .ds-masthead-link.ds-active { background: rgba(255, 255, 255, 0.1); color: #ffffff; }"
+    },
+    {
+      "name": "Nav Card",
+      "kind": "card",
+      "refersTo": "nav-card",
+      "description": "Research-overview wayfinding card: copper eyebrow over a demibold title; hover deepens the wash, never lifts.",
+      "html": "<a class=\"ds-nav-card\" href=\"#\"><span class=\"ds-nav-card-kicker\">Research area</span><strong>Machine-usable scholarly knowledge</strong></a>",
+      "css": ".ds-nav-card { display: block; background: #eef4f7; border: 1px solid #d7e0e7; border-radius: 0.3rem; color: #0e3f59; padding: 0.85rem 0.95rem; text-decoration: none; font-family: \"Avenir Next\", \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif; max-width: 16rem; } .ds-nav-card-kicker { display: block; color: #9b5c22; font-size: 0.88rem; font-weight: 680; margin-bottom: 0.2rem; } .ds-nav-card strong { display: block; font-weight: 680; line-height: 1.35; } .ds-nav-card:hover { background: #e2edf2; border-color: #aec4d1; } .ds-nav-card:focus-visible { outline: 3px solid #c17a2d; outline-offset: 3px; }"
+    },
+    {
+      "name": "Tag Chip",
+      "kind": "chip",
+      "refersTo": "tag-chip",
+      "description": "Post tag: washed fill, hairline border, deep-blue label.",
+      "html": "<span class=\"ds-tag\">digital libraries</span>",
+      "css": ".ds-tag { display: inline-block; background: #eef4f7; border: 1px solid #d7e0e7; border-radius: 0.25rem; color: #0e3f59; font-family: \"Avenir Next\", \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif; font-size: 0.86rem; font-weight: 650; line-height: 1.25; padding: 0.18rem 0.42rem; }"
+    },
+    {
+      "name": "Page Hero",
+      "kind": "custom",
+      "refersTo": "page-hero",
+      "description": "White panel opened by a 4px Printer's Blue bar: copper kicker, display title, lede.",
+      "html": "<section class=\"ds-page-hero\"><p class=\"ds-page-hero-kicker\">Scholarly AI, digital libraries, and research infrastructure</p><h1 class=\"ds-page-hero-title\">Scientific Knowledge Infrastructure</h1><p class=\"ds-page-hero-lede\">How scientific knowledge and research outputs become machine-usable for discovery, reasoning, and reuse.</p></section>",
+      "css": ".ds-page-hero { background: #ffffff; border-top: 4px solid #165c7d; border-bottom: 1px solid #d7e0e7; padding: 1.5rem 1.35rem; font-family: \"Avenir Next\", \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif; color: #192633; } .ds-page-hero-kicker { color: #9b5c22; font-size: 0.98rem; font-weight: 760; letter-spacing: 0; margin: 0 0 0.45rem; } .ds-page-hero-title { font-size: 2.35rem; font-weight: 680; line-height: 1.15; letter-spacing: 0; margin: 0 0 0.85rem; } .ds-page-hero-lede { color: #263847; font-size: 1.14rem; font-weight: 500; line-height: 1.65; margin: 0; max-width: 68ch; }"
+    },
+    {
+      "name": "Bibliography Entry",
+      "kind": "custom",
+      "description": "The signature: bracketed tabular counters in a fixed Pencil gutter, hairline-separated citation rows.",
+      "html": "<ol class=\"ds-bibliography\"><li><span class=\"ds-bib-title\"><a href=\"#\">Learning from LLM Disagreement in Retrieval Evaluation</a></span><span class=\"ds-bib-authors\">W. A. Ingram, E. A. Fox</span><span class=\"ds-bib-venue\">JCDL 2025</span></li><li><span class=\"ds-bib-title\"><a href=\"#\">Evaluating Human-LLM Alignment in ETD Subject Classification</a></span><span class=\"ds-bib-authors\">H. Klair, W. A. Ingram</span><span class=\"ds-bib-venue\">TPDL 2025</span></li></ol>",
+      "css": ".ds-bibliography { list-style: none; counter-reset: ds-pub; margin: 0; padding: 0; max-width: 46rem; font-family: \"Avenir Next\", \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif; color: #192633; font-size: 1rem; } .ds-bibliography li { counter-increment: ds-pub; display: flex; flex-direction: column; gap: 0.1rem; position: relative; padding: 0.9rem 0 0.9rem 3.45rem; border-bottom: 1px solid #d7e0e7; line-height: 1.45; } .ds-bibliography li::before { content: \"[\" counter(ds-pub) \"]\"; position: absolute; left: 0; top: 0.95rem; width: 2.6rem; text-align: right; color: #6f7d89; font-size: 0.95rem; font-variant-numeric: tabular-nums; } .ds-bib-title { font-weight: 680; line-height: 1.4; } .ds-bib-title a { color: #165c7d; text-decoration: underline; text-decoration-thickness: 0.08em; text-underline-offset: 0.16em; } .ds-bib-title a:hover { color: #0e3f59; } .ds-bib-title a:focus-visible { outline: 3px solid #c17a2d; outline-offset: 3px; } .ds-bib-authors { color: #2d3c49; line-height: 1.45; } .ds-bib-venue { color: #4f6070; line-height: 1.45; }"
+    },
+    {
+      "name": "Evidence Strip",
+      "kind": "custom",
+      "description": "Three hairline-divided facts of record: Pencil label over demibold value. A table of record, not stat cards.",
+      "html": "<div class=\"ds-evidence-strip\"><div><span class=\"ds-evidence-label\">Role</span><strong>Associate Professor, Virginia Tech</strong></div><div><span class=\"ds-evidence-label\">Leadership</span><strong>Associate Dean and Executive Director for IT</strong></div><div><span class=\"ds-evidence-label\">Research</span><strong>Director, CDRS</strong></div></div>",
+      "css": ".ds-evidence-strip { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid #d7e0e7; border-bottom: 1px solid #d7e0e7; font-family: \"Avenir Next\", \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif; color: #192633; } .ds-evidence-strip > div { padding: 1rem 1.1rem; } .ds-evidence-strip > div + div { border-left: 1px solid #d7e0e7; } .ds-evidence-label { display: block; color: #6f7d89; font-size: 0.86rem; font-weight: 680; margin-bottom: 0.25rem; } .ds-evidence-strip strong { display: block; font-weight: 680; line-height: 1.35; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Reading Room",
+    "overview": "The site is a quiet library reading room: cool paper light, dark iron-gall ink, and one warm note of bookbinder copper, like brass lamp fittings against blue-grey walls. Nothing performs. The room's credibility comes from how well it is kept — hairline rules where structure is needed, tabular numerals where figures align, generous margins where reading happens. It is the natural habitat of both halves of the record this site carries: the scholar's publications and the library leader's institutional trust.\n\nThe working mood is quiet rigor: composed, exacting, unhurried, quietly warm. Restraint is the credibility — nothing decorative that isn't also informative. Hierarchy, spacing, and notation do the persuading; color arrives in small, deliberate doses. The one theatrical gesture the system allows itself is the scholarly notation itself: bracketed citation numerals, ruled section openings, a 4px blue bar over every hero — the marks of a well-kept record used as interface.\n\nThe system explicitly rejects its two failure modes (confirmed anti-references): generic Bootstrap blandness — Bootstrap is the chassis here, never the visible skin — and flashy startup-AI styling, whose gradients and glow would spend the trust this site exists to earn.",
+    "keyCharacteristics": [
+      "Cool paper surfaces with iron-gall ink text, every color a first-class light/dark pair",
+      "Structure drawn with hairline rules and tonal surface steps — lines, not boxes or shadows",
+      "Native humanist sans (Avenir Next stack) at precise demibold weights; tabular numerals for every figure",
+      "One warm note: bookbinder copper kickers in a cool blue system; amber reserved for focus rings",
+      "Citation brackets as interface — the scholarly record's own notation, load-bearing",
+      "Sturdy, legible controls: 44px targets, firm fills, small radii"
+    ],
+    "rules": [
+      { "name": "The Masthead Rule", "body": "The masthead stays Masthead Ink (#16202a) in light and dark themes alike — a constant institutional band across the top of every page. Only its contents (white-alpha text, borders, and pills) are tuned; the band itself never lightens, tints, or themes.", "section": "colors" },
+      { "name": "The Portrait Exception", "body": "Surfaces never cast shadows. The one shadow in the system sits under the profile portrait — a square-cornered photograph in a 3px white frame, hung like a print on the wall. It marks the person, and nothing else, as the object with physical presence.", "section": "elevation" },
+      { "name": "The Citation Bracket Rule", "body": "Scholarly numbering is set in brackets with tabular figures — [1], [2] — right-aligned in a fixed gutter, in Pencil. Bibliographies, highlight lists, and footnote marks all speak this notation. It is the mark of the scholarly record and is load-bearing identity: never replace it with bullets, cards, or bare numerals.", "section": "components" }
+    ],
+    "dos": [
+      "Do define every color as a paired light/dark --wai-* custom property in css/main.css; both themes are first-class, and the System/Light/Dark switcher must keep working.",
+      "Do draw structure with hairline rules (1px Ruled Line, #d7e0e7) and tonal surface steps (Cool Paper → Page White → Paper Wash) — lines over boxes.",
+      "Do keep font-variant-numeric: tabular-nums on dates, counters, and citation markers.",
+      "Do keep interactive targets at least 2.75rem tall and give every focusable element the 3px Amber Bookmark outline at 3px offset.",
+      "Do hold the reading measures: 78ch content column, 72ch body, 68ch ledes and listings.",
+      "Do route Bootstrap through the token bridges (--bs-border-color, --bs-code-color) so the chassis never shows stock colors."
+    ],
+    "donts": [
+      "Don't lighten, tint, or theme the masthead; it stays Masthead Ink (#16202a) in both themes (The Masthead Rule).",
+      "Don't remove the bracketed [n] tabular counters from bibliographies and highlight lists, or the bracketed footnote marks (The Citation Bracket Rule).",
+      "Don't add shadows to surfaces; the portrait's soft shadow is the single exception (The Portrait Exception).",
+      "Don't load hosted webfonts for text; type stays on the native Avenir Next / Segoe UI stack.",
+      "Don't reach for startup-AI styling — gradient meshes, glassmorphism, glow effects, novelty motion; credibility here is typographic, not atmospheric.",
+      "Don't let Bootstrap defaults show through (stock blue links, default focus rings, unthemed borders); generic Bootstrap blandness is a confirmed anti-reference."
+    ]
+  }
+}
