@@ -34,6 +34,17 @@ exclude:
   # render it as a bare page at /DESIGN/ with no layout, title, or h1. That fails
   # the site evals, which run before the Pages upload and block every deploy.
   - DESIGN.md
+  # Repo tooling and internal docs that Jekyll would otherwise copy verbatim and
+  # serve as public URLs (they have no front matter, so the evals never flagged
+  # them). They stay in the repo; they just aren't part of the published site.
+  - AGENTS.md
+  - PRODUCT.md
+  - agent-workflow.config.json
+  - 404.html.bak
+  - package.json
+  - package-lock.json
+  - docs
+  - scripts
 
 # Permalinks
 permalink: pretty # Cleaner URLs (e.g., /about/ instead of /about.html)
