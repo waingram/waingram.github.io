@@ -4,33 +4,194 @@
   {% assign post_reading_minutes = 1 %}
 {% endif %}
 {% assign post_topics = page.tags | default: page.categories %}
+{% assign post_updated = page.last_modified_at | default: page.date %}
+{% assign post_author = page.author | default: site.title %}
+{% assign post_canonical = site.url | append: page.url %}
+
+{% comment %}
+  Contents list: split the rendered content on kramdown's heading anchors. Posts are
+  inconsistent about whether sections are h2 or h3, so prefer h2 and fall back to h3.
+  The first chunk is the text before the first heading, so a usable list needs size > 2.
+{% endcomment %}
+{% assign toc_chunks = content | split: '<h2 id="' %}
+{% if toc_chunks.size < 3 %}
+  {% assign toc_chunks = content | split: '<h3 id="' %}
+{% endif %}
+
+{% comment %}
+  Explore more: posts sharing at least one topic, newest first, topped up with recent
+  posts when fewer than three match. Liquid cannot sort by a computed score, so this uses
+  the same string-accumulator dedupe idiom as the topic count in blog.html.
+{% endcomment %}
+{% assign related_keys = "" %}
+{% assign related_count = 0 %}
+{% for other in site.posts %}
+  {% if other.url != page.url and related_count < 3 %}
+    {% assign other_topics = other.tags | default: other.categories %}
+    {% assign shares_topic = false %}
+    {% for topic in other_topics %}
+      {% assign topic_name = topic | strip %}
+      {% if topic_name != "" and post_topics contains topic_name %}
+        {% assign shares_topic = true %}
+      {% endif %}
+    {% endfor %}
+    {% if shares_topic %}
+      {% assign related_key = "|" | append: other.url | append: "|" %}
+      {% unless related_keys contains related_key %}
+        {% assign related_keys = related_keys | append: related_key %}
+        {% assign related_count = related_count | plus: 1 %}
+      {% endunless %}
+    {% endif %}
+  {% endif %}
+{% endfor %}
+{% for other in site.posts %}
+  {% if other.url != page.url and related_count < 3 %}
+    {% assign related_key = "|" | append: other.url | append: "|" %}
+    {% unless related_keys contains related_key %}
+      {% assign related_keys = related_keys | append: related_key %}
+      {% assign related_count = related_count | plus: 1 %}
+    {% endunless %}
+  {% endif %}
+{% endfor %}
 
 <article class="blog-post">
     <p class="back-to-blog"><a href="{{ '/blog/' | relative_url }}">Back to Research Blog</a></p>
+
+    {% if page.hero %}
+      <figure class="paper-figure post-hero">
+        <img src="{{ page.hero | relative_url }}" alt="{{ page.hero_alt | default: '' | xml_escape }}" itemprop="image">
+        {% if page.hero_caption %}
+          <figcaption>{{ page.hero_caption }}</figcaption>
+        {% endif %}
+        {% if page.hero_credit %}
+          <p class="figure-credit">Credits: {{ page.hero_credit }}</p>
+        {% endif %}
+      </figure>
+    {% endif %}
+
     <header class="post-header">
         <p class="page-kicker">Research note</p>
         <h1 itemprop="headline">{{ page.title }}</h1>
-        <div class="post-meta post-header-meta">
-            <span>Published <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%B %-d, %Y" }}</time></span>
-            {% if page.last_modified_at %}
-              <span class="post-meta-separator" aria-hidden="true">/</span>
-              <span>Updated <time datetime="{{ page.last_modified_at | date_to_xmlschema }}" itemprop="dateModified">{{ page.last_modified_at | date: "%B %-d, %Y" }}</time></span>
+    </header>
+
+    <div class="post-layout">
+        <aside class="post-rail" aria-label="Article information">
+            <div class="post-rail-item">
+                <p class="post-rail-name" itemprop="author">{{ post_author }}</p>
+            </div>
+            <div class="post-rail-item post-meta post-rail-meta">
+                <span>Published <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%B %-d, %Y" }}</time></span>
+                {% if page.last_modified_at %}
+                  <span>Updated <time datetime="{{ page.last_modified_at | date_to_xmlschema }}">{{ page.last_modified_at | date: "%B %-d, %Y" }}</time></span>
+                {% endif %}
+            </div>
+            <div class="post-rail-item post-rail-read">
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" focusable="false">
+                    <path d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5Zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5ZM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5Zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5Z"/>
+                    <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2Zm0 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3Z"/>
+                </svg>
+                <span>{{ post_reading_minutes }} min read</span>
+            </div>
+            <div class="post-rail-item">
+                <ul class="post-share" aria-label="Share this post">
+                    <li>
+                        <a href="https://bsky.app/intent/compose?text={{ page.title | url_encode }}%20{{ post_canonical | url_encode }}" rel="noopener">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 576 512" aria-hidden="true" focusable="false">
+                                <path d="M123.6 34.5c66.4 50.1 137.9 151.5 164.2 206C314 186 385.5 84.5 452 34.5c48-36.1 125.6-64.1 125.6 24.9c0 17.8-10.1 149.2-16.1 170.5c-20.7 74.2-96.1 93.1-163.1 81.6c117.2 20 147 86.3 82.6 152.6C358.7 590 305.2 432.5 291.5 392.1c-2.5-7.5-3.7-10.9-3.7-7.9c0-3.1-1.2 .4-3.7 7.9C270.4 432.5 216.9 590 94.6 464.1C30.2 397.8 60 331.5 177.2 311.5C110.2 322.9 34.8 304 14.1 229.8C8.1 208.5-2 77.1-2 59.3c0-88.9 77.7-61 125.6-24.9z"/>
+                            </svg>
+                            <span class="visually-hidden">Share on Bluesky</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ post_canonical | url_encode }}" rel="noopener">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                                <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>
+                            </svg>
+                            <span class="visually-hidden">Share on LinkedIn</span>
+                        </a>
+                    </li>
+                    <li>
+                        <button type="button" class="post-share-copy" data-copy-url="{{ post_canonical }}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                                <path d="M6.354 5.5H4a3 3 0 0 0 0 6h3a3 3 0 0 0 2.83-4H9c-.086 0-.17.01-.25.031A2 2 0 0 1 7 10.5H4a2 2 0 1 1 0-4h1.535c.218-.376.495-.714.82-1z"/>
+                                <path d="M9 5.5a3 3 0 0 0-2.83 4h1.098A2 2 0 0 1 9 6.5h3a2 2 0 1 1 0 4h-1.535a4.02 4.02 0 0 1-.82 1H12a3 3 0 1 0 0-6H9z"/>
+                            </svg>
+                            <span class="visually-hidden" data-copy-label>Copy link</span>
+                        </button>
+                    </li>
+                    <li>
+                        <a href="{{ '/feed.xml' | relative_url }}" rel="alternate" type="application/rss+xml">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                                <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                                <path d="M5.5 12a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm-3-8.5a1 1 0 0 1 1-1c5.523 0 10 4.477 10 10a1 1 0 1 1-2 0 8 8 0 0 0-8-8 1 1 0 0 1-1-1zm0 4a1 1 0 0 1 1-1 6 6 0 0 1 6 6 1 1 0 1 1-2 0 4 4 0 0 0-4-4 1 1 0 0 1-1-1z"/>
+                            </svg>
+                            <span class="visually-hidden">Subscribe to the RSS feed</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            {% if toc_chunks.size > 2 %}
+              <nav class="post-contents" aria-labelledby="post-contents-label">
+                  <p class="evidence-label" id="post-contents-label">Contents</p>
+                  <ul>
+                      {% for chunk in toc_chunks offset: 1 %}
+                        {% assign heading_id = chunk | split: '">' | first %}
+                        {% assign heading_text = chunk | split: '</h' | first | split: '">' | last | strip_html | strip %}
+                        <li><a href="#{{ heading_id }}">{{ heading_text }}</a></li>
+                      {% endfor %}
+                  </ul>
+              </nav>
             {% endif %}
-            <span class="post-meta-separator" aria-hidden="true">/</span>
-            <span>{{ post_reading_minutes }} min read</span>
+        </aside>
+
+        <div class="post-body">
+            <div class="post-content" itemprop="articleBody">
+                {{ content }}
+            </div>
+        </div>
+    </div>
+
+    <section class="post-details" aria-label="Post details">
+        <div class="post-details-block">
+            <p class="evidence-label">Details</p>
+            <p class="post-details-value">Last updated <time datetime="{{ post_updated | date_to_xmlschema }}" itemprop="dateModified">{{ post_updated | date: "%B %-d, %Y" }}</time></p>
         </div>
         {% if post_topics and post_topics != empty %}
-          <ul class="post-tags post-header-tags" aria-label="Post topics">
-            {% for topic in post_topics %}
-              {% assign topic_name = topic | strip %}
-              {% if topic_name != "" %}
-                <li itemprop="keywords">{{ topic_name }}</li>
-              {% endif %}
-            {% endfor %}
-          </ul>
+          <div class="post-details-block">
+              <p class="evidence-label">Related terms</p>
+              <ul class="post-tags" aria-label="Post topics">
+                  {% for topic in post_topics %}
+                    {% assign topic_name = topic | strip %}
+                    {% if topic_name != "" %}
+                      <li itemprop="keywords">{{ topic_name }}</li>
+                    {% endif %}
+                  {% endfor %}
+              </ul>
+          </div>
         {% endif %}
-    </header>
-    <div class="post-content" itemprop="articleBody">
-        {{ content }}
-    </div>
+        <div class="post-details-block">
+            <p class="evidence-label">Cite this post</p>
+            <p class="post-citation">{{ post_author }}. &ldquo;{{ page.title }}.&rdquo; <em>{{ site.title }}</em>, {{ page.date | date: "%B %-d, %Y" }}. {{ post_canonical }}</p>
+            <button type="button" class="post-cite-copy" data-copy-url="{{ post_canonical }}">
+                <span data-copy-label>Copy link</span>
+            </button>
+        </div>
+    </section>
+
+    {% if related_count > 0 %}
+      <section class="post-explore" aria-labelledby="post-explore-label">
+          <h2 id="post-explore-label">Explore more</h2>
+          <ol class="highlight-list">
+              {% for other in site.posts %}
+                {% assign related_key = "|" | append: other.url | append: "|" %}
+                {% if related_keys contains related_key %}
+                  <li>
+                      <a href="{{ other.url | relative_url }}">{{ other.title }}</a>
+                      <span>{{ other.date | date: "%B %-d, %Y" }}</span>
+                  </li>
+                {% endif %}
+              {% endfor %}
+          </ol>
+      </section>
+    {% endif %}
 </article>

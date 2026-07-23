@@ -88,7 +88,9 @@ describe("profile sidebar", () => {
   });
 
   it("uses GitHub-inspired compact, non-sticky sidebar sizing", () => {
-    assert.doesNotMatch(css, /position:\s*sticky/);
+    // Scoped to the profile sidebar: the post-page article rail is deliberately sticky.
+    assert.doesNotMatch(blockFor(".profile-sidebar"), /position:\s*sticky/);
+    assert.doesNotMatch(mediaBlockFor("(min-width: 768px)"), /\.profile-sidebar\s*\{[^}]*position:\s*sticky/);
     assert.match(blockFor(".profile-sidebar"), /--wai-profile-avatar-size:\s*13\.25rem;/);
     assert.match(blockFor(".profile-sidebar h1"), /font-size:\s*1\.58rem;/);
     assert.match(blockFor("#profile_image"), /max-width:\s*var\(--wai-profile-avatar-size\);/);

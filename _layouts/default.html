@@ -220,7 +220,7 @@
         <div class="row"> 
             {% include sidebar.html %}
             <main id="content" class="col-md-9 content-column mt-4" tabindex="-1">
-                <div class="content-inner py-sm-1 p-1">
+                <div class="content-inner py-sm-1 p-1{% if page.collection == 'posts' %} content-inner-wide{% endif %}">
                     {% if paginator %}
                     {% include blog.html %}
                     {% elsif page.collection == "posts" %}
@@ -245,6 +245,9 @@
     <script src="{{ '/js/plugins.js' | relative_url }}"></script>
     <script src="{{ '/js/vendor/bootstrap.bundle.min.js' | relative_url }}"></script>
     <script src="{{ '/js/main.js' | relative_url }}"></script>
+    {% if page.collection == "posts" %}
+    <script src="{{ '/js/post.js' | relative_url }}"></script>
+    {% endif %}
 </body>
 
 </html>
