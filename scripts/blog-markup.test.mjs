@@ -34,6 +34,33 @@ describe("blog source markup", () => {
     assert.match(layout, /href="{{ '\/feed\.xml' \| relative_url }}"/);
   });
 
+  it("gives posts an article rail with contents, sharing, and a details band", () => {
+    assert.match(postInclude, /class="post-layout"/);
+    assert.match(postInclude, /class="post-rail"/);
+    assert.match(postInclude, /class="post-contents"/);
+    assert.match(postInclude, /aria-label="Share this post"/);
+    assert.match(postInclude, /itemprop="dateModified"/);
+    assert.match(postInclude, /data-copy-url/);
+    assert.match(postInclude, /class="post-details"/);
+    // The rail must precede the body so it stacks above the article below md.
+    assert.ok(
+      postInclude.indexOf('class="post-rail"') < postInclude.indexOf('class="post-body"'),
+      "rail is ordered before the body in the DOM"
+    );
+    assert.match(layout, /page\.collection == "posts"[\s\S]*?js\/post\.js/);
+    assert.match(styles, /\.post-rail\s*{[^}]*position:\s*sticky/);
+    assert.match(styles, /\.post-contents li\s*{[^}]*border-left:\s*1px solid var\(--wai-line\)/);
+  });
+
+  it("keeps post prose to a reading measure while figures run full width", () => {
+    // The measure is held in rem, not ch: `ch` resolves against each element's own
+    // font size, which would let headings run far wider than the prose they title.
+    assert.match(styles, /\.post-content\s*{[^}]*--wai-measure:\s*[\d.]+rem/);
+    assert.match(styles, /\.post-content :where\(p, h2, h3[^)]*\)\s*{[^}]*max-width:\s*var\(--wai-measure\)/);
+    assert.match(styles, /\.post-content :where\(\.paper-figure, \.paper-table\)\s*{[^}]*max-width:\s*none/);
+    assert.match(styles, /\.figure-credit\s*{/);
+  });
+
   it("keeps blog previews stacked with longer summaries", () => {
     assert.match(blogInclude, /truncatewords:\s*72/);
     assert.doesNotMatch(styles, /grid-template-columns:\s*minmax\(9rem,\s*0\.28fr\)\s*minmax\(0,\s*1fr\)/);

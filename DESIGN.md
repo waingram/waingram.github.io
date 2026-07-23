@@ -219,6 +219,20 @@ Component character: **sturdy and legible** — generous 44px touch targets, dem
 - **Paper figure / paper table:** figure and table blocks ruled top and bottom like journal floats, with Faded Ink captions; tables scroll horizontally in a focusable region, Paper Wash header row, full hairline grid.
 - **Footer colophon:** hairline-ruled footer with the WAI mark, copyright and last-updated lines in Faded Ink, and a proper colophon crediting licenses — the site signs its work.
 
+### The Article Rail (post pages)
+
+Individual posts run a two-column article: prose on the left, a 13.5rem rail sticking to the right at `top: 1.5rem`. The rail is written **first in the DOM**, so below `md` — where the grid collapses to a block — it floats above the article and closes with a hairline, exactly as it stacks on the reference layout. Its blocks are separated by rules drawn *between* them (`.post-rail-item + .post-rail-item`), never under each one, so a post with no contents list doesn't end on a doubled rule. Contents entries are drawn with a 1px Ruled Line **left border**, which turns Printer's Blue on the entry the reader is inside — a colour swap, no motion. The list is generated in Liquid from the rendered heading anchors and simply doesn't render when a post has fewer than two headings.
+
+Post prose holds its measure in a `--wai-measure` custom property set in **rem**, not `ch`: `ch` resolves against each element's own font size, so `68ch` on a 1.75rem `h2` would let headings run nearly twice as wide as the paragraphs they title. Figures and tables opt out of the measure and run the full body width, the way journal floats break the column they sit in.
+
+### Post Details Band
+
+After the article, three columns ruled top and opened by `.evidence-label` headings — Details (last updated), Related terms (tag chips), Cite this post — stacking to one column below `md`. Explore-more follows as a `.highlight-list`, so related posts inherit the bracketed `[n]` notation. Figure captions carry an optional `.figure-credit` line beneath them in Pencil, one step smaller than the caption.
+
+### Named Rules
+
+**The Sentence-Case Rail.** The reference layout sets its rail labels, dates, and "CONTENTS" heading in uppercase. This system does not: rail labels use the `.evidence-label` register (680, 0.86rem, Pencil, sentence case), and share buttons use the chip recipe — Paper Wash, hairline border, 0.25rem radius at a 2.75rem target — rather than the reference's 999px circles, since 999px is reserved for the theme menu's radio dots. Both are deliberate departures, not oversights.
+
 ### Navigation
 
 - **Masthead:** the constant Masthead Ink band (min-height 4.2rem): square WAI monogram + name at 700, links at 650 in 72%-white, brightening to full white on hover; the active page sits in a 10%-white pill. Collapses at md behind a bordered toggler.
