@@ -30,6 +30,10 @@ exclude:
   - LICENSE
   - Gemfile
   - Gemfile.lock
+  # DESIGN.md carries YAML front matter for its design tokens, which makes Jekyll
+  # render it as a bare page at /DESIGN/ with no layout, title, or h1. That fails
+  # the site evals, which run before the Pages upload and block every deploy.
+  - DESIGN.md
 
 # Permalinks
 permalink: pretty # Cleaner URLs (e.g., /about/ instead of /about.html)
