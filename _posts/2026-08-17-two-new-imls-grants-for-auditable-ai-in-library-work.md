@@ -1,147 +1,99 @@
 ---
 layout: default
-title: 'What Happens When Library Work Depends on AI? Two New IMLS Grants'
+title: 'Two New IMLS Grants and One Shared Question About AI'
 date: 2026-08-17 12:00 -0400
 categories: AI, Digital Libraries, Evidence Synthesis, Metadata, IMLS
 tags: [AI, Digital Libraries, Evidence Synthesis, Metadata, IMLS]
 ---
-Virginia Tech University Libraries has received two 2026 National Leadership Grants from the Institute of Museum and Library Services, and I am a co-Principal Investigator on both projects.
-The awards total $652,397.
+I was delighted to learn yesterday that Virginia Tech University Libraries had received two 2026 National Leadership Grants from the Institute of Museum and Library Services.
+The awards total $652,397, and I am a co-Principal Investigator on both projects.
 
-On paper, one project is about metadata and the other is about evidence synthesis.
-In practice, they meet at the same problem.
-AI systems can produce descriptions and judgments quickly, but library users live with the consequences when those outputs are incomplete, inconsistent, or wrong.
-Before we build them into library services, we need to know what makes those outputs dependable and how a person can inspect them.
+One grant concerns metadata for digital collections, while the other concerns relevance screening for evidence synthesis.
+The daily work behind them is quite different, yet both projects grew from a question that I keep returning to in my research: what should a library preserve about an AI-generated description or judgment before allowing it to influence what a patron can discover or what a researcher counts as evidence?
 
-## When generated metadata becomes part of the collection
+## Metadata that has to last
 
-Much of what a user can find in a digital collection depends on the metadata someone had time to create.
-A title, date, subject heading, or place name gives a user a path into a photograph, newspaper page, map, or manuscript.
-A collection with hundreds of thousands of objects forces a library to choose which objects and fields receive detailed description.
-A useful name may be buried in an image, and a relationship between two collections may remain invisible because no one had time to describe it.
+Every digital collection is partly shaped by what its metadata allows us to see.
+A title, date, subject heading, or place name can give someone a path into a photograph, newspaper page, map, or manuscript, but a large collection will almost always contain more material than its staff can describe in detail.
+A person mentioned in a handwritten document may never appear in the catalog record, and a relationship between two collections may remain hidden because no one had the time to record it.
 
-Language models offer a way to create additional metadata across thousands of digital objects.
-The appeal is that a model can identify people and places, suggest subject terms, describe images, and propose relationships that make more of the collection available to search.
+Language models could help libraries fill some of those gaps by identifying names and places, suggesting subjects, describing images, or finding relationships across collections.
+The possibility is genuinely exciting because richer description can open material that is presently difficult to find, although the same scale that makes this possible also allows an error to travel through many records and services.
 
-The risk also changes with scale.
-If a model writes the same person's name differently across several collections, a search system may split one person into several identities.
-If the model merges two people who share a name, the system can present a relationship that does not exist.
-Once generated metadata drives a knowledge graph or a navigation interface, these are no longer isolated cataloging errors.
-They shape what a patron can find and how the collection appears to fit together.
+Suppose a model writes the same person's name differently in several collections.
+A search system may then divide one person into multiple identities, leaving a patron with fragments of a story that should have been connected.
+If the model instead merges two people who share a name, it can create a relationship that the source material never supported.
+Once generated metadata supplies the links in a knowledge graph or the paths through a discovery interface, an error can shape a user's understanding of the collection rather than remaining confined to a single record.
 
-Scale also changes what it means to care for the resulting records.
-A generated description may remain in a collection long after the model, prompt, or commercial service that produced it has changed or disappeared.
-Future librarians must be able to tell which information came from the collection, which information was inferred by a model, and what evidence supported the inference.
-They also need a practical way to correct a mistake, rerun a process, migrate the records, or decide that a particular kind of generated metadata should no longer be used.
+The records may also outlive the particular model, prompt, or commercial service that produced them.
+A librarian working with the collection five years later will need to distinguish information taken directly from an object from information inferred by a model, trace that inference to its supporting material, and understand enough of the process to correct or regenerate it.
+Without that history, even useful metadata becomes difficult to maintain because no one can tell which changes will repair the collection and which will introduce new inconsistencies.
 
-That is why reliability, transparency, and long-term stewardship belong in the same conversation.
-A field is reliable only if it behaves consistently across an entire collection rather than looking plausible on one carefully chosen object.
-Its origin must remain visible so that a person can trace a generated name, subject, or relationship back to the source material and the process that created it.
-Long-term stewardship is the practical test of both qualities.
-Can the library still understand and govern that information after the original experiment is over?
-
-That problem is at the center of ["Library-wide, Machine-Generated Metadata as First-Class Structural Components"](https://www.imls.gov/grants/awarded/lg-259840-ols-26), which received $473,403.
+Our $473,403 project, ["Library-wide, Machine-Generated Metadata as First-Class Structural Components"](https://www.imls.gov/grants/awarded/lg-259840-ols-26), begins with this maintenance problem.
 Bipasha Banerjee is the Principal Investigator, and Jennifer L. Goyne and I are co-Principal Investigators.
-The project will evaluate machine-generated metadata across digital collections and determine which types of metadata remain consistent enough to support discovery.
-It will also examine whether relationships derived from that metadata can be traced back to the collection materials that support them.
-We will use that analysis to build and evaluate new forms of cross-collection navigation.
-The goal is not simply to generate more fields or to produce an impressive demonstration.
-We want evidence about when those fields can become part of the structure people rely on, where human review belongs, and what a library must preserve so that the structure remains accountable over time.
+We will evaluate machine-generated metadata across digital collections to learn which forms remain consistent enough to support discovery and whether relationships derived from them can be traced to the collection materials that support them.
+We will then use that evidence to build and evaluate new ways of navigating across collections.
 
-## When screening decides what counts as evidence
+A convincing example tells us very little about how a generated field will behave across thousands of varied objects.
+We need to learn where errors accumulate, which inferences require review, and what provenance a library must retain if the resulting descriptions and relationships are going to become durable parts of its systems.
+The project treats maintenance as part of the research from the beginning, when we can still design the records and workflows around the people who will eventually have to understand and repair them.
 
-Evidence synthesis has a different bottleneck.
-Before a systematic review can compare findings, reviewers must decide which studies meet the review's inclusion criteria.
-A database search may return thousands of titles and abstracts, and each record must be screened before the reviewers can begin analyzing the evidence.
-The work is repetitive, but the judgment is consequential.
+## Screening that has to be explained
 
-That chain of judgment is also part of what makes an evidence synthesis different from an ordinary literature summary.
-Reviewers document where they searched, what they searched for, which eligibility criteria they applied, and why studies were included or excluded.
-Those records allow another person to inspect the method, challenge a decision, and understand how the final body of evidence was assembled.
-[PRISMA 2020](https://doi.org/10.1136/bmj.n71) formalizes much of this reporting for systematic reviews, while the Royal Society and the Academy of Medical Sciences describe transparency and rigor as [principles of good evidence synthesis](https://royalsociety.org/-/media/policy/projects/evidence-synthesis/principles-for-good-evidence-synthesis-for-policy.pdf).
-Transparency and reproducibility are therefore not optional virtues added after the review is complete.
-They are part of the method by which the review earns trust.
+Before reviewers can compare findings in a systematic review, they may have to screen thousands of titles and abstracts against a carefully defined set of eligibility criteria.
+Each decision determines whether a study moves forward for closer examination, and the record of those decisions helps another researcher understand how the final body of evidence was assembled.
+[PRISMA 2020](https://doi.org/10.1136/bmj.n71) asks systematic reviewers to report this selection process, including the use of automation tools, while the Royal Society and the Academy of Medical Sciences include transparent study selection among their [principles of good evidence synthesis](https://royalsociety.org/-/media/policy/projects/evidence-synthesis/principles-for-good-evidence-synthesis-for-policy.pdf).
+The documentation is part of the research method because it allows someone else to inspect the review, question an exclusion, and repeat the process when the evidence changes.
 
-This makes relevance screening an attractive place to use AI.
-A model can read an abstract and recommend whether to include or exclude the study.
-However, if the model excludes a relevant paper, that paper does not merely fall lower in a list of search results.
-It disappears from the body of evidence that the review will analyze.
-The final synthesis may then rest on an incomplete account of the research.
+Title-and-abstract screening looks like a natural place for AI assistance because much of the work is repetitive and a model can assign an include-or-exclude recommendation within seconds.
+The difficult case is the relevant paper that receives a confident exclusion.
+That paper may never reach the researchers who analyze the evidence, which means that one unexamined model judgment can alter the findings available to the review.
 
-Putting AI into this workflow does not make those methodological obligations disappear.
-It makes them harder to satisfy.
-A model's recommendation may depend on its version, the wording of a prompt, the order and format of the input, its parameter settings, or ordinary variation between repeated runs.
-If the workflow records only a final include-or-exclude label, no one can reconstruct how that decision was made or tell whether a relevant study vanished because the model was unstable.
+Reconstructing such a judgment requires more than saving the final label.
+The recommendation may change with the model version, the wording of the instructions, the format of the record, or ordinary variation between repeated runs.
+If the workflow discards those details, a reviewer cannot tell whether the exclusion followed the stated criteria or resulted from a model behavior that would not recur.
+Updates become difficult for the same reason, since a research team has no stable account of the earlier process against which to compare a new model or prompt.
 
-The international [Responsible use of AI in evidence SynthEsis initiative](https://doi.org/10.17605/OSF.IO/FWAUD), or RAISE, names this as a professional standards problem.
-[RAISE 2](https://osf.io/fwaud/files/d6phz) provides guidance for building and evaluating AI evidence-synthesis tools.
-For relevance screening, it calls for representative evaluation data, strong protection of recall, detailed prompt documentation, repeated testing of variable outputs, and public reporting of results and limitations.
-[RAISE 3](https://osf.io/fwaud/files/y5aqg) approaches the same problem from the user and institution side.
-It asks whether a tool is fit for the particular review, whether its validation can be reproduced, whether its performance may change, and whether people have enough information to justify and report its use.
+The international [Responsible use of AI in evidence SynthEsis initiative](https://doi.org/10.17605/OSF.IO/FWAUD), known as RAISE, gives this project its closest professional framework.
+Its [guidance for developers](https://osf.io/fwaud/files/d6phz) asks them to validate an AI tool on representative tasks, protect recall when missing a study would damage the synthesis, document prompts and settings, test variable outputs repeatedly, and report limitations publicly.
+The companion [guidance for users and institutions](https://osf.io/fwaud/files/y5aqg) asks whether that validation can be reproduced, whether performance is likely to change, and whether the tool fits the review and the workflow in which people will use it.
+Cochrane, the Campbell Collaboration, JBI, and the Collaboration for Environmental Evidence endorsed this framework in a 2025 [joint position statement](https://doi.org/10.1186/s13750-025-00374-5) that retains human responsibility for AI-assisted judgments and calls for their transparent reporting.
 
-RAISE is not the position of a single research group.
-In 2025, Cochrane, the Campbell Collaboration, JBI, and the Collaboration for Environmental Evidence issued a [joint position statement](https://doi.org/10.1186/s13750-025-00374-5) supporting RAISE.
-The statement holds evidence synthesists responsible for their work, requires human oversight, and says that AI-generated judgments should be reported transparently.
-
-The second project, ["Auditable AI Workflows for Evidence Synthesis Library Services"](https://www.imls.gov/grants/awarded/lg-259841-ols-26), received $178,994.
+Our $178,994 project, ["Auditable AI Workflows for Evidence Synthesis Library Services"](https://www.imls.gov/grants/awarded/lg-259841-ols-26), will examine how those responsibilities can be carried into title-and-abstract screening.
 Bipasha Banerjee is the Principal Investigator, and C. Cozette Comer and I are co-Principal Investigators.
-We will develop and evaluate an AI-assisted workflow for title-and-abstract screening with evidence-synthesis library professionals.
-A reviewer should be able to see what the model received, how it was instructed, which version and settings were used, and what recommendation it returned for each record.
-The audit trail should retain changes made by a human reviewer and the reason for the final decision.
-The workflow should also reveal when a decision changes across models, prompts, or repeated runs so that unstable cases can receive human attention.
+Working with evidence-synthesis library professionals, we will study model behavior, develop a prototype workflow, and evaluate how that workflow fits the service that librarians provide to research teams.
 
-This matters especially in a library-supported evidence-synthesis service such as [Evidence Synthesis Services at Virginia Tech](https://guides.lib.vt.edu/SRMA/home).
-The library is not merely helping someone operate a convenient tool.
-It is helping a research team use and report a defensible method.
-An auditable workflow can expose selection errors, support updates when models change, document the use of AI in a methods section, and keep an opaque model decision from becoming an unacknowledged source of bias.
+The methodological analysis will measure how often the workflow retains relevant studies and how its recommendations change across models, prompts, and repeated runs.
+The prototype will preserve what the model received, how it was instructed, which version and settings produced the recommendation, and how a human reviewer changed or resolved it.
+With those records, a reviewer could retrace an exclusion while screening, compare the old process with a new one when updating the review, and describe the use of AI precisely in the methods section.
 
-No single metric can tell us whether the workflow belongs in practice, so the project turns the RAISE recommendations into three connected forms of work.
-The analysis lets us measure how accuracy, recall, disagreement, prompt sensitivity, and repeated-run variation affect the validity and reproducibility of screening.
-The prototype makes those concerns tangible as records, interfaces, and review steps that people can actually use.
-Then practitioners can tell us what a benchmark cannot.
-Does the workflow fit the service they provide, put professional judgment in the right places, and produce enough guidance for another library to use it responsibly?
+When professionals who support services such as [Evidence Synthesis Services at Virginia Tech](https://guides.lib.vt.edu/SRMA/home) use the prototype, they can show us where it interrupts a real review, where it asks for human judgment too late, and which parts of the audit trail help a research team explain its decisions.
+Their experience will also help us write guidance that another library can adapt rather than leaving the prototype as a tool that only makes sense to its developers.
+Together, the analysis, prototype, and practitioner evaluation will tell us how much screening work AI can safely reduce and what a library must do when the model's recommendation is uncertain or wrong.
 
-The point is not to treat the model as another reviewer whose answer is accepted without question.
-Nor is faster screening, by itself, a sufficient result.
-We want a defensible way to learn where AI can reduce screening work without hiding uncertainty or lowering the standards that make an evidence synthesis credible.
+## The broader verification challenge
 
-## From professional standards to national policy
+RAISE is the most direct standard for the evidence-synthesis project because it was written for this research method.
+The two proposals predate the White House report [*Science: A New Golden Age*](https://www.whitehouse.gov/wp-content/uploads/2026/07/Science-A-New-Golden-Age.pdf), so the report did not shape their design, but it describes a closely related challenge for science.
+As AI increases the speed at which researchers can generate claims and analyses, the report argues, scientific institutions need comparable capacity to verify them.
+The report connects that capacity to documented methods, interoperable systems, open interfaces, and replication packages that machines and people can audit.
 
-Neither proposal was written in response to the federal documents.
-The alignment is substantive rather than causal.
-RAISE is the closer point of reference for the evidence-synthesis project because it defines the responsibilities and evaluation questions for this specific research method.
-The federal documents place the same verification problem within a broader national agenda for science and AI.
+[America's AI Action Plan](https://www.whitehouse.gov/wp-content/uploads/2025/07/Americas-AI-Action-Plan.pdf) calls for mission-specific measures, realistic testbeds, stronger evaluation science, and collaboration between technical researchers and practitioners who understand the domain.
+It also supports open-weight models for rigorous academic experiments, where researchers may need direct access to the model and control over its deployment in order to explain a result.
 
-The White House report [*Science: A New Golden Age*](https://www.whitehouse.gov/wp-content/uploads/2026/07/Science-A-New-Golden-Age.pdf) makes the problem unusually clear.
-AI can accelerate scientific production, but that acceleration has little value if the underlying findings cannot be checked.
-The report argues that new capacity for generation must be matched by verification at comparable scale, supported by reproducible methods, methodological documentation, open interfaces, interoperability standards, and machine-auditable replication packages.
+Our projects address those verification needs in two forms of library work where an AI output can become part of the record that other people rely on.
+For digital collections, verification requires enough provenance to trace and correct a generated description years after its creation, along with collection-scale tests that reveal patterns a polished demonstration would miss.
+For evidence synthesis, it requires a reviewable history of each recommendation and tests that show how often relevant studies are retained when the model, prompt, or run changes.
+In both cases, the librarians responsible for the service help define the conditions under which an output can be used and the evidence needed to support that decision.
 
-[America's AI Action Plan](https://www.whitehouse.gov/wp-content/uploads/2025/07/Americas-AI-Action-Plan.pdf) approaches the problem from the perspective of adoption.
-It calls for mission-specific evaluation, realistic testbeds, better measurement of reliability and performance, and teams that bring technical developers together with people who understand the domain of use.
-It also recognizes the value of open-weight models for rigorous academic experiments, where access to the model and control over its deployment can make closer inspection possible.
+## What I will be working on
 
-The two IMLS projects bring those ambitions into library practice, where the word *infrastructure* becomes concrete.
-For a digital collection, it means AI-derived information that remains traceable, interoperable, correctable, and intelligible for years.
-For evidence synthesis, it means being able to inspect, replay, challenge, and correct an AI recommendation before it changes the evidence available to support a scientific conclusion.
-Real library work provides the testbed, and the professionals responsible for that work help define what the system must do.
+In both projects, I will focus on research design and on methods for finding failures that a good-looking output can conceal.
+That work includes the evaluation frameworks, the records needed for auditability and reproducibility, and the practical question of how another library could reuse the resulting methods in its own systems.
+This extends my research on machine-usable scientific knowledge, including [how disagreement among language models changes relevance judgments and retrieval outcomes](https://arxiv.org/abs/2507.02139), into services where those disagreements have immediate consequences for discovery and evidence selection.
 
-This is the alignment I find most compelling.
-National policy describes the need for verification infrastructure, while our projects ask what that infrastructure looks like in two places where libraries already carry responsibility for the integrity of the scholarly and cultural record.
-
-## The work begins after the demo
-
-What interests me about both projects is that they begin where most AI demonstrations end.
-A demonstration can end once the model produces a plausible output.
-A library service cannot.
-We already know that a language model can generate a description or assign a relevance label.
-The harder question is whether that output deserves authority inside a service that people use to discover cultural materials or assemble scientific evidence.
-
-An unreliable output can change which objects a patron finds or which studies enter an evidence synthesis.
-Accuracy matters in both cases, but so do provenance, consistency, disagreement, and the ability to review a decision.
-
-My role in both projects centers on research design and on methods for evaluating these kinds of failure.
-I will also work on auditability, reproducibility, and the reuse of the resulting methods in other library systems.
-This work extends my broader research on machine-usable scientific knowledge, including [how disagreement among language models changes relevance judgments and retrieval outcomes](https://arxiv.org/abs/2507.02139), into a practical question.
-What must we know about an AI-generated description or judgment before we allow it to shape what someone else can know?
+I am especially glad that both grants give us time to work through the less glamorous questions that arrive after an AI system begins producing plausible results.
+Someone still has to investigate the failures, decide what should be reviewed, preserve enough context to revisit a decision, and make the workflow understandable to people who did not build it.
+The projects will produce methods, software, and guidance that other libraries can inspect, test, correct, and adapt as they decide where AI belongs in their own work.
 
 The IMLS award records provide additional information about [the machine-generated metadata project](https://www.imls.gov/grants/awarded/lg-259840-ols-26) and [the evidence-synthesis project](https://www.imls.gov/grants/awarded/lg-259841-ols-26).
