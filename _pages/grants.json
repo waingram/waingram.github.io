@@ -5,9 +5,47 @@ permalink: /grants.json
 {
   "id": "https://waingram.github.io/grants.json",
   "type": "grant_collection",
-  "last_updated": "2026-06-17",
+  "last_updated": "2026-08-17",
   "owner": "https://waingram.github.io/#waingram",
   "grants": [
+    {
+      "id": "https://waingram.github.io/#grant-lg-259840-ols-26",
+      "name": "Library-wide, Machine-Generated Metadata as First-Class Structural Components",
+      "identifier": "LG-259840-OLS-26",
+      "role": "Co-Principal Investigator",
+      "funder": "Institute of Museum and Library Services",
+      "program": "National Leadership Grants--Libraries",
+      "year": 2026,
+      "amount_usd": 473403,
+      "url": "https://www.imls.gov/grants/awarded/lg-259840-ols-26",
+      "related_project": "https://waingram.github.io/#project-machine-generated-metadata",
+      "topics": [
+        "machine-generated metadata",
+        "digital collections",
+        "knowledge graphs",
+        "cross-collection discovery",
+        "auditability"
+      ]
+    },
+    {
+      "id": "https://waingram.github.io/#grant-lg-259841-ols-26",
+      "name": "Auditable AI Workflows for Evidence Synthesis Library Services",
+      "identifier": "LG-259841-OLS-26",
+      "role": "Co-Principal Investigator",
+      "funder": "Institute of Museum and Library Services",
+      "program": "National Leadership Grants--Libraries",
+      "year": 2026,
+      "amount_usd": 178994,
+      "url": "https://www.imls.gov/grants/awarded/lg-259841-ols-26",
+      "related_project": "https://waingram.github.io/#project-auditable-evidence-synthesis",
+      "topics": [
+        "evidence synthesis",
+        "relevance screening",
+        "auditability",
+        "open language models",
+        "human review"
+      ]
+    },
     {
       "id": "https://waingram.github.io/#grant-lg-256638-ols-24",
       "name": "Harnessing ETDs: Pioneering AI-Driven Innovations in Library Service",

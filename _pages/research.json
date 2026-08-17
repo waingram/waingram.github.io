@@ -5,7 +5,7 @@ permalink: /research.json
 {
   "id": "https://waingram.github.io/#waingram",
   "type": "researcher_profile",
-  "last_updated": "2026-07-02",
+  "last_updated": "2026-08-17",
   "identity": {
     "name": "William A. Ingram",
     "honorific_suffix": "Ph.D.",
@@ -107,6 +107,8 @@ permalink: /research.json
       "goal-conditioned evaluation",
       "research workflow extraction",
       "AI-assisted discovery",
+      "machine-generated metadata",
+      "auditable AI-assisted evidence synthesis",
       "retrieval-augmented scholarly systems",
       "Electronic Theses and Dissertations"
     ],

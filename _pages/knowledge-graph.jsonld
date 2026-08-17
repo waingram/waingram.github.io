@@ -109,6 +109,12 @@ permalink: /knowledge-graph.jsonld
         },
         {
           "@id": "https://waingram.github.io/#concept-repository-interoperability"
+        },
+        {
+          "@id": "https://waingram.github.io/#concept-machine-generated-metadata"
+        },
+        {
+          "@id": "https://waingram.github.io/#concept-evidence-synthesis"
         }
       ],
       "sameAs": [
@@ -150,6 +156,12 @@ permalink: /knowledge-graph.jsonld
         },
         {
           "@id": "https://waingram.github.io/#project-government-records"
+        },
+        {
+          "@id": "https://waingram.github.io/#project-machine-generated-metadata"
+        },
+        {
+          "@id": "https://waingram.github.io/#project-auditable-evidence-synthesis"
         }
       ]
     },
@@ -224,6 +236,46 @@ permalink: /knowledge-graph.jsonld
       "@type": "DefinedTerm",
       "name": "Knowledge Use",
       "description": "Work on how machines use research knowledge to support scientific work through representation of research processes, methodological context, and workflow-like knowledge."
+    },
+    {
+      "@id": "https://waingram.github.io/#project-machine-generated-metadata",
+      "@type": "ResearchProject",
+      "name": "Library-wide, Machine-Generated Metadata as First-Class Structural Components",
+      "description": "Research project on the consistency, traceability, structural relationships, and discovery uses of machine-generated metadata across digital collections.",
+      "member": {
+        "@id": "https://waingram.github.io/#waingram"
+      },
+      "funding": {
+        "@id": "https://waingram.github.io/#grant-lg-259840-ols-26"
+      },
+      "about": [
+        {
+          "@id": "https://waingram.github.io/#concept-machine-generated-metadata"
+        },
+        {
+          "@id": "https://waingram.github.io/#concept-digital-libraries"
+        }
+      ]
+    },
+    {
+      "@id": "https://waingram.github.io/#project-auditable-evidence-synthesis",
+      "@type": "ResearchProject",
+      "name": "Auditable AI Workflows for Evidence Synthesis Library Services",
+      "description": "Planning project to develop and evaluate an accurate, auditable AI-assisted workflow for title-and-abstract relevance screening in evidence-synthesis library services.",
+      "member": {
+        "@id": "https://waingram.github.io/#waingram"
+      },
+      "funding": {
+        "@id": "https://waingram.github.io/#grant-lg-259841-ols-26"
+      },
+      "about": [
+        {
+          "@id": "https://waingram.github.io/#concept-evidence-synthesis"
+        },
+        {
+          "@id": "https://waingram.github.io/#concept-information-retrieval"
+        }
+      ]
     },
     {
       "@id": "https://waingram.github.io/#project-goal-conditioned-evaluation",
@@ -341,6 +393,34 @@ permalink: /knowledge-graph.jsonld
           "@id": "https://waingram.github.io/#concept-natural-language-processing"
         }
       ]
+    },
+    {
+      "@id": "https://waingram.github.io/#grant-lg-259840-ols-26",
+      "@type": "Grant",
+      "name": "Library-wide, Machine-Generated Metadata as First-Class Structural Components",
+      "identifier": "LG-259840-OLS-26",
+      "sameAs": "https://www.imls.gov/grants/awarded/lg-259840-ols-26",
+      "funder": {
+        "@id": "https://waingram.github.io/#org-imls"
+      },
+      "fundedItem": {
+        "@id": "https://waingram.github.io/#project-machine-generated-metadata"
+      },
+      "description": "2026 Institute of Museum and Library Services award of $473,403. William A. Ingram is Co-Principal Investigator."
+    },
+    {
+      "@id": "https://waingram.github.io/#grant-lg-259841-ols-26",
+      "@type": "Grant",
+      "name": "Auditable AI Workflows for Evidence Synthesis Library Services",
+      "identifier": "LG-259841-OLS-26",
+      "sameAs": "https://www.imls.gov/grants/awarded/lg-259841-ols-26",
+      "funder": {
+        "@id": "https://waingram.github.io/#org-imls"
+      },
+      "fundedItem": {
+        "@id": "https://waingram.github.io/#project-auditable-evidence-synthesis"
+      },
+      "description": "2026 Institute of Museum and Library Services award of $178,994. William A. Ingram is Co-Principal Investigator."
     },
     {
       "@id": "https://waingram.github.io/#grant-lg-256638-ols-24",
@@ -563,6 +643,16 @@ permalink: /knowledge-graph.jsonld
       "@id": "https://waingram.github.io/#concept-digital-libraries",
       "@type": "DefinedTerm",
       "name": "Digital Libraries"
+    },
+    {
+      "@id": "https://waingram.github.io/#concept-machine-generated-metadata",
+      "@type": "DefinedTerm",
+      "name": "Machine-Generated Metadata"
+    },
+    {
+      "@id": "https://waingram.github.io/#concept-evidence-synthesis",
+      "@type": "DefinedTerm",
+      "name": "Evidence Synthesis"
     },
     {
       "@id": "https://waingram.github.io/#concept-electronic-theses-and-dissertations",

@@ -5,9 +5,41 @@ permalink: /projects.json
 {
   "id": "https://waingram.github.io/projects.json",
   "type": "project_collection",
-  "last_updated": "2026-06-17",
+  "last_updated": "2026-08-17",
   "owner": "https://waingram.github.io/#waingram",
   "projects": [
+    {
+      "id": "https://waingram.github.io/#project-machine-generated-metadata",
+      "name": "Library-wide, Machine-Generated Metadata as First-Class Structural Components",
+      "status": "awarded",
+      "role": "Co-Principal Investigator",
+      "funding": "https://waingram.github.io/#grant-lg-259840-ols-26",
+      "research_layer": "Knowledge Access",
+      "description": "Studies when machine-generated metadata remains consistent and traceable enough across digital collections to support structural relationships, cross-collection discovery, and patron-facing interaction.",
+      "topics": [
+        "machine-generated metadata",
+        "digital collections",
+        "knowledge graphs",
+        "cross-collection discovery",
+        "provenance"
+      ]
+    },
+    {
+      "id": "https://waingram.github.io/#project-auditable-evidence-synthesis",
+      "name": "Auditable AI Workflows for Evidence Synthesis Library Services",
+      "status": "awarded",
+      "role": "Co-Principal Investigator",
+      "funding": "https://waingram.github.io/#grant-lg-259841-ols-26",
+      "research_layer": "Knowledge Use",
+      "description": "Develops and evaluates an accurate, auditable AI-assisted workflow for title-and-abstract relevance screening in evidence-synthesis library services.",
+      "topics": [
+        "evidence synthesis",
+        "relevance screening",
+        "auditability",
+        "open language models",
+        "human review"
+      ]
+    },
     {
       "id": "https://waingram.github.io/#project-goal-conditioned-evaluation",
       "name": "Goal-Conditioned Evaluation in Scholarly Collections",
