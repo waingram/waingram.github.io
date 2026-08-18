@@ -141,9 +141,7 @@ A false inclusion creates more work because someone will need to review the irre
 
 That is why the project focuses on auditable workflows rather than screening speed alone. Researchers need to know which model evaluated each record, what criteria and prompt it received, whether repeated runs produced the same recommendation, how a human reviewer responded, and why the final decision was made. Without that information, AI may reduce the visible screening workload by making consequential exclusions that cannot later be reconstructed or challenged.
 
-PRISMA stands for **Preferred Reporting Items for Systematic Reviews and Meta-Analyses**. It is a reporting guideline: it tells authors what information they should disclose when publishing a systematic review.
-
-PRISMA does not prescribe the method used to conduct a review, and compliance does not prove that the review was well designed; its purpose is to make the completed review inspectable.
+PRISMA stands for **Preferred Reporting Items for Systematic Reviews and Meta-Analyses**, and [PRISMA 2020](https://doi.org/10.1136/bmj.n71) tells authors what information to disclose when publishing a systematic review. As a reporting guideline, PRISMA does not prescribe how the review must be conducted or establish that it was well designed; its purpose is to make the completed review inspectable.
 
 Suppose a review reports that 42 studies were included. A reader needs to know how the researchers arrived at those 42 studies:
 
@@ -155,24 +153,18 @@ Suppose a review reports that 42 studies were included. A reader needs to know h
 - How many records were excluded at each stage?
 - Why were apparently relevant full-text studies excluded?
 
-PRISMA 2020 provides a 27-item checklist covering the review’s rationale, methods, results, and interpretation. It also provides a [flow diagram](https://www.prisma-statement.org/prisma-2020-flow-diagram) showing how many records were identified, screened, excluded, and included, together with reasons for full-text exclusions. [The official PRISMA materials](https://www.prisma-statement.org/prisma-2020) include the checklist, expanded guidance, and flow-diagram templates.
+[The official PRISMA 2020 materials](https://www.prisma-statement.org/prisma-2020) include a 27-item checklist covering the review’s rationale, methods, results, and interpretation, along with expanded guidance and [a flow diagram](https://www.prisma-statement.org/prisma-2020-flow-diagram) showing how many records were identified, screened, excluded, and included, with reasons for full-text exclusions.
 
 The conclusions of a systematic review depend on how its evidence base was constructed. If authors report only the final studies and conclusions, readers cannot determine whether important literature was missed, whether the eligibility criteria were applied consistently, or whether the selection process introduced bias. Complete reporting allows readers to examine those decisions and gives future researchers enough information to update or attempt to reproduce the review.
 
-AI-assisted screening is part of the selection process that PRISMA expects authors to report, so saying “we used AI to help screen abstracts” would not tell readers enough to understand what happened. Researchers would need to identify the tool and explain how it was used.
-
-[PRISMA 2020](https://doi.org/10.1136/bmj.n71) asks systematic reviewers to report how studies moved through the selection process, including any automation tools used along the way.
-The Royal Society and the Academy of Medical Sciences also include transparent study selection among their [principles of good evidence synthesis](https://royalsociety.org/-/media/policy/projects/evidence-synthesis/principles-for-good-evidence-synthesis-for-policy.pdf).
-An AI screening decision belongs in the account of how the research was conducted because another researcher needs to understand how each study entered or left the evidence base.
+AI-assisted screening is part of the selection process that PRISMA expects authors to report, so saying “we used AI to help screen abstracts” would not tell readers enough to understand what happened. Researchers would need to identify the tool and explain how it was used. The Royal Society and the Academy of Medical Sciences likewise include transparent study selection among their [principles of good evidence synthesis](https://royalsociety.org/-/media/policy/projects/evidence-synthesis/principles-for-good-evidence-synthesis-for-policy.pdf).
 
 The international [Responsible use of AI in evidence SynthEsis initiative](https://doi.org/10.17605/OSF.IO/FWAUD), known as RAISE, divides responsibility for AI-assisted evidence synthesis across developers, users, and institutions.
 Its [guidance for developers](https://osf.io/fwaud/files/d6phz) calls for representative evaluation data, careful measurement of recall, documented prompts and settings, repeated tests of variable outputs, and public reporting of limitations.
 The companion [guidance for users and institutions](https://osf.io/fwaud/files/y5aqg) asks whether a tool fits a particular review, whether its validation can be reproduced, and whether its performance may change.
 Cochrane, the Campbell Collaboration, JBI, and the Collaboration for Environmental Evidence endorsed the RAISE framework in a 2025 [joint position statement](https://doi.org/10.1186/s13750-025-00374-5) that retains human responsibility for AI-assisted judgments and calls for transparent reporting.
 
-PRISMA establishes the reporting obligation, but it does not by itself specify the complete technical record needed for an auditable language-model workflow. It does not fully answer questions such as which model version evaluated each record, what prompt it received, whether repeated runs agreed, or how a human resolved a disagreement. RAISE and the proposed project address that additional layer.
-
-The three provide a layered account of responsibility:
+PRISMA does not specify the complete technical record needed for an auditable language-model workflow, including which model version evaluated each record, what prompt it received, whether repeated runs agreed, or how a human resolved a disagreement. PRISMA, RAISE, and the proposed workflow therefore address different levels of responsibility:
 
 - **PRISMA:** Report how the evidence-selection process was conducted.
 - **RAISE:** Evaluate and report AI use responsibly within that process.
