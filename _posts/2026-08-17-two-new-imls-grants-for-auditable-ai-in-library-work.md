@@ -8,7 +8,7 @@ tags: [AI, Digital Libraries, Evidence Synthesis, Metadata, IMLS]
 On August 16, the Institute of Museum and Library Services awarded Virginia Tech University Libraries two 2026 National Leadership Grants totaling $652,397.
 I am delighted to be a co-Principal Investigator on both projects.
 One project studies when machine-generated metadata can support collection-scale discovery, while the other studies whether AI-assisted relevance screening can meet the methodological requirements of evidence synthesis.
-In each project, a model output begins to carry institutional authority because a library system or service relies upon it.
+Once a library system or service relies on model output, that output can affect what users find and which studies enter an evidence synthesis.
 What evidence should be required before that happens?
 
 ## Library-wide, Machine-Generated Metadata as First-Class Structural Components
@@ -19,14 +19,12 @@ In this sense, metadata functions as infrastructure. If a person’s name appear
 
 Human-authored metadata is incomplete and sometimes inconsistent, but libraries have procedures for creating, reviewing, and correcting it. The person who supplies a field usually works within a known schema, and the institution can distinguish an authoritative record from a tentative note or an unreviewed suggestion.
 
-Suppose the library runs several AI models across a set of collections. The models extract names, places, organizations, events, dates, subjects, and descriptions from the objects themselves. At first, these are candidate metadata values. They are proposed assertions about the materials, not yet part of the library’s maintained data. 
+Suppose the library runs several AI models across a set of collections. The models extract names, places, organizations, events, dates, subjects, and descriptions from the objects themselves. At first, these extracted values are only proposed assertions about the materials and are not yet part of the library’s maintained data.
 
-The library could stop there. It could display the suggestions to a cataloger, use them temporarily to improve a search experiment, or evaluate them against existing records. That would continue a familiar line of research into automated metadata generation. Our work goes further.
+The library could stop there by displaying the suggestions to a cataloger, using them temporarily in a search experiment, or evaluating them against existing records. Any of these uses would continue a familiar line of research into automated metadata generation; our project asks what happens when generated values are incorporated into the library’s maintained data.
 
-Our $473,403 project, ["Library-wide, Machine-Generated Metadata as First-Class Structural Components"](https://www.imls.gov/grants/awarded/lg-259840-ols-26), will study how machine-generated metadata behaves across digital collections.
-Bipasha Banerjee is the Principal Investigator, and Jennifer L. Goyne and I are co-Principal Investigators.
-The project will compare generated metadata across collections to identify fields and relationships that remain consistent enough to support discovery.
-It will also examine semantic similarity, error patterns, provenance, and the need for human review before using the results to build and evaluate cross-collection navigation.
+Our $473,403 project, ["Library-wide, Machine-Generated Metadata as First-Class Structural Components"](https://www.imls.gov/grants/awarded/lg-259840-ols-26), will study how machine-generated metadata behaves across digital collections, with Bipasha Banerjee as Principal Investigator and Jennifer L. Goyne and me as co-Principal Investigators.
+The project will compare generated metadata across collections to identify fields and relationships that are consistent enough to support discovery, examine semantic similarity and error patterns, and determine what provenance and human review are needed before the results can support cross-collection navigation.
 
 ```text
 digital objects
@@ -46,10 +44,9 @@ In Phase 1, the project generates candidate metadata and asks which fields are a
 
 Each phase consumes the results of the preceding phase. An extracted name becomes a candidate entity, entity-resolution decisions determine which references belong together, those entities become nodes in a graph, and the graph determines which objects a user encounters as related.
 
-This dependency is what “first-class structural component” is trying to convey. A first-class metadata element is stored, indexed, queried, linked to other elements, maintained over time, and consumed by other services. Machine-generated metadata becomes first-class when the digital library begins to rely on it, rather than merely displaying it as an unverified suggestion.
+The phrase “first-class structural component” refers to this dependency. A first-class metadata element is stored, indexed, queried, linked to other elements, maintained over time, and consumed by other services; machine-generated metadata meets that description when the digital library relies on it rather than merely displaying it as an unverified suggestion.
 
-None of the individual techniques is new. Metadata extraction, named-entity recognition, entity linking, knowledge graphs, and automated classification all have substantial research histories. Large collections and inconsistent metadata are not new either.
-
+Metadata extraction, named-entity recognition, entity linking, knowledge graphs, and automated classification all have substantial research histories, and researchers have long studied large collections with inconsistent metadata.
 The proposal’s contribution is to connect three levels of evaluation that are usually studied separately:
 
 1. **Generation:** Can a model produce a particular metadata field for an object?
@@ -60,12 +57,9 @@ A metadata generator can perform well at the first level and still fail at the s
 
 ### New problems when the outputs are combined
 Some failures become visible only after individually generated values begin interacting.
-
 A model may extract “William A. Ingram,” “W. A. Ingram,” and “Bill Ingram” correctly from three documents. The extraction task has succeeded in each document, but the digital library still has to determine whether the names identify one person or several people. If it keeps one person as three entities, the collection becomes fragmented. If it merges three people into one entity, it creates relationships that the source materials never asserted.
 
-The consequences increase when later services rely on that decision. A mistaken merge can connect a person with the wrong organization, location, event, photographs, and oral histories. The error is no longer one incorrect field. It has altered a section of the graph and, consequently, the paths available through the collection.
-
-Several related problems follow.
+Once later services rely on an entity-resolution decision, a mistaken merge can connect a person with the wrong organization, location, event, photographs, and oral histories, altering both a section of the graph and the paths available through the collection.
 
 **Local accuracy does not establish corpus coherence.**  
 An AI model can generate mostly plausible fields while using names, dates, classifications, or levels of specificity inconsistently across collections. These differences may have little effect when records are inspected separately, yet prevent the records from composing into a usable shared structure.
@@ -80,7 +74,7 @@ A name transcribed from a document, an identity inferred from contextual clues, 
 When a reviewer separates two incorrectly merged people, the system must identify every graph edge, search index entry, interface link, and generated narrative that depended on the merge. Correcting the original assertion without updating its dependents leaves the library internally inconsistent.
 
 **Existing metadata is an imperfect reference point.**  
-Agreement with human-authored fields can be measured where those fields exist, but absence from an existing record does not prove that a generated entity is wrong. Conversely, semantic similarity between two generated descriptions does not establish that either description is factually supported. So the project needs several forms of evaluation rather than a single accuracy score.
+Agreement with human-authored fields can be measured where those fields exist, but absence from an existing record does not prove that a generated entity is wrong. Conversely, semantic similarity between two generated descriptions does not establish that either description is factually supported. Evaluation must therefore measure agreement with existing fields separately from factual support for newly generated assertions.
 
 **Human review cannot simply reproduce manual cataloging at a larger scale.**  
 If every generated assertion requires individual review, the pipeline has not solved the bottleneck problem that motivated it. The system needs evidence for deciding which outputs can be accepted automatically, which require sampling, and which kinds of ambiguity must always be reviewed.
@@ -90,16 +84,13 @@ The project asks:
 
 > Which model-generated assertions can a digital library safely reuse as inputs to later computational processes, and what controls are required when those later processes depend on them?
 
-The important word is **reuse**. Generating a description is one operation. Allowing that description to determine entity identity, graph structure, retrieval, and navigation creates a chain of dependency. The grant studies that chain across a production collection environment, from generation through structural integration to patron-facing use.
+Generating a description is one operation; reusing it to determine entity identity, graph structure, retrieval, and navigation creates a chain of dependency that the grant studies across a production collection environment, from generation through structural integration to patron-facing use.
 
-That is the emerging problem:  a new possibility of producing so much derived metadata that libraries may begin constructing services from it before they know whether the outputs are dependable when combined, updated, and maintained over time. 
+At corpus scale, libraries can produce derived metadata faster than they can determine whether the outputs are dependable when combined, updated, and maintained over time. That mismatch creates the possibility that services will be built from assertions that have not been adequately evaluated.
 
-Evaluating an isolated record cannot reveal whether the same entity has been named consistently across thousands of objects or whether an error recurs systematically within a collection.
-The unit of evaluation must therefore expand from the record to the corpus, where consistency, contradiction, and accumulated error can be measured.
-At the same time, each generated assertion needs to retain its own provenance so that a librarian can inspect the source material, model, prompt, and human corrections associated with it.
+An isolated record cannot reveal whether the same entity has been named consistently across thousands of objects or whether an error recurs systematically within a collection, so consistency, contradiction, and accumulated error must be measured at the corpus level. Each generated assertion must also retain its provenance, including the source material, model, prompt, and human corrections, so that a librarian can inspect how it was produced.
 
-Treating generated metadata as a first-class structural component creates a longer-term stewardship problem.
-Models, prompts, and commercial services will change while the descriptions and relationships produced by them remain embedded in library systems.
+Treating generated metadata as a first-class structural component creates a longer-term stewardship problem because models, prompts, and commercial services will change even though the descriptions and relationships they produced may remain embedded in library systems.
 A future librarian should be able to distinguish source metadata from model inference, reconsider an earlier decision, and regenerate or remove the derived structure without reconstructing its history from scratch.
 
 ## Auditable AI Workflows for Evidence Synthesis Library Services
@@ -136,7 +127,7 @@ That emphasis on completeness produces a large screening burden. Relevant studie
 
 Screening usually occurs in two stages. Reviewers begin with titles and abstracts, applying criteria defined by the review protocol. Records that appear eligible or remain ambiguous proceed to full-text screening, where reviewers decide whether each study actually qualifies and document the reason for every exclusion.
 
-These decisions are rarely mechanical. An abstract may omit the population, study design, intervention, outcome, or other information needed to apply the criteria. Terminology may not match the protocol exactly. Reviewers must interpret whether a study is genuinely relevant, and uncertain records generally move forward because excluding them prematurely could remove evidence from the review.
+These decisions are rarely mechanical. An abstract may omit the population, study design, intervention, outcome, or other information needed to apply the criteria, or it may use terminology that does not match the protocol exactly. Reviewers must interpret whether a study is genuinely relevant, and uncertain records generally move forward because excluding them prematurely could remove evidence from the review.
 
 Many review methods also require two people to screen records independently. Their decisions are compared, disagreements are reconciled, and the resulting inclusion and exclusion history is documented. This reduces the influence of individual error or interpretation, but it effectively multiplies the labor.
 
@@ -152,7 +143,7 @@ That is why the project focuses on auditable workflows rather than screening spe
 
 PRISMA stands for **Preferred Reporting Items for Systematic Reviews and Meta-Analyses**. It is a reporting guideline: it tells authors what information they should disclose when publishing a systematic review.
 
-PRISMA is not the method used to conduct the review, and compliance does not prove that the review was well designed. Its purpose is to make the completed review inspectable.
+PRISMA does not prescribe the method used to conduct a review, and compliance does not prove that the review was well designed; its purpose is to make the completed review inspectable.
 
 Suppose a review reports that 42 studies were included. A reader needs to know how the researchers arrived at those 42 studies:
 
@@ -164,13 +155,11 @@ Suppose a review reports that 42 studies were included. A reader needs to know h
 - How many records were excluded at each stage?
 - Why were apparently relevant full-text studies excluded?
 
-PRISMA 2020 provides a 27-item checklist covering the review’s rationale, methods, results, and interpretation. It also provides a flow diagram showing how many records were identified, screened, excluded, and included, together with reasons for full-text exclusions. [The official PRISMA materials](https://www.prisma-statement.org/prisma-2020) include the checklist, expanded guidance, and flow-diagram templates.
+PRISMA 2020 provides a 27-item checklist covering the review’s rationale, methods, results, and interpretation. It also provides a [flow diagram](https://www.prisma-statement.org/prisma-2020-flow-diagram) showing how many records were identified, screened, excluded, and included, together with reasons for full-text exclusions. [The official PRISMA materials](https://www.prisma-statement.org/prisma-2020) include the checklist, expanded guidance, and flow-diagram templates.
 
-This is important because the conclusions of a systematic review depend on how its evidence base was constructed. If authors report only the final studies and conclusions, readers cannot determine whether important literature was missed, whether the eligibility criteria were applied consistently, or whether the selection process introduced bias. Complete reporting allows readers to examine those decisions and gives future researchers enough information to update or attempt to reproduce the review.
+The conclusions of a systematic review depend on how its evidence base was constructed. If authors report only the final studies and conclusions, readers cannot determine whether important literature was missed, whether the eligibility criteria were applied consistently, or whether the selection process introduced bias. Complete reporting allows readers to examine those decisions and gives future researchers enough information to update or attempt to reproduce the review.
 
-For the IMLS project, the key point is that AI-assisted screening becomes part of the selection process that PRISMA expects authors to report. Saying “we used AI to help screen abstracts” would be insufficient for understanding what happened. Researchers would need to identify the tool and explain how it was used.
-
-PRISMA matters because it makes study selection visible as part of the research method rather than treating it as preliminary clerical work. [PRISMA’s flow diagram](https://www.prisma-statement.org/prisma-2020-flow-diagram) makes that idea concrete by showing how the initial search results were progressively transformed into the final evidence base.
+AI-assisted screening is part of the selection process that PRISMA expects authors to report, so saying “we used AI to help screen abstracts” would not tell readers enough to understand what happened. Researchers would need to identify the tool and explain how it was used.
 
 [PRISMA 2020](https://doi.org/10.1136/bmj.n71) asks systematic reviewers to report how studies moved through the selection process, including any automation tools used along the way.
 The Royal Society and the Academy of Medical Sciences also include transparent study selection among their [principles of good evidence synthesis](https://royalsociety.org/-/media/policy/projects/evidence-synthesis/principles-for-good-evidence-synthesis-for-policy.pdf).
@@ -183,19 +172,17 @@ Cochrane, the Campbell Collaboration, JBI, and the Collaboration for Environment
 
 PRISMA establishes the reporting obligation, but it does not by itself specify the complete technical record needed for an auditable language-model workflow. It does not fully answer questions such as which model version evaluated each record, what prompt it received, whether repeated runs agreed, or how a human resolved a disagreement. RAISE and the proposed project address that additional layer.
 
-So the relationship is:
+The three provide a layered account of responsibility:
 
 - **PRISMA:** Report how the evidence-selection process was conducted.
 - **RAISE:** Evaluate and report AI use responsibly within that process.
 - **The proposed workflow:** Preserve the record-level information needed to inspect and reconstruct AI-assisted screening.
 
-Our $178,994 project, ["Auditable AI Workflows for Evidence Synthesis Library Services"](https://www.imls.gov/grants/awarded/lg-259841-ols-26), will develop and evaluate an AI-assisted workflow for title-and-abstract screening.
-Bipasha Banerjee is the Principal Investigator, and C. Cozette Comer and I are co-Principal Investigators.
-We will work with evidence-synthesis library professionals to study model behavior, develop a prototype and instruction manual, and test the workflow in the context of the services librarians provide to research teams.
+Our $178,994 project, ["Auditable AI Workflows for Evidence Synthesis Library Services"](https://www.imls.gov/grants/awarded/lg-259841-ols-26), will develop and evaluate an AI-assisted workflow for title-and-abstract screening, with Bipasha Banerjee as Principal Investigator and C. Cozette Comer and me as co-Principal Investigators.
+The project will work with evidence-synthesis library professionals to study model behavior, develop a prototype and instruction manual, and test the workflow in the context of the services librarians provide to research teams.
 
 Controlled experiments will measure how often relevant studies survive screening and how recommendations change across models, prompts, and repeated runs.
-Those results will inform a prototype that retains the model input, instructions, version, settings, output, and subsequent human decision for each record.
-Evidence-synthesis professionals from services such as [Evidence Synthesis Services at Virginia Tech](https://guides.lib.vt.edu/SRMA/home) will use the prototype and evaluate whether its audit trail supports an actual review.
+Those results will inform a prototype that retains the model input, instructions, version, settings, output, and subsequent human decision for each record; evidence-synthesis professionals from services such as [Evidence Synthesis Services at Virginia Tech](https://guides.lib.vt.edu/SRMA/home) will use the prototype to evaluate whether its audit trail supports an actual review.
 
 A workflow may fit comfortably into an existing service while repeatedly excluding relevant studies, or it may perform well against a benchmark while leaving librarians unable to explain its decisions to a research team.
 An adoption recommendation must account for both methodological performance and the professional setting in which the workflow will be used.
@@ -216,7 +203,6 @@ Generated descriptions and relationships must remain traceable to their sources,
 I will be working mostly on research design, evaluation, auditability, reproducibility, and ways other library systems might reuse what we learn.
 The evidence-synthesis project also extends my research on [how disagreement among language models changes relevance judgments and retrieval outcomes](https://arxiv.org/abs/2507.02139), since disagreement may reveal where a single relevance label conceals uncertainty that a reviewer ought to see.
 
-Models can already generate descriptions and relevance labels.
-Under what conditions should those outputs be allowed to govern what researchers can discover and what an evidence synthesis can claim?
+Models can already generate descriptions and relevance labels, but under what conditions should those outputs be allowed to govern what researchers can discover and what an evidence synthesis can claim?
 
 The IMLS award records provide additional information about [the machine-generated metadata project](https://www.imls.gov/grants/awarded/lg-259840-ols-26) and [the evidence-synthesis project](https://www.imls.gov/grants/awarded/lg-259841-ols-26).
