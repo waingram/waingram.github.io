@@ -146,7 +146,7 @@ Research libraries support this work because the screening burden begins with in
 
 AI-assisted screening is attractive because much of this work consists of repeatedly comparing records with the same eligibility criteria. A model could prioritize likely inclusions, identify obvious exclusions, or provide a preliminary recommendation for each record.
 
-A false inclusion creates more work because someone reviews an irrelevant paper later, but a false exclusion can remove a relevant study from the evidence base before anyone examines it. If the omitted study would have changed the estimated effect, revealed a harmful outcome, or represented a population absent from the remaining literature, the screening error can alter the conclusions of the review or meta-analysis.
+A false inclusion creates more work because someone will need to review the irrelevant paper later, but a false exclusion can remove a relevant study from the evidence base before anyone examines it. If the omitted study would have changed the estimated effect, revealed a harmful outcome, or represented a population absent from the remaining literature, the screening error can alter the conclusions of the review or meta-analysis.
 
 That is why the project focuses on auditable workflows rather than screening speed alone. Researchers need to know which model evaluated each record, what criteria and prompt it received, whether repeated runs produced the same recommendation, how a human reviewer responded, and why the final decision was made. Without that information, AI may reduce the visible screening workload by making consequential exclusions that cannot later be reconstructed or challenged.
 
