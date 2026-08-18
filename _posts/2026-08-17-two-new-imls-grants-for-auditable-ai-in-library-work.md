@@ -130,9 +130,7 @@ The terms are related but not interchangeable:
 
 A systematic review may conclude that the studies are too different or too poorly reported to combine statistically. It would still be a systematic review, but it would not contain a meta-analysis.
 
-The selection process is fundamental because the synthesis can analyze only the studies that survive the search and screening stages. If relevant studies are missed or incorrectly excluded, both the narrative conclusions and any pooled statistical estimate may be based on an incomplete or distorted body of evidence.
-
-Because a systematic review is designed to identify the complete body of research that satisfies a predefined set of criteria. Researchers are not looking for a few representative papers. They must search broadly enough that a relevant study is unlikely to be missed.
+Systematic reviewers seek the complete body of research that satisfies predefined criteria rather than a representative sample, so they must search broadly enough that a relevant study is unlikely to be missed. The synthesis can analyze only studies that survive search and screening; if a relevant study is missed or incorrectly excluded, both the narrative conclusions and any pooled statistical estimate may rest on incomplete or distorted evidence.
 
 That emphasis on completeness produces a large screening burden. Relevant studies may use different terminology, appear in different disciplines, or be indexed inconsistently across databases. Search strategies therefore favor sensitivity over precision: they retrieve many potentially relevant records so that reviewers can determine relevance themselves. Most retrieved records will eventually be excluded, but each must first be examined.
 
@@ -148,7 +146,7 @@ Research libraries support this work because the screening burden begins with in
 
 AI-assisted screening is attractive because much of this work consists of repeatedly comparing records with the same eligibility criteria. A model could prioritize likely inclusions, identify obvious exclusions, or provide a preliminary recommendation for each record.
 
-The risk is asymmetric, however. A false inclusion creates more work because someone reviews an irrelevant paper later. A false exclusion can remove a relevant study from the evidence base before anyone examines it. If the omitted study would have changed the estimated effect, revealed a harmful outcome, or represented a population absent from the remaining literature, the screening error can alter the conclusions of the review or meta-analysis.
+A false inclusion creates more work because someone reviews an irrelevant paper later, but a false exclusion can remove a relevant study from the evidence base before anyone examines it. If the omitted study would have changed the estimated effect, revealed a harmful outcome, or represented a population absent from the remaining literature, the screening error can alter the conclusions of the review or meta-analysis.
 
 That is why the project focuses on auditable workflows rather than screening speed alone. Researchers need to know which model evaluated each record, what criteria and prompt it received, whether repeated runs produced the same recommendation, how a human reviewer responded, and why the final decision was made. Without that information, AI may reduce the visible screening workload by making consequential exclusions that cannot later be reconstructed or challenged.
 
