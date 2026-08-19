@@ -14,13 +14,10 @@ What evidence should be required before that happens?
 ## Library-wide, Machine-Generated Metadata as First-Class Structural Components
 
 A digital library contains digital objects, such as documents, photographs, recordings, and videos, together with metadata records that describe those objects. The platform uses fields from those records to build search indexes, browse categories, filters, and links among materials.
-
 In this sense, metadata functions as infrastructure. If a person’s name appears in a metadata field, the system can retrieve everything associated with that person. If an item has a subject heading, the interface can place it among other items assigned the same subject. The metadata does not merely tell a reader about the object; it determines how the software organizes and retrieves the object.
-
 Human-authored metadata is incomplete and sometimes inconsistent, but libraries have procedures for creating, reviewing, and correcting it. The person who supplies a field usually works within a known schema, and the institution can distinguish an authoritative record from a tentative note or an unreviewed suggestion.
 
 Suppose the library runs several AI models across a set of collections. The models extract names, places, organizations, events, dates, subjects, and descriptions from the objects themselves. At first, these extracted values are only proposed assertions about the materials and are not yet part of the library’s maintained data.
-
 The library could stop there by displaying the suggestions to a cataloger, using them temporarily in a search experiment, or evaluating them against existing records. Any of these uses would continue a familiar line of research into automated metadata generation; our project asks what happens when generated values are incorporated into the library’s maintained data.
 
 Our $473,403 project, ["Library-wide, Machine-Generated Metadata as First-Class Structural Components"](https://www.imls.gov/grants/awarded/lg-259840-ols-26), will study how machine-generated metadata behaves across digital collections, with Bipasha Banerjee as Principal Investigator and Jennifer L. Goyne and me as co-Principal Investigators.
@@ -41,9 +38,7 @@ cross-collection navigation and interpretation
 ```
 
 In Phase 1, the project generates candidate metadata and asks which fields are accurate, consistent, and traceable across heterogeneous collections and repeated model runs. In Phase 2, it uses the entities and relationships to construct graph-based representations across collections. In Phase 3, it builds navigation and discovery functions that leverage those representations.
-
 Each phase consumes the results of the preceding phase. An extracted name becomes a candidate entity, entity-resolution decisions determine which references belong together, those entities become nodes in a graph, and the graph determines which objects a user encounters as related.
-
 The phrase “first-class structural component” refers to this dependency. A first-class metadata element is stored, indexed, queried, linked to other elements, maintained over time, and consumed by other services; machine-generated metadata meets that description when the digital library relies on it rather than merely displaying it as an unverified suggestion.
 
 Metadata extraction, named-entity recognition, entity linking, knowledge graphs, and automated classification all have substantial research histories, and researchers have long studied large collections with inconsistent metadata.
@@ -58,7 +53,6 @@ A metadata generator can perform well at the first level and still fail at the s
 ### New problems when the outputs are combined
 Some failures become visible only after individually generated values begin interacting.
 A model may extract “William A. Ingram,” “W. A. Ingram,” and “Bill Ingram” correctly from three documents. The extraction task has succeeded in each document, but the digital library still has to determine whether the names identify one person or several people. If it keeps one person as three entities, the collection becomes fragmented. If it merges three people into one entity, it creates relationships that the source materials never asserted.
-
 Once later services rely on an entity-resolution decision, a mistaken merge can connect a person with the wrong organization, location, event, photographs, and oral histories, altering both a section of the graph and the paths available through the collection.
 
 **Local accuracy does not establish corpus coherence.**  
@@ -85,18 +79,15 @@ The project asks:
 > Which model-generated assertions can a digital library safely reuse as inputs to later computational processes, and what controls are required when those later processes depend on them?
 
 Generating a description is one operation; reusing it to determine entity identity, graph structure, retrieval, and navigation creates a chain of dependency that the grant studies across a production collection environment, from generation through structural integration to patron-facing use.
-
 At corpus scale, libraries can produce derived metadata faster than they can determine whether the outputs are dependable when combined, updated, and maintained over time. That mismatch creates the possibility that services will be built from assertions that have not been adequately evaluated.
 
 An isolated record cannot reveal whether the same entity has been named consistently across thousands of objects or whether an error recurs systematically within a collection, so consistency, contradiction, and accumulated error must be measured at the corpus level. Each generated assertion must also retain its provenance, including the source material, model, prompt, and human corrections, so that a librarian can inspect how it was produced.
-
 Treating generated metadata as a first-class structural component creates a longer-term stewardship problem because models, prompts, and commercial services will change even though the descriptions and relationships they produced may remain embedded in library systems.
 A future librarian should be able to distinguish source metadata from model inference, reconsider an earlier decision, and regenerate or remove the derived structure without reconstructing its history from scratch.
 
 ## Auditable AI Workflows for Evidence Synthesis Library Services
 
 Evidence synthesis is research that draws conclusions from existing studies rather than collecting new experimental or observational data. It asks: given everything already studied about a question, what does the combined evidence support?
-
 For example, suppose researchers want to know whether a particular treatment reduces depression. Many clinical studies may have examined that question, but they may involve different patient populations, treatment durations, outcome measures, and sample sizes. Looking at one study cannot tell researchers what the entire body of evidence shows.
 
 A systematic review provides a structured method for finding and evaluating that evidence. Before examining the results, the researchers define:
@@ -110,7 +101,6 @@ A systematic review provides a structured method for finding and evaluating that
 They then search multiple databases, screen every retrieved record against the eligibility criteria, assess the quality or risk of bias of the included studies, extract the relevant findings, and synthesize what the studies collectively show. The process is documented so that readers can understand how the evidence base was constructed and judge whether relevant research may have been missed.
 
 A meta-analysis is a statistical technique that may be performed within a systematic review. When the included studies are sufficiently comparable, researchers convert their results into a common effect measure and calculate a combined estimate. Larger or more precise studies usually contribute more weight to that estimate.
-
 For example, ten clinical trials might each estimate how much a treatment changes depression scores. A meta-analysis combines those estimates to calculate an overall effect and quantify how much the results differ across studies.
 
 The terms are related but not interchangeable:
@@ -122,23 +112,18 @@ The terms are related but not interchangeable:
 A systematic review may conclude that the studies are too different or too poorly reported to combine statistically. It would still be a systematic review, but it would not contain a meta-analysis.
 
 Systematic reviewers seek the complete body of research that satisfies predefined criteria rather than a representative sample, so they must search broadly enough that a relevant study is unlikely to be missed. The synthesis can analyze only studies that survive search and screening; if a relevant study is missed or incorrectly excluded, both the narrative conclusions and any pooled statistical estimate may rest on incomplete or distorted evidence.
-
 That emphasis on completeness produces a large screening burden. Relevant studies may use different terminology, appear in different disciplines, or be indexed inconsistently across databases. Search strategies therefore favor sensitivity over precision: they retrieve many potentially relevant records so that reviewers can determine relevance themselves. Most retrieved records will eventually be excluded, but each must first be examined.
 
 Screening usually occurs in two stages. Reviewers begin with titles and abstracts, applying criteria defined by the review protocol. Records that appear eligible or remain ambiguous proceed to full-text screening, where reviewers decide whether each study actually qualifies and document the reason for every exclusion.
-
 These decisions are rarely mechanical. An abstract may omit the population, study design, intervention, outcome, or other information needed to apply the criteria, or it may use terminology that does not match the protocol exactly. Reviewers must interpret whether a study is genuinely relevant, and uncertain records generally move forward because excluding them prematurely could remove evidence from the review.
 
 Many review methods also require two people to screen records independently. Their decisions are compared, disagreements are reconciled, and the resulting inclusion and exclusion history is documented. This reduces the influence of individual error or interpretation, but it effectively multiplies the labor.
-
 The scale makes even quick judgments expensive. If a search retrieves 5,000 records and one reviewer spends only one minute on each title and abstract, that initial pass requires more than 83 hours. Independent double screening requires another pass, followed by conflict resolution, full-text retrieval, full-text screening, and documentation.
 
 Research libraries support this work because the screening burden begins with information retrieval. Librarians help formulate searchable concepts, translate them across databases, construct reproducible search strategies, manage duplicate records, select review software, and document the selection process. In many evidence-synthesis services, librarians are methodological collaborators rather than people who merely provide access to databases.
-
 AI-assisted screening is attractive because much of this work consists of repeatedly comparing records with the same eligibility criteria. A model could prioritize likely inclusions, identify obvious exclusions, or provide a preliminary recommendation for each record.
 
 A false inclusion creates more work because someone will need to review the irrelevant paper later, but a false exclusion can remove a relevant study from the evidence base before anyone examines it. If the omitted study would have changed the estimated effect, revealed a harmful outcome, or represented a population absent from the remaining literature, the screening error can alter the conclusions of the review or meta-analysis.
-
 That is why the project focuses on auditable workflows rather than screening speed alone. Researchers need to know which model evaluated each record, what criteria and prompt it received, whether repeated runs produced the same recommendation, how a human reviewer responded, and why the final decision was made. Without that information, AI may reduce the visible screening workload by making consequential exclusions that cannot later be reconstructed or challenged.
 
 PRISMA stands for **Preferred Reporting Items for Systematic Reviews and Meta-Analyses**, and [PRISMA 2020](https://doi.org/10.1136/bmj.n71) tells authors what information to disclose when publishing a systematic review. As a reporting guideline, PRISMA does not prescribe how the review must be conducted or establish that it was well designed; its purpose is to make the completed review inspectable.
@@ -154,7 +139,6 @@ Suppose a review reports that 42 studies were included. A reader needs to know h
 - Why were apparently relevant full-text studies excluded?
 
 [The official PRISMA 2020 materials](https://www.prisma-statement.org/prisma-2020) include a 27-item checklist covering the review’s rationale, methods, results, and interpretation, along with expanded guidance and [a flow diagram](https://www.prisma-statement.org/prisma-2020-flow-diagram) showing how many records were identified, screened, excluded, and included, with reasons for full-text exclusions.
-
 The conclusions of a systematic review depend on how its evidence base was constructed. If authors report only the final studies and conclusions, readers cannot determine whether important literature was missed, whether the eligibility criteria were applied consistently, or whether the selection process introduced bias. Complete reporting allows readers to examine those decisions and gives future researchers enough information to update or attempt to reproduce the review.
 
 AI-assisted screening is part of the selection process that PRISMA expects authors to report, so saying “we used AI to help screen abstracts” would not tell readers enough to understand what happened. Researchers would need to identify the tool and explain how it was used. The Royal Society and the Academy of Medical Sciences likewise include transparent study selection among their [principles of good evidence synthesis](https://royalsociety.org/-/media/policy/projects/evidence-synthesis/principles-for-good-evidence-synthesis-for-policy.pdf).
@@ -172,7 +156,6 @@ PRISMA does not specify the complete technical record needed for an auditable la
 
 Our $178,994 project, ["Auditable AI Workflows for Evidence Synthesis Library Services"](https://www.imls.gov/grants/awarded/lg-259841-ols-26), will develop and evaluate an AI-assisted workflow for title-and-abstract screening, with Bipasha Banerjee as Principal Investigator and C. Cozette Comer and me as co-Principal Investigators.
 The project will work with evidence-synthesis library professionals to study model behavior, develop a prototype and instruction manual, and test the workflow in the context of the services librarians provide to research teams.
-
 Controlled experiments will measure how often relevant studies survive screening and how recommendations change across models, prompts, and repeated runs.
 Those results will inform a prototype that retains the model input, instructions, version, settings, output, and subsequent human decision for each record; evidence-synthesis professionals from services such as [Evidence Synthesis Services at Virginia Tech](https://guides.lib.vt.edu/SRMA/home) will use the prototype to evaluate whether its audit trail supports an actual review.
 
@@ -183,7 +166,6 @@ An adoption recommendation must account for both methodological performance and 
 
 The White House report [*Science: A New Golden Age*](https://www.whitehouse.gov/wp-content/uploads/2026/07/Science-A-New-Golden-Age.pdf) warns that AI can increase the production of plausible scientific claims faster than the research system can verify them.
 The report calls for documented methods, interoperable systems, open interfaces, and machine-auditable replication packages so that verification capacity grows alongside generation capacity.
-
 [America's AI Action Plan](https://www.whitehouse.gov/wp-content/uploads/2025/07/Americas-AI-Action-Plan.pdf) calls for mission-specific measures, realistic testbeds, stronger evaluation science, and collaboration between technical researchers and practitioners who understand the work being automated.
 It also supports open-weight models for rigorous academic experiments in which researchers need direct access to the model and control over its deployment to explain a result.
 
@@ -194,7 +176,6 @@ Generated descriptions and relationships must remain traceable to their sources,
 
 I will be working mostly on research design, evaluation, auditability, reproducibility, and ways other library systems might reuse what we learn.
 The evidence-synthesis project also extends my research on [how disagreement among language models changes relevance judgments and retrieval outcomes](https://arxiv.org/abs/2507.02139), since disagreement may reveal where a single relevance label conceals uncertainty that a reviewer ought to see.
-
 Models can already generate descriptions and relevance labels, but under what conditions should those outputs be allowed to govern what researchers can discover and what an evidence synthesis can claim?
 
 The IMLS award records provide additional information about [the machine-generated metadata project](https://www.imls.gov/grants/awarded/lg-259840-ols-26) and [the evidence-synthesis project](https://www.imls.gov/grants/awarded/lg-259841-ols-26).
