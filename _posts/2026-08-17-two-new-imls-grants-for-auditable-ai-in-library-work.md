@@ -1,5 +1,6 @@
 ---
 layout: default
+published: false
 title: 'Two New IMLS Grants: When AI Changes What We Find and What Counts as Evidence'
 date: 2026-08-17 12:00 -0400
 categories: AI, Digital Libraries, Evidence Synthesis, Metadata, IMLS
