@@ -5,13 +5,18 @@ permalink: /grants.json
 {
   "id": "https://waingram.github.io/grants.json",
   "type": "grant_collection",
-  "last_updated": "2026-08-17",
+  "last_updated": "2026-09-23",
   "owner": "https://waingram.github.io/#waingram",
   "grants": [
     {
       "id": "https://waingram.github.io/#grant-lg-259840-ols-26",
       "name": "Library-wide, Machine-Generated Metadata as First-Class Structural Components",
       "identifier": "LG-259840-OLS-26",
+      "principal_investigator": "Bipasha Banerjee",
+      "co_principal_investigators": [
+        "Jennifer L. Goyne",
+        "William A. Ingram"
+      ],
       "role": "Co-Principal Investigator",
       "funder": "Institute of Museum and Library Services",
       "program": "National Leadership Grants--Libraries",
@@ -31,6 +36,11 @@ permalink: /grants.json
       "id": "https://waingram.github.io/#grant-lg-259841-ols-26",
       "name": "Auditable AI Workflows for Evidence Synthesis Library Services",
       "identifier": "LG-259841-OLS-26",
+      "principal_investigator": "Bipasha Banerjee",
+      "co_principal_investigators": [
+        "C. Cozette Comer",
+        "William A. Ingram"
+      ],
       "role": "Co-Principal Investigator",
       "funder": "Institute of Museum and Library Services",
       "program": "National Leadership Grants--Libraries",
@@ -50,6 +60,10 @@ permalink: /grants.json
       "id": "https://waingram.github.io/#grant-lg-256638-ols-24",
       "name": "Harnessing ETDs: Pioneering AI-Driven Innovations in Library Service",
       "identifier": "LG-256638-OLS-24",
+      "principal_investigator": "William A. Ingram",
+      "co_principal_investigators": [
+        "Edward A. Fox"
+      ],
       "role": "Principal Investigator",
       "funder": "Institute of Museum and Library Services",
       "program": "National Leadership Grants--Libraries",
@@ -68,6 +82,12 @@ permalink: /grants.json
       "id": "https://waingram.github.io/#grant-lg-256693-ols-24",
       "name": "Enhancing Accessibility of Electronic Theses and Dissertations",
       "identifier": "LG-256693-OLS-24",
+      "principal_investigator": "Vikas Ashok",
+      "co_principal_investigators": [
+        "Jian Wu",
+        "Sampath Jayarathna",
+        "William A. Ingram"
+      ],
       "role": "Co-Principal Investigator",
       "funder": "Institute of Museum and Library Services",
       "program": "National Leadership Grants--Libraries",
@@ -85,6 +105,10 @@ permalink: /grants.json
       "id": "https://waingram.github.io/#grant-lg-256694-ols-24",
       "name": "Preserving Open Access Datasets and Software for Sustainable Computational Reproducibility",
       "identifier": "LG-256694-OLS-24",
+      "principal_investigator": "Jian Wu",
+      "co_principal_investigators": [
+        "Sawood Alam"
+      ],
       "role": "Senior Personnel",
       "funder": "Institute of Museum and Library Services",
       "program": "National Leadership Grants--Libraries",
@@ -103,7 +127,9 @@ permalink: /grants.json
       "id": "https://waingram.github.io/#grant-1910-07229",
       "name": "Ensuring Scholarly Access to Government Records and Archives",
       "identifier": "1910-07229",
-      "role": "Project Lead",
+      "principal_investigator": "William A. Ingram",
+      "co_principal_investigators": [],
+      "role": "Principal Investigator",
       "funder": "Andrew W. Mellon Foundation",
       "year": 2020,
       "amount_usd": 44000,
@@ -120,6 +146,11 @@ permalink: /grants.json
       "id": "https://waingram.github.io/#grant-lg-37-19-0078-19",
       "name": "Opening Books and the National Corpus of Graduate Research",
       "identifier": "LG-37-19-0078-19",
+      "principal_investigator": "William A. Ingram",
+      "co_principal_investigators": [
+        "Edward A. Fox",
+        "Jian Wu"
+      ],
       "role": "Principal Investigator",
       "funder": "Institute of Museum and Library Services",
       "program": "National Leadership Grants--Libraries",
