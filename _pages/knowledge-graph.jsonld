@@ -242,9 +242,31 @@ permalink: /knowledge-graph.jsonld
       "@type": "ResearchProject",
       "name": "Library-wide, Machine-Generated Metadata as First-Class Structural Components",
       "description": "Research project on the consistency, traceability, structural relationships, and discovery uses of machine-generated metadata across digital collections.",
-      "member": {
-        "@id": "https://waingram.github.io/#waingram"
-      },
+      "member": [
+        {
+          "@type": "OrganizationRole",
+          "roleName": "Principal Investigator",
+          "member": {
+            "@type": "Person",
+            "name": "Bipasha Banerjee"
+          }
+        },
+        {
+          "@type": "OrganizationRole",
+          "roleName": "Co-Principal Investigator",
+          "member": {
+            "@type": "Person",
+            "name": "Jennifer L. Goyne"
+          }
+        },
+        {
+          "@type": "OrganizationRole",
+          "roleName": "Co-Principal Investigator",
+          "member": {
+            "@id": "https://waingram.github.io/#waingram"
+          }
+        }
+      ],
       "funding": {
         "@id": "https://waingram.github.io/#grant-lg-259840-ols-26"
       },
@@ -262,9 +284,31 @@ permalink: /knowledge-graph.jsonld
       "@type": "ResearchProject",
       "name": "Auditable AI Workflows for Evidence Synthesis Library Services",
       "description": "Planning project to develop and evaluate an accurate, auditable AI-assisted workflow for title-and-abstract relevance screening in evidence-synthesis library services.",
-      "member": {
-        "@id": "https://waingram.github.io/#waingram"
-      },
+      "member": [
+        {
+          "@type": "OrganizationRole",
+          "roleName": "Principal Investigator",
+          "member": {
+            "@type": "Person",
+            "name": "Bipasha Banerjee"
+          }
+        },
+        {
+          "@type": "OrganizationRole",
+          "roleName": "Co-Principal Investigator",
+          "member": {
+            "@type": "Person",
+            "name": "C. Cozette Comer"
+          }
+        },
+        {
+          "@type": "OrganizationRole",
+          "roleName": "Co-Principal Investigator",
+          "member": {
+            "@id": "https://waingram.github.io/#waingram"
+          }
+        }
+      ],
       "funding": {
         "@id": "https://waingram.github.io/#grant-lg-259841-ols-26"
       },
@@ -299,9 +343,23 @@ permalink: /knowledge-graph.jsonld
       "@type": "ResearchProject",
       "name": "Harnessing ETDs: Pioneering AI-Driven Innovations in Library Service",
       "description": "Research project integrating retrieval-augmented models with curated ETD corpora for semantic retrieval, contextual classification, evidence-constrained generation, and hybrid sparse/dense ranking.",
-      "member": {
-        "@id": "https://waingram.github.io/#waingram"
-      },
+      "member": [
+        {
+          "@type": "OrganizationRole",
+          "roleName": "Principal Investigator",
+          "member": {
+            "@id": "https://waingram.github.io/#waingram"
+          }
+        },
+        {
+          "@type": "OrganizationRole",
+          "roleName": "Co-Principal Investigator",
+          "member": {
+            "@type": "Person",
+            "name": "Edward A. Fox"
+          }
+        }
+      ],
       "funding": {
         "@id": "https://waingram.github.io/#grant-lg-256638-ols-24"
       },
@@ -319,9 +377,31 @@ permalink: /knowledge-graph.jsonld
       "@type": "ResearchProject",
       "name": "Opening Books and the National Corpus of Graduate Research",
       "description": "Research project that developed computational access methods for book-length documents using Electronic Theses and Dissertations.",
-      "member": {
-        "@id": "https://waingram.github.io/#waingram"
-      },
+      "member": [
+        {
+          "@type": "OrganizationRole",
+          "roleName": "Principal Investigator",
+          "member": {
+            "@id": "https://waingram.github.io/#waingram"
+          }
+        },
+        {
+          "@type": "OrganizationRole",
+          "roleName": "Co-Principal Investigator",
+          "member": {
+            "@type": "Person",
+            "name": "Edward A. Fox"
+          }
+        },
+        {
+          "@type": "OrganizationRole",
+          "roleName": "Co-Principal Investigator",
+          "member": {
+            "@type": "Person",
+            "name": "Jian Wu"
+          }
+        }
+      ],
       "funding": {
         "@id": "https://waingram.github.io/#grant-lg-37-19-0078-19"
       },
@@ -339,9 +419,31 @@ permalink: /knowledge-graph.jsonld
       "@type": "ResearchProject",
       "name": "Preserving Open Access Datasets and Software for Sustainable Computational Reproducibility",
       "description": "Research project on preserving open access datasets and software used to reproduce research results reported in scholarly works.",
-      "member": {
-        "@id": "https://waingram.github.io/#waingram"
-      },
+      "member": [
+        {
+          "@type": "OrganizationRole",
+          "roleName": "Principal Investigator",
+          "member": {
+            "@type": "Person",
+            "name": "Jian Wu"
+          }
+        },
+        {
+          "@type": "OrganizationRole",
+          "roleName": "Co-Principal Investigator",
+          "member": {
+            "@type": "Person",
+            "name": "Sawood Alam"
+          }
+        },
+        {
+          "@type": "OrganizationRole",
+          "roleName": "Senior Personnel",
+          "member": {
+            "@id": "https://waingram.github.io/#waingram"
+          }
+        }
+      ],
       "funding": {
         "@id": "https://waingram.github.io/#grant-lg-256694-ols-24"
       },
@@ -359,9 +461,39 @@ permalink: /knowledge-graph.jsonld
       "@type": "ResearchProject",
       "name": "Enhancing Accessibility of Electronic Theses and Dissertations",
       "description": "Planning project for improving accessibility of Electronic Theses and Dissertations for blind and low-vision library users.",
-      "member": {
-        "@id": "https://waingram.github.io/#waingram"
-      },
+      "member": [
+        {
+          "@type": "OrganizationRole",
+          "roleName": "Principal Investigator",
+          "member": {
+            "@type": "Person",
+            "name": "Vikas Ashok"
+          }
+        },
+        {
+          "@type": "OrganizationRole",
+          "roleName": "Co-Principal Investigator",
+          "member": {
+            "@type": "Person",
+            "name": "Jian Wu"
+          }
+        },
+        {
+          "@type": "OrganizationRole",
+          "roleName": "Co-Principal Investigator",
+          "member": {
+            "@type": "Person",
+            "name": "Sampath Jayarathna"
+          }
+        },
+        {
+          "@type": "OrganizationRole",
+          "roleName": "Co-Principal Investigator",
+          "member": {
+            "@id": "https://waingram.github.io/#waingram"
+          }
+        }
+      ],
       "funding": {
         "@id": "https://waingram.github.io/#grant-lg-256693-ols-24"
       },
@@ -379,9 +511,15 @@ permalink: /knowledge-graph.jsonld
       "@type": "ResearchProject",
       "name": "Ensuring Scholarly Access to Government Records and Archives",
       "description": "Project that convened experts to examine machine-learning techniques for enhancing public access to government records.",
-      "member": {
-        "@id": "https://waingram.github.io/#waingram"
-      },
+      "member": [
+        {
+          "@type": "OrganizationRole",
+          "roleName": "Principal Investigator",
+          "member": {
+            "@id": "https://waingram.github.io/#waingram"
+          }
+        }
+      ],
       "funding": {
         "@id": "https://waingram.github.io/#grant-1910-07229"
       },

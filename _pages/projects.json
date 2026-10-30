@@ -5,7 +5,7 @@ permalink: /projects.json
 {
   "id": "https://waingram.github.io/projects.json",
   "type": "project_collection",
-  "last_updated": "2026-08-17",
+  "last_updated": "2026-10-30",
   "owner": "https://waingram.github.io/#waingram",
   "projects": [
     {
@@ -13,6 +13,11 @@ permalink: /projects.json
       "name": "Library-wide, Machine-Generated Metadata as First-Class Structural Components",
       "status": "awarded",
       "role": "Co-Principal Investigator",
+      "principal_investigator": "Bipasha Banerjee",
+      "co_principal_investigators": [
+        "Jennifer L. Goyne",
+        "William A. Ingram"
+      ],
       "funding": "https://waingram.github.io/#grant-lg-259840-ols-26",
       "research_layer": "Knowledge Access",
       "description": "Studies when machine-generated metadata remains consistent and traceable enough across digital collections to support structural relationships, cross-collection discovery, and patron-facing interaction.",
@@ -29,6 +34,11 @@ permalink: /projects.json
       "name": "Auditable AI Workflows for Evidence Synthesis Library Services",
       "status": "awarded",
       "role": "Co-Principal Investigator",
+      "principal_investigator": "Bipasha Banerjee",
+      "co_principal_investigators": [
+        "C. Cozette Comer",
+        "William A. Ingram"
+      ],
       "funding": "https://waingram.github.io/#grant-lg-259841-ols-26",
       "research_layer": "Knowledge Use",
       "description": "Develops and evaluates an accurate, auditable AI-assisted workflow for title-and-abstract relevance screening in evidence-synthesis library services.",
@@ -64,6 +74,10 @@ permalink: /projects.json
       "status": "active",
       "period": "2024-2027",
       "role": "Principal Investigator",
+      "principal_investigator": "William A. Ingram",
+      "co_principal_investigators": [
+        "Edward A. Fox"
+      ],
       "funding": "https://waingram.github.io/#grant-lg-256638-ols-24",
       "research_layer": "Knowledge Access",
       "description": "Integrates retrieval-augmented models with curated ETD corpora to investigate semantic retrieval, contextual classification, evidence-constrained generation, and hybrid sparse/dense ranking for institutional research analysis.",
@@ -82,6 +96,11 @@ permalink: /projects.json
       "status": "completed",
       "period": "2019-2023",
       "role": "Principal Investigator",
+      "principal_investigator": "William A. Ingram",
+      "co_principal_investigators": [
+        "Edward A. Fox",
+        "Jian Wu"
+      ],
       "funding": "https://waingram.github.io/#grant-lg-37-19-0078-19",
       "research_layer": "Knowledge Access",
       "description": "Developed methods for computational access to book-length documents using Electronic Theses and Dissertations, including document structure extraction, classification, summarization, and metadata enrichment.",
@@ -100,6 +119,10 @@ permalink: /projects.json
       "status": "active",
       "period": "2024-2027",
       "role": "Senior Personnel",
+      "principal_investigator": "Jian Wu",
+      "co_principal_investigators": [
+        "Sawood Alam"
+      ],
       "funding": "https://waingram.github.io/#grant-lg-256694-ols-24",
       "research_layer": "Knowledge Use",
       "description": "Studies preservation of open access datasets and software used to reproduce research results reported in scholarly works.",
@@ -117,6 +140,12 @@ permalink: /projects.json
       "status": "active",
       "period": "2024-2026",
       "role": "Co-Principal Investigator",
+      "principal_investigator": "Vikas Ashok",
+      "co_principal_investigators": [
+        "Jian Wu",
+        "Sampath Jayarathna",
+        "William A. Ingram"
+      ],
       "funding": "https://waingram.github.io/#grant-lg-256693-ols-24",
       "research_layer": "Knowledge Access",
       "description": "Planning project for improving accessibility of Electronic Theses and Dissertations for blind and low-vision library users.",
@@ -133,7 +162,9 @@ permalink: /projects.json
       "name": "Ensuring Scholarly Access to Government Records and Archives",
       "status": "completed",
       "period": "2020-2021",
-      "role": "Project Lead",
+      "role": "Principal Investigator",
+      "principal_investigator": "William A. Ingram",
+      "co_principal_investigators": [],
       "funding": "https://waingram.github.io/#grant-1910-07229",
       "research_layer": "Knowledge Access",
       "description": "Convened experts to examine machine-learning techniques for enhancing public access to government records.",
